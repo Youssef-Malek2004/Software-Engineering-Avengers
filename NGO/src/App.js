@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useNavigate, Outlet } from "react-router-dom";
 import Settings from "./Settings";
 import Organization from "./Organization/Organization";
-import location from "./Organization/pages/locationpage";
 import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import OrgHome from "./Organization/pages/OrgHome";
+import SignUp from "./Donor/Pages/signUp";
 function App() {
   return (
     <div>
@@ -18,6 +18,7 @@ function App() {
         <Route path="/organization" element={<Organization />}>
           <Route path="location" element={<OrgHome />} />
         </Route>
+        <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
