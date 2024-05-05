@@ -4,20 +4,20 @@ export const items = [
   
   {
     key: "0",
-    icon: <FaBox />,
-    label: "Add Location",
+    icon: <FaHome />,
+    label: "Home",
     to: "location", // Assuming you're using react-router-dom for routing
   },
   {
     key: "1",
-    icon: <FaLaptop />,
-    label: "Applications",
+    icon: <FaBox/>,
+    label: "Donation",
     to: "applications",
   },
   {
     key: "2",
     icon: <FaUsers />,
-    label: "Manage Users",
+    label: "Donors",
     to: "manageUsers",
   },
   
