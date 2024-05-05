@@ -14,11 +14,13 @@ import Logo from "./assets/logo.jpg";
 //import NotificationList from "./Components/NotificationList";
 //import MessagesList from "./Components/MessagesList";
 import { Badge } from "@mui/joy";
+import { dark } from "@mui/material/styles/createPalette";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Outline = ({ items, navBarItems }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
+  const backgroundColor = "#5306B6  ";
 
   // Function to handle menu item click
   const onMenuClick = (e) => {
@@ -59,6 +61,7 @@ const Outline = ({ items, navBarItems }) => {
       <Sider
         trigger={null}
         collapsible
+        theme="dark"
         collapsed={collapsed}
         style={{
           overflow: "auto",
@@ -67,6 +70,7 @@ const Outline = ({ items, navBarItems }) => {
           left: 0,
           top: 0,
           bottom: 0,
+          //  backgroundColor: backgroundColor,
         }}
       >
         <div className="demo-logo-vertical">
@@ -85,7 +89,8 @@ const Outline = ({ items, navBarItems }) => {
             ...item,
             icon: createElement(item.icon.type),
           }))}
-          onClick={onMenuClick} // Add onClick handler
+          onClick={onMenuClick}
+          //style={{ backgroundColor: backgroundColor }}
         />
       </Sider>
 
