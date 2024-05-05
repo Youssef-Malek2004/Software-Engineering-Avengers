@@ -13,13 +13,12 @@ import Logo from "./assets/logo.jpg";
 //import CustomFooter from "./Components/Footer";
 //import NotificationList from "./Components/NotificationList";
 //import MessagesList from "./Components/MessagesList";
-import {Badge} from '@mui/joy';
+import { Badge } from "@mui/joy";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Outline = ({ items, navBarItems }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-
 
   // Function to handle menu item click
   const onMenuClick = (e) => {
@@ -46,16 +45,14 @@ const Outline = ({ items, navBarItems }) => {
           {item.name}
         </Link>
       ))}
-      <div
+      {/* <div
         onClick={handleLogout}
         style={{ cursor: "pointer", margin: "10px 0" }}
       >
         Logout
-      </div>
+      </div> */}
     </div>
   );
-
-
 
   return (
     <Layout hasSider>
@@ -121,15 +118,18 @@ const Outline = ({ items, navBarItems }) => {
               style={{ fontSize: "16px", border: "none" }}
             />
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}> 
+          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <Badge badgeContent={6} showZero={false} size="sm" color="danger">
               <PopOver
-              logo={<BellOutlined style={{ fontSize: '18px', cursor: 'pointer' }} />}
-              content='ok'
-              placement="bottomLeft"
-              trigger="click"
-            />
-
+                logo={
+                  <BellOutlined
+                    style={{ fontSize: "18px", cursor: "pointer" }}
+                  />
+                }
+                content="ok"
+                placement="bottomLeft"
+                trigger="click"
+              />
             </Badge>
 
             <PopOver
