@@ -10,12 +10,13 @@ import location from "./Organization/pages/locationpage";
 import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
+import OrgHome from "./Organization/pages/OrgHome";
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/organization" element={<Organization />}>
-          <Route path="location" element={<locationpage />} />
+          <Route path="location" element={<OrgHome />} />
         </Route>
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
