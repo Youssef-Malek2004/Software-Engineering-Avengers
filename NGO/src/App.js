@@ -11,12 +11,18 @@ import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import OrgHome from "./Organization/pages/OrgHome";
+import DonorInfo  from "./Organization/pages/DonorInfo";
+import UserDetails from "./Organization/components/UserDetails";
 function App() {
   return (
     <div>
       <Routes>
+        
         <Route path="/organization" element={<Organization />}>
           <Route path="location" element={<OrgHome />} />
+          <Route path="donors" element={<DonorInfo />} />
+          <Route path="user-details" element={<UserDetails />} />
+          
         </Route>
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
