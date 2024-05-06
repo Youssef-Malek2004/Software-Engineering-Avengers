@@ -13,7 +13,7 @@ function SignUp() {
     area: "",
     governorate: "",
     confirmPassword: "",
-    role: "", // New field for storing user's role
+    role: "regular_donor", // New field for storing user's role
     // Additional fields for doctor
     clinicAddress: "",
     clinicArea: "",
@@ -410,7 +410,7 @@ function SignUp() {
       {/* Subject selection modal */}
       {showSubjectModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white p-8 max-w-md mx-auto rounded-md">
+          <div className="bg-white p-8 max-w-md mx-auto rounded-md items-center">
             <h3 className="text-lg font-semibold mb-4 items-center">
               Select Subjects
             </h3>
