@@ -35,9 +35,6 @@
       navigate('/Submissions');
      };
 
-     
-
-
     return (
       <div>
         <section>

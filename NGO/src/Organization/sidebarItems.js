@@ -18,7 +18,7 @@ export const items = [
     key: "2",
     icon: <FaUsers />,
     label: "Donors",
-    to: "manageUsers",
+    to: "donors",
   },
   
     
