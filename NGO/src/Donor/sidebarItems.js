@@ -10,8 +10,8 @@ export const items = [
   {
     key: "1",
     icon: <FaIcons.FaFileSignature />,
-    label: "Check Donation Requests",
-    to: "donationRequests", // Assuming you're using react-router-dom for routing
+    label: "Donation Requests",
+    to: "donationRequests",
   },
 ];
 

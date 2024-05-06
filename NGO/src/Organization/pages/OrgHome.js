@@ -1,16 +1,16 @@
-import * as React from 'react';
-import backgroundImage from "../../shared/assets/backgound.png.png";
+import * as React from "react";
+import backgroundImage from "../../shared/assets/kidsImage.jpg";
 import Button from "@mui/joy/Button";
-import Box from '@mui/joy/Box';
+import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import CardActions from "@mui/joy/CardActions";
 import CircularProgress from "@mui/joy/CircularProgress";
-import Chip from '@mui/joy/Chip';
+import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { IoIosGitPullRequest } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { Space, Table, Tag } from 'antd';
+import { Space, Table, Tag } from "antd";
 import healthcare from "../../shared/assets/healthcare.png";
 import Donors from "../../shared/assets/donors.png";
 
@@ -20,21 +20,21 @@ const OrgHome = () => {
   // Dummy donation data
   const donations = [
     {
-      name: 'John Doe',
-      email: 'john@example.com',
-      donationType: 'Educational teaching',
+      name: "John Doe",
+      email: "john@example.com",
+      donationType: "Educational teaching",
       donationDate: new Date(),
     },
     {
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      donationType: 'Book',
+      name: "Jane Smith",
+      email: "jane@example.com",
+      donationType: "Book",
       donationDate: new Date(),
     },
     {
-      name: 'Alice Johnson',
-      email: 'alice@example.com',
-      donationType: 'Book',
+      name: "Alice Johnson",
+      email: "alice@example.com",
+      donationType: "Book",
       donationDate: new Date(),
     },
     // Add more dummy donation objects as needed
@@ -56,32 +56,30 @@ const OrgHome = () => {
   const columns = [
     {
       title: <Typography className="text-center">Name</Typography>,
-      dataIndex: 'name',
-      key: 'name',
-      render: (name) => (
-        <Typography className="text-center">{name}</Typography>
-      ),
+      dataIndex: "name",
+      key: "name",
+      render: (name) => <Typography className="text-center">{name}</Typography>,
     },
     {
       title: <Typography className="text-center">Email</Typography>,
-      dataIndex: 'email',
-      key: 'email',
+      dataIndex: "email",
+      key: "email",
       render: (email) => (
         <Typography className="text-center">{email}</Typography>
       ),
     },
     {
       title: <Typography className="text-center">Donation Type</Typography>,
-      dataIndex: 'donationType',
-      key: 'donationType',
+      dataIndex: "donationType",
+      key: "donationType",
       render: (donationType) => (
         <Typography className="text-center">{donationType}</Typography>
       ),
     },
     {
       title: <Typography className="text-center">Donation Date</Typography>,
-      dataIndex: 'donationDate',
-      key: 'donationDate',
+      dataIndex: "donationDate",
+      key: "donationDate",
       render: (donationDate) => (
         <Typography className="text-center">{donationDate}</Typography>
       ),
@@ -118,8 +116,7 @@ const OrgHome = () => {
                     className="img-fluid"
                     alt="patient"
                     style={{ color: "black", width: "40px", height: "auto" }}
-                    />
-
+                  />
                 </CircularProgress>
               </div>
               <CardContent>

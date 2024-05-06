@@ -4,15 +4,25 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useNavigate, Outlet } from "react-router-dom";
-import Settings from "./Settings";
 import Organization from "./Organization/Organization";
-import location from "./Organization/pages/locationpage";
 import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import OrgHome from "./Organization/pages/OrgHome";
+
 import DonorInfo  from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
+
+import SignUp from "./Donor/Pages/signUp";
+import Navbar from "./Admin/Navbar";
+import Home1 from './Admin/Home';
+import Settings from './Admin/Settings';
+import Donors from './Admin/Donors';
+import Organization1 from './Admin/Organization';
+import PendingRequests from './Admin/PendingRequests';
+import Submissions from './Admin/Submissions';
+import AccountManagement from './Admin/AccountManagement';
+
 function App() {
   return (
     <div>
@@ -24,11 +34,21 @@ function App() {
           <Route path="user-details" element={<UserDetails />} />
           
         </Route>
+        <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
         </Route>
-      </Routes>
+        <Route path='/Home' element={<Home1/>}>
+          <Route path="/Settings" element={<Settings/>}/>
+          <Route path="/Donors" element={<Donors />} />
+          <Route path="/Organization" element={<Organization1 />} />
+          <Route path="/PendingRequests" element={<PendingRequests />} />
+          <Route path="/Submissions" element={<Submissions />} />
+          <Route path="/AccountManagement" element={<AccountManagement />} />
+        </Route>
+
+       </Routes>
     </div>
   );
 }
