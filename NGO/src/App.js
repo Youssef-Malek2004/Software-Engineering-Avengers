@@ -1,7 +1,6 @@
 // App.js
 
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useNavigate, Outlet } from "react-router-dom";
 import Organization from "./Organization/Organization";
@@ -22,6 +21,7 @@ import Organization1 from './Admin/Organization';
 import PendingRequests from './Admin/PendingRequests';
 import Submissions from './Admin/Submissions';
 import AccountManagement from './Admin/AccountManagement';
+import Admin from './Admin/Admin'
 
 function App() {
   return (
@@ -39,14 +39,15 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
         </Route>
-        <Route path='/admin' element={<Organization/>}>
-          <Route path='/Home' element={<Home1/>}/>
-          <Route path="/Settings" element={<Settings/>}/>
-          <Route path="/Donors" element={<Donors />} />
-          <Route path="/Organization" element={<Organization1 />} />
-          <Route path="/PendingRequests" element={<PendingRequests />} />
-          <Route path="/Submissions" element={<Submissions />} />
-          <Route path="/AccountManagement" element={<AccountManagement />} />
+
+        <Route path='/admin' element={<Admin/>}>
+          <Route path='Home' element={<Home1/>}/>
+          <Route path="Settings" element={<Settings/>}/>
+          <Route path="Donors" element={<Donors />} />
+          <Route path="Organization" element={<Organization1 />} />
+          <Route path="PendingRequests" element={<PendingRequests />} />
+          <Route path="Submissions" element={<Submissions />} />
+          <Route path="AccountManagement" element={<AccountManagement />} />
         </Route>
 
        </Routes>
