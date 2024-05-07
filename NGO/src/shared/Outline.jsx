@@ -20,7 +20,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const Outline = ({ items, navBarItems }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-  const backgroundColor = "#5306B6  ";
+  const backgroundColor = "#1A0235  ";
 
   // Function to handle menu item click
   const onMenuClick = (e) => {
@@ -61,7 +61,7 @@ const Outline = ({ items, navBarItems }) => {
       <Sider
         trigger={null}
         collapsible
-        theme="dark"
+        //theme="dark"
         collapsed={collapsed}
         style={{
           overflow: "auto",
@@ -70,7 +70,7 @@ const Outline = ({ items, navBarItems }) => {
           left: 0,
           top: 0,
           bottom: 0,
-          //  backgroundColor: backgroundColor,
+          backgroundColor: backgroundColor,
         }}
       >
         <div className="demo-logo-vertical">
@@ -90,7 +90,7 @@ const Outline = ({ items, navBarItems }) => {
             icon: createElement(item.icon.type),
           }))}
           onClick={onMenuClick}
-          //style={{ backgroundColor: backgroundColor }}
+          style={{ backgroundColor: backgroundColor, color: "red" }}
         />
       </Sider>
 
