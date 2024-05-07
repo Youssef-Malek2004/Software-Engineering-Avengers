@@ -7,27 +7,24 @@ import Organization from "./Organization/Organization";
 import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
-import OrgHome from "./Organization/pages/OrgHome";
+import RequestTable from "./Donor/Pages/RequestsTable";
 
+import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
 
-
-
-
-
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
-import Home1 from './Admin/Home';
-import Settings from './Admin/Settings';
-import Donors from './Admin/Donors';
-import Organization1 from './Admin/Organization';
-import OrganizationRequests from './Admin/OrganizationRequests';
-import Submissions from './Admin/Submissions';
-import AccountManagement from './Admin/AccountManagement';
-import Admin from './Admin/Admin'
+import Home1 from "./Admin/Home";
+import Settings from "./Admin/Settings";
+import Donors from "./Admin/Donors";
+import Organization1 from "./Admin/Organization";
+import OrganizationRequests from "./Admin/OrganizationRequests";
+import Submissions from "./Admin/Submissions";
+import AccountManagement from "./Admin/AccountManagement";
+import Admin from "./Admin/Admin";
 
 function App() {
   return (
@@ -40,7 +37,6 @@ function App() {
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
-
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
@@ -54,7 +50,10 @@ function App() {
           <Route path="Settings" element={<Settings />} />
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
-          <Route path="OrganizationRequests" element={<OrganizationRequests />} />
+          <Route
+            path="OrganizationRequests"
+            element={<OrganizationRequests />}
+          />
           <Route path="Submissions" element={<Submissions />} />
           <Route path="AccountManagement" element={<AccountManagement />} />
         </Route>
