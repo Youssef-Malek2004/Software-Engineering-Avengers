@@ -103,10 +103,67 @@ function SignUp() {
                   >
                     Teacher
                   </button>
+                  <button
+                    className={`px-4 py-2 rounded-md focus:outline-none ${
+                      formData.role === "Organization"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-300 text-gray-600"
+                    }`}
+                    onClick={() =>
+                      setFormData({ ...formData, role: "Organization" })
+                    }
+                  >
+                    Organization
+                  </button>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   {/* Teacher-specific fields */}
                   {formData.role === "teacher" && (
+                    <>
+                      <div>
+                        <button
+                          className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          onClick={toggleSubjectModal}
+                        >
+                          Choose Subjects
+                        </button>
+                      </div>
+                      <div>
+                        <label htmlFor="maxProBonoClasses" className="sr-only">
+                          Max Pro Bono Classes
+                        </label>
+                        <input
+                          id="maxProBonoClasses"
+                          name="maxProBonoClasses"
+                          type="number"
+                          autoComplete="max-pro-bono-classes"
+                          required
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          placeholder="Max Pro Bono Classes"
+                          value={formData.maxProBonoClasses}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="maxPrivateStudents" className="sr-only">
+                          Max Private Students
+                        </label>
+                        <input
+                          id="maxPrivateStudents"
+                          name="maxPrivateStudents"
+                          type="number"
+                          autoComplete="max-private-students"
+                          required
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          placeholder="Max Private Students"
+                          value={formData.maxPrivateStudents}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </>
+                  )}
+                  {/* Teacher-specific fields */}
+                  {formData.role === "Organization" && (
                     <>
                       <div>
                         <button

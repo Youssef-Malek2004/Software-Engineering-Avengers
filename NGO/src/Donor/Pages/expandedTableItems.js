@@ -403,6 +403,7 @@ export const Blood = [
 export const ClothesTable = ({ items }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState("All");
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -414,8 +415,54 @@ export const ClothesTable = ({ items }) => {
     setShowPopup(true);
   };
 
+  const filteredItems = items.filter((item) =>
+    filter === "All" ? true : item.season === filter
+  );
+
   return (
     <div>
+      <div className="flex justify-center mb-4">
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Spring" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Spring")}
+        >
+          Spring
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Summer" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Summer")}
+        >
+          Summer
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Winter" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Winter")}
+        >
+          Winter
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Fall" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Fall")}
+        >
+          Fall
+        </button>
+      </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
           <tr>
@@ -432,12 +479,15 @@ export const ClothesTable = ({ items }) => {
               Season
             </th>
             <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Organization
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y">
-          {items.map((item) => (
+          {filteredItems.map((item) => (
             <tr key={item.id}>
               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
                 {item.type}
@@ -450,6 +500,9 @@ export const ClothesTable = ({ items }) => {
               </td>
               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
                 {item.season}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.organization}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
                 <button
@@ -948,6 +1001,279 @@ export const FoodTable = ({ items }) => {
               <p className="mb-2">
                 <span className="font-semibold">Organization:</span>{" "}
                 {selectedItem.organizationInNeed}
+              </p>
+              <div className="flex justify-end">
+                <button
+                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  // onClick={() => handleDonate(selectedItem.id)}
+                >
+                  Donate
+                </button>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                  onClick={handlePopupClose}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const MedicalTable = ({ items }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState("All");
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setSelectedItem(null);
+  };
+
+  const handleDetailsButtonClick = (item) => {
+    setSelectedItem(item);
+    setShowPopup(true);
+  };
+
+  const filteredItems = items.filter((item) =>
+    filter === "All" ? true : item.type === filter
+  );
+
+  return (
+    <div>
+      <div className="flex justify-center mb-4">
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Medical Device"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Medical Device")}
+        >
+          Medical Device
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Medical Equipment"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Medical Equipment")}
+        >
+          Medical Equipment
+        </button>
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "Medication" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("Medication")}
+        >
+          Medication
+        </button>
+      </div>
+      <table className="w-full divide-y divide-purple-600">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Type
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Item
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Organization
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              View Details
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y">
+          {filteredItems.map((item) => (
+            <tr key={item.id}>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.type}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.type !== "Medication"
+                  ? item.deviceName
+                  : item.medicationName}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.organizationInNeed}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                <button
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={() => handleDetailsButtonClick(item)}
+                >
+                  View Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg">
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-4">Details</h2>
+              <p className="mb-2">
+                <span className="font-semibold">Item:</span>{" "}
+                {selectedItem.type !== "Medication"
+                  ? selectedItem.deviceName
+                  : selectedItem.medicationName}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Item Use:</span>{" "}
+                {selectedItem.use}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Quantity In Need:</span>{" "}
+                {selectedItem.quantity}
+              </p>
+              <div className="flex justify-end">
+                <button
+                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  // onClick={() => handleDonate(selectedItem.id)}
+                >
+                  Donate
+                </button>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                  onClick={handlePopupClose}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const BloodTable = ({ items }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState("All");
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setSelectedItem(null);
+  };
+
+  const handleDetailsButtonClick = (item) => {
+    setSelectedItem(item);
+    setShowPopup(true);
+  };
+
+  const filteredItems = items.filter((item) =>
+    filter === "All" ? true : item.type === filter
+  );
+
+  return (
+    <div>
+      <div className="flex justify-center mb-4">
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+      </div>
+      <table className="w-full divide-y divide-purple-600">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Blood Type
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Hospital Name
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Governorate
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Area
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              View Details
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y">
+          {filteredItems.map((item) => (
+            <tr key={item.id}>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.bloodType}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.hospitalName}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.governorate}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.area}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                <button
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={() => handleDetailsButtonClick(item)}
+                >
+                  View Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg">
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-4">Details</h2>
+              <p className="mb-2">
+                <span className="font-semibold">Patient Name:</span>{" "}
+                {selectedItem.patientName}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Blood Type:</span>{" "}
+                {selectedItem.bloodType}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Hospital Name:</span>{" "}
+                {selectedItem.hospitalName}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Hospital Address:</span>{" "}
+                {selectedItem.hospitalAddress}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Area:</span> {selectedItem.area}
+              </p>
+              <p className="mb-2">
+                <span className="font-semibold">Governorate:</span>{" "}
+                {selectedItem.governorate}
               </p>
               <div className="flex justify-end">
                 <button
