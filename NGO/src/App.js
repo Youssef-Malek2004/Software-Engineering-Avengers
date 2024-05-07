@@ -9,8 +9,14 @@ import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import OrgHome from "./Organization/pages/OrgHome";
 
-import DonorInfo  from "./Organization/pages/DonorInfo";
+import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
+import Donation from "./Organization/pages/Donation";
+import Alldonation from "./Organization/pages/ViewDonationPosts";
+
+
+
+
 
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
@@ -27,30 +33,32 @@ function App() {
   return (
     <div>
       <Routes>
-        
         <Route path="/organization" element={<Organization />}>
-          <Route path="location" element={<OrgHome />} />
+          <Route path="orghome" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
           <Route path="user-details" element={<UserDetails />} />
-          
+          <Route path="donors/user-details/:idx/" element={<UserDetails />} />
+          <Route path="donations" element={<Donation />} />
+          <Route path="viewdonationposts" element={<Alldonation />} />
+
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
+          <Route path="Requests" element={<RequestTable />} />
         </Route>
 
-        <Route path='/admin' element={<Admin/>}>
-          <Route path='Home' element={<Home1/>}/>
-          <Route path="Settings" element={<Settings/>}/>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="Home" element={<Home1 />} />
+          <Route path="Settings" element={<Settings />} />
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
           <Route path="OrganizationRequests" element={<OrganizationRequests />} />
           <Route path="Submissions" element={<Submissions />} />
           <Route path="AccountManagement" element={<AccountManagement />} />
         </Route>
-
-       </Routes>
+      </Routes>
     </div>
   );
 }
