@@ -33,7 +33,6 @@ function App() {
         <Route path="/organization" element={<Organization />}>
           <Route path="orghome" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
-          <Route path="user-details" element={<UserDetails />} />
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
