@@ -13,6 +13,8 @@ import {
   SchoolSuppliesTable,
   ToysTable,
   FoodTable,
+  MedicalTable,
+  BloodTable,
 } from "./expandedTableItems";
 
 const RequestsTable = () => {
@@ -240,7 +242,7 @@ const RequestsTable = () => {
         )}
         {!expanded && (
           <div>
-            <h2 className="text-xl font-bold mb-4">Clothes</h2>
+            <h2 className="text-xl font-bold mb-4">Clothing Requests</h2>
             <ClothesTable items={clothes} />
 
             <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
@@ -252,11 +254,11 @@ const RequestsTable = () => {
             <h2 className="text-xl font-bold mb-4 mt-8">Food</h2>
             <FoodTable items={Food} />
 
-            <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
-            <Table items={Medical} />
+            <h2 className="text-xl font-bold mb-4 mt-8">Medical Requests</h2>
+            <MedicalTable items={Medical} />
 
             <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
-            <Table items={Blood} />
+            <BloodTable items={Blood} />
           </div>
         )}
         {showPopup && (

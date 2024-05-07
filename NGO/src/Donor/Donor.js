@@ -6,7 +6,7 @@ import { navBarItems } from "./navBarItems";
 function DonorBase() {
   return (
     <>
-      <OutlineNoSide items={items} navBarItems={navBarItems} />
+      <Outline items={items} navBarItems={navBarItems} />
     </>
   );
 }
