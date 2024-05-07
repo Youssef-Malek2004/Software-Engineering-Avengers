@@ -6,19 +6,25 @@ export const items = [
     key: "0",
     icon: <FaHome />,
     label: "Home",
-    to: "location", // Assuming you're using react-router-dom for routing
+    to: "orghome", // Assuming you're using react-router-dom for routing
   },
   {
     key: "1",
     icon: <FaBox/>,
     label: "Donation",
-    to: "applications",
+    to: "donations",
   },
   {
     key: "2",
     icon: <FaUsers />,
     label: "Donors",
     to: "donors",
+  },
+  {
+    key: "3",
+    icon: <FaUsers />,
+    label: "Add Location",
+    to: "locationpage",
   },
   
     

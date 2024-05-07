@@ -20,7 +20,7 @@
 
     const handleNavigateToOrganization = () => {
       // Navigate to the Organization component
-      navigate('/Organization');
+      navigate('/admin/Organization');
     };
 
     const handleNavigateToPendingRequests = () => {

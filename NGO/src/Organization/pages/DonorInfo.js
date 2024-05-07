@@ -5,8 +5,7 @@ import user1 from "../../shared/assets/userimage2.avif";
 import user2 from "../../shared/assets/userimage.avif";
 import user3 from "../../shared/assets/userimage3.avif";
 import UserDetails from "../components/UserDetails"; // Import UserDetails component
-import { navigate } from "@reach/router"; // Import navigate directly
-
+import { useNavigate } from "react-router-dom";
 const DonorCards = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -17,11 +16,9 @@ const DonorCards = () => {
     { id: 3, name: "Alex Johnson", gender: "Male", phone: "5556667777", image: user3 }
   ];
 
-  // Function to handle card click
-  const handleCardClick = (user) => {
-    // Navigate to UserDetailsPage with donor id as parameter
-    navigate(`user-details`);
-  };
+  const navigate = useNavigate()
+  
+  
 
   // Filter donors based on search term
   const filteredDonors = donors.filter(donor =>
@@ -41,10 +38,10 @@ const DonorCards = () => {
         className="w-40 px-3 py-2 rounded-md border-gray-300 shadow-sm focus:outline-none focus:border-indigo-500 absolute top-0 right-0 mt-4 mr-4"
       />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-        {filteredDonors.map((donor) => (
+        {filteredDonors.map((donor,i) => ( 
           <div
             key={donor.id}
-            onClick={() => handleCardClick(donor)} // Call handleCardClick on click
+            onClick={(donor) => navigate(`./user-details/${i+1}`) } // Call handleCardClick on click
             className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer text-center"
           >
             <img 
