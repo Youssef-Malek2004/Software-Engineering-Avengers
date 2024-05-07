@@ -11,6 +11,12 @@ import OrgHome from "./Organization/pages/OrgHome";
 
 import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
+import Donation from "./Organization/pages/Donation";
+import Alldonation from "./Organization/pages/ViewDonationPosts";
+
+
+
+
 
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
@@ -29,9 +35,13 @@ function App() {
     <div>
       <Routes>
         <Route path="/organization" element={<Organization />}>
-          <Route path="location" element={<OrgHome />} />
+          <Route path="orghome" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
           <Route path="user-details" element={<UserDetails />} />
+          <Route path="donors/user-details/:idx/" element={<UserDetails />} />
+          <Route path="donations" element={<Donation />} />
+          <Route path="viewdonationposts" element={<Alldonation />} />
+
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
