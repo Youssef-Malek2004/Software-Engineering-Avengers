@@ -18,7 +18,7 @@ import Home1 from './Admin/Home';
 import Settings from './Admin/Settings';
 import Donors from './Admin/Donors';
 import Organization1 from './Admin/Organization';
-import PendingRequests from './Admin/PendingRequests';
+import OrganizationRequests from './Admin/OrganizationRequests';
 import Submissions from './Admin/Submissions';
 import AccountManagement from './Admin/AccountManagement';
 import Admin from './Admin/Admin'
@@ -45,7 +45,7 @@ function App() {
           <Route path="Settings" element={<Settings/>}/>
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
-          <Route path="PendingRequests" element={<PendingRequests />} />
+          <Route path="OrganizationRequests" element={<OrganizationRequests />} />
           <Route path="Submissions" element={<Submissions />} />
           <Route path="AccountManagement" element={<AccountManagement />} />
         </Route>

@@ -3,36 +3,36 @@
 
   const Home = () => {
     const [cards] = useState([
-      { title: 'Card-1', text: 'hello' },
-      { title: 'Card-2', text: 'hello' },
-      { title: 'Card-3', text: 'hello' },
+      { title: 'Donors', text: null },
+      { title: 'Organizations', text: null},
+      { title: 'Organizations Requests', text: null },
       { title: 'Card-4', text: 'hello' },
-      { title: 'Card-5', text: 'hello' },
-      { title: 'Card-6', text: 'hello' }
+      //{ title: 'Card-5', text: 'hello' },
+      //{ title: 'Card-6', text: 'hello' }
     ]);
 
     const navigate = useNavigate();
 
     const handleNavigateToDonors = () => {
       // Navigate to the Donors component
-      navigate('/Donors');
+      navigate('/Admin/Donors');
     };
 
     const handleNavigateToOrganization = () => {
       // Navigate to the Organization component
-      navigate('/Organization');
+      navigate('/Admin/Organization');
     };
 
-    const handleNavigateToPendingRequests = () => {
-      // Navigate to the PendingRequests component
-      navigate('/PendingRequests');
+    const handleNavigateToOrganizationRequests = () => {
+      // Navigate to the OrganizationRequests component
+      navigate('/Admin/OrganizationRequests');
     };
     const handleNavigateToAccountManagement = () => {
-     navigate('/AccountManagement');
+     navigate('/Admin/AccountManagement');
     };
   
     const handleNavigateToSubmissions = () => {
-      navigate('/Submissions');
+      navigate('/Admin/Submissions');
      };
 
     return (
@@ -45,19 +45,19 @@
                 <div key={i} className="card">
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
-                  {card.title === 'Card-1' && (
+                  {card.title === 'Donors' && (
                     <button className="btn" onClick={handleNavigateToDonors}>
-                      Navigate to Donors
+                      Navigate
                     </button>
                   )}
-                  {card.title === 'Card-2' && (
+                  {card.title === 'Organizations' && (
                     <button className="btn" onClick={handleNavigateToOrganization}>
-                      Navigate to Organizations
+                      Navigate 
                     </button>
                   )}
-                  {card.title === 'Card-3' && (
-                    <button className="btn" onClick={handleNavigateToPendingRequests}>
-                      Navigate to Pending Requests
+                  {card.title === 'Organizations Requests' && (
+                    <button className="btn" onClick={handleNavigateToOrganizationRequests}>
+                      Navigate
                     </button>
                   )}
                     {card.title === 'Card-4' && (
