@@ -94,18 +94,6 @@ const OutlineNoSide = ({ items, navBarItems }) => {
                 trigger="click"
               />
             </Badge>
-            <Badge showZero={false} size="sm" color="danger">
-              <PopOver
-                logo={
-                  <FaIcons.FaWrench
-                    style={{ fontSize: "18px", cursor: "pointer" }}
-                  />
-                }
-                placement="bottomLeft"
-                trigger="click"
-              />
-            </Badge>
-
             <PopOver
               logo={
                 <UserOutlined style={{ fontSize: "16px", cursor: "pointer" }} />
