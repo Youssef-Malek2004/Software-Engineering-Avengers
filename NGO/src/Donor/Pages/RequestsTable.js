@@ -117,6 +117,8 @@ const RequestsTable = () => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [expanded, setExpanded] = useState(true); // State for expanding table
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
 
   const handleDonateButtonClick = (id) => {
     setSelectedItemId(id);
@@ -243,7 +245,11 @@ const RequestsTable = () => {
         {!expanded && (
           <div>
             <h2 className="text-xl font-bold mb-4">Clothing Requests</h2>
-            <ClothesTable items={clothes} />
+            <ClothesTable
+              items={clothes}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
 
             <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
             <SchoolSuppliesTable items={SchoolSupplies} />
@@ -257,7 +263,7 @@ const RequestsTable = () => {
             <h2 className="text-xl font-bold mb-4 mt-8">Medical Requests</h2>
             <MedicalTable items={Medical} />
 
-            <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
+            <h2 className="text-xl font-bold mb-4 mt-8">Blood</h2>
             <BloodTable items={Blood} />
           </div>
         )}
@@ -292,12 +298,49 @@ const RequestsTable = () => {
             </div>
           </div>
         )}
+        {showCart && (
+          <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h1>Cart Items</h1>
+              <table className="w-full divide-y divide-purple-600">
+                <thead>
+                  <tr>
+                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                      Type
+                    </th>
+                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                      Quantity
+                    </th>
+                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                      Organization
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y">
+                  {cartItems.map((cartItem) => (
+                    <tr key={cartItem.id}>
+                      <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                        {cartItem.type}
+                      </td>
+                      <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                        {cartItem.quantity}
+                      </td>
+                      <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                        {cartItem.organization}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
       <div className="fixed bottom-4 right-4 bg-purple-600 p-4 rounded-full text-white cursor-pointer flex items-center">
         <FaIcons.FaCartPlus className="text-xl mr-2" />
-        <span onClick={() => setShowPopup(true)} className="text-lg font-bold">
-          {selectedItems.length}
-        </span>
+        <button onClick={() => setShowCart(true)} className="text-lg font-bold">
+          {cartItems.length}
+        </button>
       </div>
     </div>
   );
