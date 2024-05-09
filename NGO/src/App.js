@@ -27,8 +27,11 @@ import OrganizationRequests from "./Admin/OrganizationRequests";
 import Submissions from "./Admin/Submissions";
 import AccountManagement from "./Admin/AccountManagement";
 import Admin from "./Admin/Admin";
+import { useState } from "react";
 
 function App() {
+  const [donationCategory, setDonationCategory] = useState("showdetailed");
+
   return (
     <div>
       <Routes>
@@ -40,10 +43,26 @@ function App() {
           <Route path="viewdonationposts" element={<Alldonation />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/Donor" element={<DonorBase />}>
+        <Route
+          path="/Donor"
+          element={
+            <DonorBase
+              donationCategory={donationCategory}
+              setDonationCategory={setDonationCategory}
+            />
+          }
+        >
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
-          <Route path="Requests" element={<RequestTable />} />
+          <Route
+            path="RegularRequests"
+            element={
+              <RequestTable
+                donationCategory={donationCategory}
+                setDonationCategory={setDonationCategory}
+              />
+            }
+          />
           <Route path="Teacher" element={<TeacherDonor />} />
         </Route>
 

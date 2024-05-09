@@ -1,14 +1,22 @@
 import { items } from "./sidebarItems";
-import Outline from "../shared/Outline";
-import OutlineNoSide from "../shared/OutlineNoSide";
-import { navBarItems } from "./navBarItems";
+import Outline from "../shared/OutlineCustom";
+import { useState } from "react";
+import NavBar from "./navBarItems"; // Correct import
 
-function DonorBase() {
+const DonorBase = ({ donationCategory, setDonationCategory }) => {
+  const [navBarItems, setNavBarItemsFunc] = useState([]);
+
   return (
     <>
-      <Outline items={items} navBarItems={navBarItems} />
+      <NavBar setNavBarItems={setNavBarItemsFunc} />
+      <Outline
+        items={items}
+        navBarItems={navBarItems}
+        donationCategory={donationCategory}
+        setDonationCategory={setDonationCategory}
+      />
     </>
   );
-}
+};
 
 export default DonorBase;

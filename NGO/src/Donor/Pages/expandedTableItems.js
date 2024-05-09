@@ -768,7 +768,7 @@ export const SchoolSuppliesTable = ({
   cartItemsState,
   setCartItemsFunc,
 }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState("null");
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
   const [donateQuantity, setDonateQuantity] = useState(0);

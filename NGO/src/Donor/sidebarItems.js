@@ -11,7 +11,7 @@ export const items = [
     key: "1",
     icon: <FaIcons.FaFileSignature />,
     label: "Donation Requests",
-    to: "donationRequests",
+    to: "RegularRequests",
   },
 ];
 
