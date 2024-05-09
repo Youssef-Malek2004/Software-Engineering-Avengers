@@ -8,13 +8,14 @@ import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import RequestTable from "./Donor/Pages/RequestsTable";
+import TeacherDonor from "./Donor/Pages/teacherDonor";
 
 import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
-import Loc from "./Organization/pages/locationpage"
+import Loc from "./Organization/pages/locationpage";
 
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
@@ -43,6 +44,7 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
           <Route path="Requests" element={<RequestTable />} />
+          <Route path="Teacher" element={<TeacherDonor />} />
         </Route>
 
         <Route path="/admin" element={<Admin />}>
