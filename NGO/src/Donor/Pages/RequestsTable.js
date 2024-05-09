@@ -69,49 +69,6 @@ const RequestsTable = () => {
     },
   ]);
 
-  const Table = ({ items }) => {
-    return (
-      <table className="w-full divide-y divide-purple-600">
-        <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-              Type
-            </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-              Quantity In Need
-            </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-              Show More
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y">
-          {items.map((item) => (
-            <tr key={item.id}>
-              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                <div className="flex items-center justify-center">
-                  {getTypeIcon(item.type)}
-                  <span className="ml-2">{item.type}&nbsp; </span>
-                </div>
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 text-center">
-                {item.quantity}
-              </td>
-              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                <button
-                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  onClick={() => handleDetailsClick(item.id)}
-                >
-                  Details
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  };
-
   const [selectedItems, setSelectedItems] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [donateQuantity, setDonateQuantity] = useState(0);
@@ -252,19 +209,39 @@ const RequestsTable = () => {
             />
 
             <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
-            <SchoolSuppliesTable items={SchoolSupplies} />
+            <SchoolSuppliesTable
+              items={SchoolSupplies}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
 
             <h2 className="text-xl font-bold mb-4 mt-8">Toys</h2>
-            <ToysTable items={Toys} />
+            <ToysTable
+              items={Toys}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
 
             <h2 className="text-xl font-bold mb-4 mt-8">Food</h2>
-            <FoodTable items={Food} />
+            <FoodTable
+              items={Food}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
 
             <h2 className="text-xl font-bold mb-4 mt-8">Medical Requests</h2>
-            <MedicalTable items={Medical} />
+            <MedicalTable
+              items={Medical}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
 
             <h2 className="text-xl font-bold mb-4 mt-8">Blood</h2>
-            <BloodTable items={Blood} />
+            <BloodTable
+              items={Blood}
+              cartItemsState={cartItems}
+              setCartItemsFunc={setCartItems}
+            />
           </div>
         )}
         {showPopup && (
@@ -300,8 +277,8 @@ const RequestsTable = () => {
         )}
         {showCart && (
           <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h1>Cart Items</h1>
+            <div className="bg-white p-8 rounded-lg shadow-lg items-center justify-center">
+              <h1 className="text-3xl text-center mb-4">Cart Items</h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
                   <tr>
@@ -320,25 +297,38 @@ const RequestsTable = () => {
                   {cartItems.map((cartItem) => (
                     <tr key={cartItem.id}>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        {cartItem.type}
+                        {cartItem[Object.keys(cartItem)[0]]}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        {cartItem.quantity}
+                        {cartItem[Object.keys(cartItem)[1]]}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        {cartItem.organization}
+                        {cartItem[Object.keys(cartItem)[2]]}
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <div className="items-center justify-center">
+                <button
+                  className="bg-indigo-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none mt-4"
+                  onClick={() => {
+                    setShowCart(false);
+                  }}
+                >
+                  Close Submitted Donation Requests
+                </button>
+              </div>
             </div>
           </div>
         )}
       </div>
       <div className="fixed bottom-4 right-4 bg-purple-600 p-4 rounded-full text-white cursor-pointer flex items-center">
         <FaIcons.FaCartPlus className="text-xl mr-2" />
-        <button onClick={() => setShowCart(true)} className="text-lg font-bold">
+        <button
+          onClick={() => setShowCart(!showCart)}
+          className="text-lg font-bold"
+        >
           {cartItems.length}
         </button>
       </div>

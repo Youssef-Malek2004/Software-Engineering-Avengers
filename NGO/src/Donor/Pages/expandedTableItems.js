@@ -763,12 +763,28 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   );
 };
 
-export const SchoolSuppliesTable = ({ items, cartItems }) => {
+export const SchoolSuppliesTable = ({
+  items,
+  cartItemsState,
+  setCartItemsFunc,
+}) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(item) {
+    const { type, organization } = item;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organization,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
 
   const handleDonationPopupClose = () => {
     setDonationPopup(false);
@@ -777,6 +793,7 @@ export const SchoolSuppliesTable = ({ items, cartItems }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
+    handleDonateItem(selectedItem);
     handlePopupClose();
     selectedItem.quantityInNeed -= donateQuantity;
   };
@@ -962,7 +979,7 @@ export const SchoolSuppliesTable = ({ items, cartItems }) => {
   );
 };
 
-export const ToysTable = ({ items, cartItems }) => {
+export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState(false);
@@ -974,6 +991,18 @@ export const ToysTable = ({ items, cartItems }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
+  function handleDonateItem(donatedItem) {
+    const { type, organizationInNeed } = donatedItem;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
   const handleDonationPopupClose = () => {
     setDonationPopup(false);
     //selectedItem.q
@@ -981,6 +1010,7 @@ export const ToysTable = ({ items, cartItems }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
+    handleDonateItem(selectedItem);
     handlePopupClose();
     selectedItem.quantity -= donateQuantity;
   };
@@ -1233,8 +1263,8 @@ export const ToysTable = ({ items, cartItems }) => {
       </table>
       {showPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg">
-            <div className="p-6 ">
+          <div className="bg-white rounded-lg shadow-lg items-center justify-center">
+            <div className="p-6 flex flex-col items-center justify-center">
               <h2 className="text-xl font-bold mb-4">Details</h2>
               <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item:</span> {selectedItem.type}
@@ -1247,6 +1277,12 @@ export const ToysTable = ({ items, cartItems }) => {
                 <span className="font-semibold">Organization:</span>{" "}
                 {selectedItem.organizationInNeed}
               </p>
+              <img
+                src={require(`../../shared/assets/${selectedItem.picture}`)}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
+                alt={selectedItem.type}
+                className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
+              />
               <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
@@ -1332,12 +1368,24 @@ export const ToysTable = ({ items, cartItems }) => {
   );
 };
 
-export const FoodTable = ({ items, cartItems }) => {
+export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(item) {
+    const { category, organizationInNeed } = item;
+
+    const newItem = {
+      category,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
 
   const handleDonationPopupClose = () => {
     setDonationPopup(false);
@@ -1346,6 +1394,7 @@ export const FoodTable = ({ items, cartItems }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
+    handleDonateItem(selectedItem);
     handlePopupClose();
     let quantityRequired = selectedItem.quantityRequired.split(" ");
     quantityRequired[0] = parseInt(quantityRequired[0]) - donateQuantity;
@@ -1531,7 +1580,7 @@ export const FoodTable = ({ items, cartItems }) => {
   );
 };
 
-export const MedicalTable = ({ items, cartItems }) => {
+export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
@@ -1540,6 +1589,18 @@ export const MedicalTable = ({ items, cartItems }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
+  function handleDonateItem(donatedItem) {
+    const { type, organizationInNeed } = donatedItem;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
   const handleDonationPopupClose = () => {
     setDonationPopup(false);
     //selectedItem.q
@@ -1547,6 +1608,7 @@ export const MedicalTable = ({ items, cartItems }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
+    handleDonateItem(selectedItem);
     handlePopupClose();
     selectedItem.quantity -= donateQuantity;
   };
@@ -1702,8 +1764,8 @@ export const MedicalTable = ({ items, cartItems }) => {
 
       {showPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg">
-            <div className="p-6">
+          <div className="bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
+            <div className="p-6 flex flex-col items-center justify-center">
               <h2 className="text-xl font-bold mb-4">Details</h2>
               <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item:</span>{" "}
@@ -1719,6 +1781,12 @@ export const MedicalTable = ({ items, cartItems }) => {
                 <span className="font-semibold">Quantity In Need:</span>{" "}
                 {selectedItem.quantity}
               </p>
+              <img
+                src={require(`../../shared/assets/${selectedItem.image}`)}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
+                alt={selectedItem.type}
+                className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
+              />
               <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
@@ -1772,7 +1840,7 @@ export const MedicalTable = ({ items, cartItems }) => {
   );
 };
 
-export const BloodTable = ({ items, cartItems }) => {
+export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [searchQueryArea, setSearchQueryArea] = useState("");
   const [searchQueryHospital, setSearchQueryHospital] = useState("");
   const [searchQueryGovernate, setSearchQueryGovernate] = useState("");
@@ -1782,6 +1850,18 @@ export const BloodTable = ({ items, cartItems }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
+  function handleDonateItem(donatedItem) {
+    const { bloodType, hospitalName } = donatedItem;
+
+    const newItem = {
+      bloodType,
+      donateQuantity,
+      hospitalName,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
   const handleDonationPopupClose = () => {
     setDonationPopup(false);
     //selectedItem.q
@@ -1789,6 +1869,7 @@ export const BloodTable = ({ items, cartItems }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
+    handleDonateItem(selectedItem);
     handlePopupClose();
   };
 
