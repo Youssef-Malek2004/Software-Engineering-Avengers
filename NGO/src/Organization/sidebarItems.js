@@ -24,7 +24,7 @@ export const items = [
     key: "3",
     icon: <FaUsers />,
     label: "Add Location",
-    to: "locationpage",
+    to: "location",
   },
   
     

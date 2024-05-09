@@ -7,18 +7,17 @@ import Organization from "./Organization/Organization";
 import DonationRequests from "./Donor/Pages/donationRequests";
 import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
-import OrgHome from "./Organization/pages/OrgHome";
+import RequestTable from "./Donor/Pages/RequestsTable";
+import TeacherDonor from "./Donor/Pages/teacherDonor";
 
+import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
 import RequestTable from "./Donor/Pages/RequestsTable";
 
-
-
-
-
+import Loc from "./Organization/pages/locationpage";
 
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
@@ -37,17 +36,16 @@ function App() {
         <Route path="/organization" element={<Organization />}>
           <Route path="orghome" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
-          <Route path="user-details" element={<UserDetails />} />
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
-
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />
           <Route path="Requests" element={<RequestTable />} />
+          <Route path="Teacher" element={<TeacherDonor />} />
         </Route>
 
         <Route path="/admin" element={<Admin />}>
