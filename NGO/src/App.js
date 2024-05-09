@@ -14,7 +14,8 @@ import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
-import Loc from "./Organization/pages/locationpage"
+import ProfilePage from "./Organization/pages/ChangeAccinfo"
+import Notifications from "./Organization/pages/Notifications";
 
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
@@ -37,6 +38,8 @@ function App() {
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
+          <Route path="changeinfo" element={<ProfilePage />} />
+          <Route path="notifications" element={<Notifications />}/>
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Donor" element={<DonorBase />}>
