@@ -15,6 +15,10 @@ import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
+import ProfilePage from "./Organization/pages/ChangeAccinfo";
+import Notifications from "./Organization/pages/Notifications";
+import RequestTable from "./Donor/Pages/RequestsTable";
+
 import Loc from "./Organization/pages/locationpage";
 
 import SignUp from "./Donor/Pages/signUp";
@@ -24,10 +28,8 @@ import Settings from "./Admin/Settings";
 import Donors from "./Admin/Donors";
 import Organization1 from "./Admin/Organization";
 import OrganizationRequests from "./Admin/OrganizationRequests";
-import Submissions from "./Admin/Submissions";
-import AccountManagement from "./Admin/AccountManagement";
+import DonorRequests from "./Admin/DonorRequests";
 import Admin from "./Admin/Admin";
-import { useState } from "react";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -41,6 +43,8 @@ function App() {
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
+          <Route path="changeinfo" element={<ProfilePage />} />
+          <Route path="notifications" element={<Notifications />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route
@@ -75,8 +79,7 @@ function App() {
             path="OrganizationRequests"
             element={<OrganizationRequests />}
           />
-          <Route path="Submissions" element={<Submissions />} />
-          <Route path="AccountManagement" element={<AccountManagement />} />
+          <Route path="DonorRequests" element={<DonorRequests />} />
         </Route>
       </Routes>
     </div>

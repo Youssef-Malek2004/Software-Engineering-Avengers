@@ -15,13 +15,19 @@ import Logo from "./assets/logo.jpg";
 //import MessagesList from "./Components/MessagesList";
 import { Badge } from "@mui/joy";
 import { dark } from "@mui/material/styles/createPalette";
+import NotificationList from "../Organization/components/NotificationList";
 const { Header, Content, Footer, Sider } = Layout;
 
-const Outline = ({ items, navBarItems }) => {
+const Outline = ({ items, navBarItems, notifications }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
   const backgroundColor = "#1A0235  ";
 
+  const notificationContent = (
+    <NotificationList
+      notifications={notifications}
+    />
+  );
   // Function to handle menu item click
   const onMenuClick = (e) => {
     const selectedItem = items.find((item) => item.key === e.key);
@@ -131,7 +137,7 @@ const Outline = ({ items, navBarItems }) => {
                     style={{ fontSize: "18px", cursor: "pointer" }}
                   />
                 }
-                content="ok"
+                content={notifications ? notificationContent: "OK"}
                 placement="bottomLeft"
                 trigger="click"
               />
