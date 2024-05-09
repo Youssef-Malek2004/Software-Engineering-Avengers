@@ -6,7 +6,7 @@
       { title: 'Donors', text: null },
       { title: 'Organizations', text: null},
       { title: 'Organizations Requests', text: null },
-      { title: 'Card-4', text: 'hello' },
+      { title: 'Donor Requests', text: null},
       //{ title: 'Card-5', text: 'hello' },
       //{ title: 'Card-6', text: 'hello' }
     ]);
@@ -27,13 +27,11 @@
       // Navigate to the OrganizationRequests component
       navigate('/Admin/OrganizationRequests');
     };
-    const handleNavigateToAccountManagement = () => {
-     navigate('/Admin/AccountManagement');
+    const handleNavigateToDonorRequests = () => {
+     navigate('/Admin/DonorRequests');
     };
   
-    const handleNavigateToSubmissions = () => {
-      navigate('/Admin/Submissions');
-     };
+  
 
     return (
       <div>
@@ -60,17 +58,14 @@
                       Navigate
                     </button>
                   )}
-                    {card.title === 'Card-4' && (
-                    <button className="btn" onClick={handleNavigateToAccountManagement}>
-                        Navigate to AccountManagement
+                    {card.title === 'Donor Requests' && (
+                    <button className="btn" onClick={handleNavigateToDonorRequests}>
+                        Navigate
                      
                     </button>
                   )}
-                    {card.title === 'Card-5' && (
-                    <button className="btn" onClick={handleNavigateToSubmissions}>
-                      Navigate to Submissions
-                    </button>
-                  )}
+              
+                
                 </div>
               ))}
             </div>

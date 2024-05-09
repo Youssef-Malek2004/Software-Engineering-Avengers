@@ -13,6 +13,8 @@ import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
+import RequestTable from "./Donor/Pages/RequestsTable";
+
 
 
 
@@ -25,8 +27,7 @@ import Settings from './Admin/Settings';
 import Donors from './Admin/Donors';
 import Organization1 from './Admin/Organization';
 import OrganizationRequests from './Admin/OrganizationRequests';
-import Submissions from './Admin/Submissions';
-import AccountManagement from './Admin/AccountManagement';
+import DonorRequests from './Admin/DonorRequests';
 import Admin from './Admin/Admin'
 
 function App() {
@@ -55,8 +56,7 @@ function App() {
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
           <Route path="OrganizationRequests" element={<OrganizationRequests />} />
-          <Route path="Submissions" element={<Submissions />} />
-          <Route path="AccountManagement" element={<AccountManagement />} />
+          <Route path="DonorRequests" element={<DonorRequests />} />
         </Route>
       </Routes>
     </div>
