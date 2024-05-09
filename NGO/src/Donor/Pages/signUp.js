@@ -104,7 +104,7 @@ function SignUp() {
                     Teacher
                   </button>
                   <button
-                    className={`px-4 py-2 rounded-md focus:outline-none ${
+                    className={`ml-4 px-4 py-2 rounded-md focus:outline-none ${
                       formData.role === "Organization"
                         ? "bg-blue-500 text-white"
                         : "bg-gray-300 text-gray-600"

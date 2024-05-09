@@ -400,14 +400,44 @@ export const Blood = [
   },
 ];
 
-export const ClothesTable = ({ items }) => {
+export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [ageFilter, setAgeFilter] = useState("All");
+  const [genderFilter, setGenderFilter] = useState("All");
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(item) {
+    const { type, organization } = item;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organization,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
 
   const handlePopupClose = () => {
     setShowPopup(false);
     setSelectedItem(null);
+  };
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+    selectedItem.quantity -= donateQuantity;
   };
 
   const handleDetailsButtonClick = (item) => {
@@ -415,54 +445,177 @@ export const ClothesTable = ({ items }) => {
     setShowPopup(true);
   };
 
-  const filteredItems = items.filter((item) =>
-    filter === "All" ? true : item.season === filter
-  );
+  const applyFilters = (item) => {
+    const seasonFilterPassed =
+      !selectedFilters.includes("season") ||
+      filter === "All" ||
+      item.season === filter;
+    const genderFilterPassed =
+      !selectedFilters.includes("gender") ||
+      genderFilter === "All" ||
+      item.gender === genderFilter;
+    const ageFilterPassed =
+      !selectedFilters.includes("age") ||
+      ageFilter === "All" ||
+      item.age === ageFilter;
+    return seasonFilterPassed && genderFilterPassed && ageFilterPassed;
+  };
+
+  const filteredItems = items.filter((item) => applyFilters(item));
+
+  const toggleSelectFilter = () => {
+    setSelectedFilter(!selectedFilter);
+  };
+  const handleFilterSelect = (filter) => {
+    if (selectedFilters.includes(filter)) {
+      setSelectedFilters(selectedFilters.filter((item) => item !== filter));
+    } else {
+      setSelectedFilters([...selectedFilters, filter]);
+    }
+  };
 
   return (
     <div>
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-between mb-4">
+        {/* Filter button */}
         <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("All")}
+          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={toggleSelectFilter}
         >
-          All
+          Filter
         </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Spring" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Spring")}
-        >
-          Spring
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Summer" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Summer")}
-        >
-          Summer
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Winter" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Winter")}
-        >
-          Winter
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Fall" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Fall")}
-        >
-          Fall
-        </button>
+        {selectedFilters.includes("age") && (
+          <div className="flex justify-center flex-grow">
+            <button
+              className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
+                ageFilter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setAgeFilter("All")}
+            >
+              All
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                ageFilter === "Child"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setAgeFilter("Child")}
+            >
+              Child
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                ageFilter === "Teen"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setAgeFilter("Teen")}
+            >
+              Teen
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                ageFilter === "Adult"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setAgeFilter("Adult")}
+            >
+              Adult
+            </button>
+          </div>
+        )}
+        {selectedFilters.includes("gender") && (
+          <div className="flex justify-center flex-grow">
+            <button
+              className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "All"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("All")}
+            >
+              All
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Male"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Male")}
+            >
+              Male
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Female"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Female")}
+            >
+              Female
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Unisex"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Unisex")}
+            >
+              Unisex
+            </button>
+          </div>
+        )}
+        {selectedFilters.includes("season") && (
+          <div className="flex justify-center flex-grow">
+            <button
+              className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("All")}
+            >
+              All
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Spring" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Spring")}
+            >
+              Spring
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Summer" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Summer")}
+            >
+              Summer
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Winter" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Winter")}
+            >
+              Winter
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Fall" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Fall")}
+            >
+              Fall
+            </button>
+          </div>
+        )}
       </div>
+
       <table className="w-full divide-y divide-purple-600">
         <thead>
           <tr>
@@ -520,13 +673,17 @@ export const ClothesTable = ({ items }) => {
       {showPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Details</h2>
-            <p>Material: {selectedItem.material}</p>
-            <p>Quantity in Need: {selectedItem.quantity}</p>
-            <p>Organization: {selectedItem.organization}</p>
+            <h2 className="text-3xl font-bold mb-4">Details</h2>
+            <p className="text-2xl">Material: {selectedItem.material}</p>
+            <p className="text-2xl">
+              Quantity in Need: {selectedItem.quantity}
+            </p>
+            <p className="mb-4 text-2xl">
+              Organization: {selectedItem.organization}
+            </p>
             <button
               className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
-              //   onClick={() => handleDonate(selectedItem.id)}
+              onClick={() => setDonationPopup(true)}
             >
               Donate
             </button>
@@ -539,14 +696,107 @@ export const ClothesTable = ({ items }) => {
           </div>
         </div>
       )}
+      {selectedFilter && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 ">
+          <div className="bg-white p-8 mx-auto rounded-md items-center max-w-2xl">
+            <h3 className="text-lg font-semibold mb-4 items-center">
+              Select filters
+            </h3>
+            <div className="grid grid-cols-3 gap-4">
+              {["Age", "Gender", "Season"].map((filter) => (
+                <div
+                  key={filter}
+                  className={`border p-4 rounded-md cursor-pointer ${
+                    selectedFilters.includes(filter.toLowerCase())
+                      ? "bg-blue-500 text-white"
+                      : ""
+                  }`}
+                  onClick={() => handleFilterSelect(filter.toLowerCase())}
+                >
+                  {filter}
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 flex justify-center">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                onClick={toggleSelectFilter}
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export const SchoolSuppliesTable = ({ items }) => {
+export const SchoolSuppliesTable = ({
+  items,
+  cartItemsState,
+  setCartItemsFunc,
+}) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(item) {
+    const { type, organization } = item;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organization,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+    selectedItem.quantityInNeed -= donateQuantity;
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -637,32 +887,33 @@ export const SchoolSuppliesTable = ({ items }) => {
           <div className="bg-white rounded-lg shadow-lg">
             <div className="p-6">
               <h2 className="text-xl font-bold mb-4">Details</h2>
-              <p className="mb-2">
-                <span className="font-semibold">Item:</span> {selectedItem.item}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Item:</span>{" "}
+                {selectedItem.item}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Quantity in Need:</span>{" "}
                 {selectedItem.quantityInNeed}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Organization:</span>{" "}
                 {selectedItem.organization}
               </p>
               {selectedItem.type === "Book" && (
                 <div>
-                  <p className="mb-2">
+                  <p className="mb-2 text-2xl">
                     <span className="font-semibold">Author:</span>{" "}
                     {selectedItem.author}
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 text-2xl">
                     <span className="font-semibold">Language:</span>{" "}
                     {selectedItem.language}
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 text-2xl">
                     <span className="font-semibold">Edition:</span>{" "}
                     {selectedItem.edition}
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 text-2xl">
                     <span className="font-semibold">Summary:</span>{" "}
                     {selectedItem.summary}
                   </p>
@@ -678,7 +929,7 @@ export const SchoolSuppliesTable = ({ items }) => {
               <div className="flex justify-end">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
-                  // onClick={() => handleDonate(selectedItem.id)}
+                  onClick={() => setDonationPopup(true)}
                 >
                   Donate
                 </button>
@@ -693,14 +944,76 @@ export const SchoolSuppliesTable = ({ items }) => {
           </div>
         </div>
       )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export const ToysTable = ({ items }) => {
+export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [genderFilter, setGenderFilter] = useState("All");
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [minAgeFilter, setMinAgeFilter] = useState("");
+  const [maxAgeFilter, setMaxAgeFilter] = useState("");
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(donatedItem) {
+    const { type, organizationInNeed } = donatedItem;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+    selectedItem.quantity -= donateQuantity;
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -712,73 +1025,188 @@ export const ToysTable = ({ items }) => {
     setShowPopup(true);
   };
 
-  const filteredItems = items.filter((item) =>
-    filter === "All" ? true : item.category === filter
-  );
+  const applyFilters = (item) => {
+    const seasonFilterPassed =
+      !selectedFilters.includes("category") ||
+      filter === "All" ||
+      item.category === filter;
+    const genderFilterPassed =
+      !selectedFilters.includes("gender") ||
+      genderFilter === "All" ||
+      item.gender === genderFilter;
+    const range = item.age.split("-");
+    const ageFilterPassed =
+      !selectedFilters.includes("age") ||
+      ((minAgeFilter === "" || parseInt(range[0]) >= minAgeFilter) &&
+        (maxAgeFilter === "" || parseInt(range[1]) <= maxAgeFilter));
+    return seasonFilterPassed && genderFilterPassed && ageFilterPassed;
+  };
+
+  const filteredItems = items.filter((item) => applyFilters(item));
+
+  const toggleSelectFilter = () => {
+    setSelectedFilter(!selectedFilter);
+  };
+  const handleFilterSelect = (filter) => {
+    if (selectedFilters.includes(filter)) {
+      setSelectedFilters(selectedFilters.filter((item) => item !== filter));
+    } else {
+      setSelectedFilters([...selectedFilters, filter]);
+    }
+  };
+  const applyAgeFilter = () => {
+    // Apply the age filter by triggering a re-render with updated state
+    setSelectedFilters([...selectedFilters, "age"]);
+  };
 
   return (
     <div>
+      <div className="flex justify-between mb-4">
+        {/* Filter button */}
+        <button
+          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={toggleSelectFilter}
+        >
+          Filter
+        </button>
+        {selectedFilters.includes("age") && (
+          <div className="flex justify-center flex-grow">
+            <input
+              type="number"
+              className="mx-2 px-4 py-2 rounded-md focus:outline-none"
+              placeholder="Min Age"
+              value={minAgeFilter}
+              onChange={(e) => setMinAgeFilter(parseInt(e.target.value))}
+            />
+            <span className="mx-2 px-4 py-2 rounded-md">-</span>
+            <input
+              type="number"
+              className="mx-2 px-4 py-2 rounded-md focus:outline-none"
+              placeholder="Max Age"
+              value={maxAgeFilter}
+              onChange={(e) => setMaxAgeFilter(parseInt(e.target.value))}
+            />
+            <button
+              className="mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 text-white"
+              onClick={() => applyAgeFilter()}
+            >
+              Apply
+            </button>
+          </div>
+        )}
+        {selectedFilters.includes("gender") && (
+          <div className="flex justify-center flex-grow">
+            <button
+              className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "All"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("All")}
+            >
+              All
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Male"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Male")}
+            >
+              Male
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Female"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Female")}
+            >
+              Female
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                genderFilter === "Unisex"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setGenderFilter("Unisex")}
+            >
+              Unisex
+            </button>
+          </div>
+        )}
+      </div>
       <div className="flex justify-center mb-4">
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("All")}
-        >
-          All
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Board Games"
-              ? "bg-indigo-600 text-white"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Board Games")}
-        >
-          Board Games
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Stuffed Toys"
-              ? "bg-indigo-600 text-white"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Stuffed Toys")}
-        >
-          Stuffed Toys
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Dolls" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Dolls")}
-        >
-          Dolls
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Sports" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Sports")}
-        >
-          Sports
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Cars" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Cars")}
-        >
-          Cars
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Outdoor" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Outdoor")}
-        >
-          Outdoor
-        </button>
+        {" "}
+        {selectedFilters.includes("category") && (
+          <div className="flex justify-center">
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("All")}
+            >
+              All
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Board Games"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Board Games")}
+            >
+              Board Games
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Stuffed Toys"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Stuffed Toys")}
+            >
+              Stuffed Toys
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Dolls" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Dolls")}
+            >
+              Dolls
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Sports" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Sports")}
+            >
+              Sports
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Cars" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Cars")}
+            >
+              Cars
+            </button>
+            <button
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                filter === "Outdoor"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200"
+              }`}
+              onClick={() => setFilter("Outdoor")}
+            >
+              Outdoor
+            </button>
+          </div>
+        )}
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
@@ -833,27 +1261,32 @@ export const ToysTable = ({ items }) => {
           ))}
         </tbody>
       </table>
-
       {showPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg">
-            <div className="p-6 ">
+          <div className="bg-white rounded-lg shadow-lg items-center justify-center">
+            <div className="p-6 flex flex-col items-center justify-center">
               <h2 className="text-xl font-bold mb-4">Details</h2>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item:</span> {selectedItem.type}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Quantity in Need:</span>{" "}
                 {selectedItem.quantity}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Organization:</span>{" "}
                 {selectedItem.organizationInNeed}
               </p>
+              <img
+                src={require(`../../shared/assets/${selectedItem.picture}`)}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
+                alt={selectedItem.type}
+                className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
+              />
               <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
-                  // onClick={() => handleDonate(selectedItem.id)}
+                  onClick={() => setDonationPopup(true)}
                 >
                   Donate
                 </button>
@@ -868,14 +1301,106 @@ export const ToysTable = ({ items }) => {
           </div>
         </div>
       )}
+      {selectedFilter && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 ">
+          <div className="bg-white p-8 mx-auto rounded-md items-center max-w-2xl">
+            <h3 className="text-lg font-semibold mb-4 items-center">
+              Select filters
+            </h3>
+            <div className="grid grid-cols-3 gap-4">
+              {["Age", "Gender", "Category"].map((filter) => (
+                <div
+                  key={filter}
+                  className={`border p-4 rounded-md cursor-pointer ${
+                    selectedFilters.includes(filter.toLowerCase())
+                      ? "bg-blue-500 text-white"
+                      : ""
+                  }`}
+                  onClick={() => handleFilterSelect(filter.toLowerCase())}
+                >
+                  {filter}
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 flex justify-center">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                onClick={toggleSelectFilter}
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export const FoodTable = ({ items }) => {
+export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(item) {
+    const { category, organizationInNeed } = item;
+
+    const newItem = {
+      category,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+    let quantityRequired = selectedItem.quantityRequired.split(" ");
+    quantityRequired[0] = parseInt(quantityRequired[0]) - donateQuantity;
+    selectedItem.quantityRequired =
+      quantityRequired[0] + " " + quantityRequired[1];
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -989,23 +1514,23 @@ export const FoodTable = ({ items }) => {
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg">
             <div className="p-6">
-              <h2 className="text-xl font-bold mb-4">Details</h2>
-              <p className="mb-2">
+              <h2 className="text-xl font-bold mb-4 text-center">Details</h2>
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item:</span>{" "}
                 {selectedItem.itemName}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Quantity in Need:</span>{" "}
                 {selectedItem.quantityRequired}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Organization:</span>{" "}
                 {selectedItem.organizationInNeed}
               </p>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
-                  // onClick={() => handleDonate(selectedItem.id)}
+                  onClick={() => setDonationPopup(true)}
                 >
                   Donate
                 </button>
@@ -1020,14 +1545,73 @@ export const FoodTable = ({ items }) => {
           </div>
         </div>
       )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export const MedicalTable = ({ items }) => {
+export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(donatedItem) {
+    const { type, organizationInNeed } = donatedItem;
+
+    const newItem = {
+      type,
+      donateQuantity,
+      organizationInNeed,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+    selectedItem.quantity -= donateQuantity;
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -1039,49 +1623,94 @@ export const MedicalTable = ({ items }) => {
     setShowPopup(true);
   };
 
-  const filteredItems = items.filter((item) =>
-    filter === "All" ? true : item.type === filter
-  );
+  const applyFilters = () => {
+    setFilteredItems(
+      items.filter(
+        (item) =>
+          (filter === "All" || item.type === filter) &&
+          item.use.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    applyFilters();
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    applyFilters();
+  };
 
   return (
     <div>
       <div className="flex justify-center mb-4">
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("All")}
-        >
-          All
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Medical Device"
-              ? "bg-indigo-600 text-white"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Medical Device")}
-        >
-          Medical Device
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Medical Equipment"
-              ? "bg-indigo-600 text-white"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Medical Equipment")}
-        >
-          Medical Equipment
-        </button>
-        <button
-          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Medication" ? "bg-indigo-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setFilter("Medication")}
-        >
-          Medication
-        </button>
+        {/* Search bar */}
+        <form onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            placeholder="Search Use"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-indigo-600 text-white rounded-md focus:outline-none"
+          >
+            Search
+          </button>
+          <button
+            type="button"
+            onClick={clearSearch}
+            className="px-4 py-2 ml-2 bg-gray-400 text-white rounded-md focus:outline-none"
+          >
+            Clear
+          </button>
+          <button
+            className={`mx-2 px-4 py-2 rounded-md focus:outline-none ml-20 ${
+              filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            }`}
+            onClick={() => setFilter("All")}
+          >
+            All
+          </button>
+          <button
+            className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+              filter === "Medical Device"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setFilter("Medical Device")}
+          >
+            Medical Device
+          </button>
+          <button
+            className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+              filter === "Medical Equipment"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setFilter("Medical Equipment")}
+          >
+            Medical Equipment
+          </button>
+          <button
+            className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+              filter === "Medication"
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setFilter("Medication")}
+          >
+            Medication
+          </button>
+        </form>
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
@@ -1091,6 +1720,9 @@ export const MedicalTable = ({ items }) => {
             </th>
             <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Item
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Use
             </th>
             <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
@@ -1112,6 +1744,9 @@ export const MedicalTable = ({ items }) => {
                   : item.medicationName}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.use}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
                 {item.organizationInNeed}
               </td>
               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
@@ -1129,27 +1764,33 @@ export const MedicalTable = ({ items }) => {
 
       {showPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg">
-            <div className="p-6">
+          <div className="bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
+            <div className="p-6 flex flex-col items-center justify-center">
               <h2 className="text-xl font-bold mb-4">Details</h2>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item:</span>{" "}
                 {selectedItem.type !== "Medication"
                   ? selectedItem.deviceName
                   : selectedItem.medicationName}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Item Use:</span>{" "}
                 {selectedItem.use}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 text-2xl">
                 <span className="font-semibold">Quantity In Need:</span>{" "}
                 {selectedItem.quantity}
               </p>
-              <div className="flex justify-end">
+              <img
+                src={require(`../../shared/assets/${selectedItem.image}`)}
+                style={{ maxWidth: "200px", maxHeight: "200px" }}
+                alt={selectedItem.type}
+                className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
+              />
+              <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
-                  // onClick={() => handleDonate(selectedItem.id)}
+                  onClick={() => setDonationPopup(true)}
                 >
                   Donate
                 </button>
@@ -1164,14 +1805,73 @@ export const MedicalTable = ({ items }) => {
           </div>
         </div>
       )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export const BloodTable = ({ items }) => {
+export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
+  const [searchQueryArea, setSearchQueryArea] = useState("");
+  const [searchQueryHospital, setSearchQueryHospital] = useState("");
+  const [searchQueryGovernate, setSearchQueryGovernate] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [donateQuantity, setDonateQuantity] = useState(0);
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(donatedItem) {
+    const { bloodType, hospitalName } = donatedItem;
+
+    const newItem = {
+      bloodType,
+      donateQuantity,
+      hospitalName,
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonationPopupClose = () => {
+    setDonationPopup(false);
+    //selectedItem.q
+  };
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+  };
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -1183,9 +1883,18 @@ export const BloodTable = ({ items }) => {
     setShowPopup(true);
   };
 
-  const filteredItems = items.filter((item) =>
-    filter === "All" ? true : item.type === filter
-  );
+  const filteredItems = items.filter((item) => {
+    const matchArea = item.area
+      .toLowerCase()
+      .includes(searchQueryArea.toLowerCase());
+    const matchGovernate = item.governorate
+      .toLowerCase()
+      .includes(searchQueryGovernate.toLowerCase());
+    const matchHospital = item.hospitalName
+      .toLowerCase()
+      .includes(searchQueryHospital.toLowerCase());
+    return matchArea && matchGovernate && matchHospital;
+  });
 
   return (
     <div>
@@ -1198,6 +1907,27 @@ export const BloodTable = ({ items }) => {
         >
           All
         </button>
+        <input
+          type="text"
+          value={searchQueryHospital}
+          onChange={(e) => setSearchQueryHospital(e.target.value)}
+          placeholder="Search by Hospital"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryGovernate}
+          onChange={(e) => setSearchQueryGovernate(e.target.value)}
+          placeholder="Search by Governate"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryArea}
+          onChange={(e) => setSearchQueryArea(e.target.value)}
+          placeholder="Search by Area"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
@@ -1251,34 +1981,41 @@ export const BloodTable = ({ items }) => {
         <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg">
             <div className="p-6">
-              <h2 className="text-xl font-bold mb-4">Details</h2>
-              <p className="mb-2">
-                <span className="font-semibold">Patient Name:</span>{" "}
+              <h2 className="text-3xl font-bold mb-4 text-center">Details</h2>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Patient Name:</span>{" "}
                 {selectedItem.patientName}
               </p>
-              <p className="mb-2">
-                <span className="font-semibold">Blood Type:</span>{" "}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Blood Type:</span>{" "}
                 {selectedItem.bloodType}
               </p>
-              <p className="mb-2">
-                <span className="font-semibold">Hospital Name:</span>{" "}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">rh type:</span>{" "}
+                {selectedItem.rhType}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Hospital Name:</span>{" "}
                 {selectedItem.hospitalName}
               </p>
-              <p className="mb-2">
-                <span className="font-semibold">Hospital Address:</span>{" "}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">
+                  Hospital Address:
+                </span>{" "}
                 {selectedItem.hospitalAddress}
               </p>
-              <p className="mb-2">
-                <span className="font-semibold">Area:</span> {selectedItem.area}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Area:</span>{" "}
+                {selectedItem.area}
               </p>
-              <p className="mb-2">
-                <span className="font-semibold">Governorate:</span>{" "}
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Governorate:</span>{" "}
                 {selectedItem.governorate}
               </p>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <button
                   className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
-                  // onClick={() => handleDonate(selectedItem.id)}
+                  onClick={() => setDonationPopup(true)}
                 >
                   Donate
                 </button>
@@ -1289,6 +2026,37 @@ export const BloodTable = ({ items }) => {
                   Close
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showDonationPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">
+              Enter Quantity to Donate
+            </h2>
+            <input
+              type="number"
+              min="1"
+              max={items.find((item) => item.id === selectedItem.id).quantity}
+              value={donateQuantity}
+              onChange={(e) => setDonateQuantity(e.target.value)}
+              className="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 mb-4"
+            />
+            <div className="flex justify-center">
+              <button
+                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                onClick={handleDonateConfirm}
+              >
+                Submit Donation Post
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                onClick={handleDonationPopupClose}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

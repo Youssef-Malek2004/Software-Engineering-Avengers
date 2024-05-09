@@ -1,14 +1,14 @@
 import React from 'react';
 
-const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
+const DonorDetailsModal = ({ visible, onCancel, donor }) => {
   // Generate dummy contact details
   const contactDetails = {
-    email: 'organization@example.com',
-    phone: '123-456-7890',
-    address: '123 Main Street, City, Country',
+    email: donor.email,
+    contactNumber: donor.contactNumber,
+    address: donor.address,
   };
 
-  // Generate dummy Google Maps location
+  // Generate dummy Google Maps location (you can replace with actual data if available)
   const googleMapsLocation = {
     latitude: 40.7128,
     longitude: -74.006,
@@ -26,11 +26,12 @@ const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
                 </svg>
               </button>
             </div>
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Organization Details</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Donor Details</h2>
             <div>
-              <p><strong>Name:</strong> {organization.name}</p>
-              <p><strong>Contact Email:</strong> {contactDetails.email}</p>
-              <p><strong>Contact Phone:</strong> {contactDetails.phone}</p>
+              <p><strong>First Name:</strong> {donor.firstName}</p>
+              <p><strong>Last Name:</strong> {donor.lastName}</p>
+              <p><strong>Email:</strong> {contactDetails.email}</p>
+              <p><strong>Contact Number:</strong> {contactDetails.contactNumber}</p>
               <p><strong>Address:</strong> {contactDetails.address}</p>
             </div>
             <div className="mt-4">
@@ -55,5 +56,6 @@ const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
   );
 };
 
-export default OrganizationDetailsModal;
+export default DonorDetailsModal;
+
 
