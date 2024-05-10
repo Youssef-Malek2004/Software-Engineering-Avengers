@@ -26,7 +26,7 @@ function getDonationRequestsRoute() {
   } else if (pathname.includes("Teacher")) {
     return "/Teacher/TeacherRequests"; // If URL has 'teacher', go to TeacherRequests
   } else {
-    return "/Donor/RegularRequests"; // Default to RegularRequests
+    return "/Doctor/doctorRequests"; // Default to RegularRequests
   }
 }
 
@@ -37,7 +37,7 @@ function getHomeRoute() {
   } else if (pathname.includes("Teacher")) {
     return "/Teacher"; // If URL has 'teacher', go to TeacherRequests
   } else {
-    return "/Donor"; // Default to RegularRequests
+    return "/Doctor"; // Default to RegularRequests
   }
 }
 

@@ -164,6 +164,10 @@ function getNavBarItems() {
         name: "Blood Donations",
         to: "blood",
       },
+      {
+        name: "Medical",
+        to: "cases",
+      },
     ]; // Default to RegularRequests
   }
 }

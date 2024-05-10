@@ -1,5 +1,5 @@
-import { useState, createElement } from "react";
-import { Outlet, useNavigate, Link } from "react-router-dom";
+import { useState, createElement, useEffect } from "react";
+import { Outlet, useNavigate, Link, useLocation } from "react-router-dom";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -22,17 +22,27 @@ const Outline = ({ items, navBarItems, notifications }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
   const backgroundColor = "#1A0235  ";
+  const [selectedKey, setSelectedKey] = useState("0");
+  const location = useLocation();
+
+  useEffect(() => {
+    // Update the selected menu item key based on the current location
+    const selectedItem = items.find((item) => item.to === location.pathname);
+    if (selectedItem) {
+      setSelectedKey(selectedItem.key);
+    }
+  }, [location, items]);
 
   const notificationContent = (
-    <NotificationList
-      notifications={notifications}
-    />
+    <NotificationList notifications={notifications} />
   );
   // Function to handle menu item click
   const onMenuClick = (e) => {
     const selectedItem = items.find((item) => item.key === e.key);
-    if (selectedItem && selectedItem.to) {
+    if (selectedItem && selectedItem.to && selectedItem.to != "-1") {
       navigate(`${selectedItem.to}`);
+    } else {
+      navigate(-1);
     }
   };
   const {
@@ -47,7 +57,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
       {navBarItems.map((item) => (
         <Link
           key={item.name}
-          to={item.to}
+          to={item.to == "-1" ? -1 : item.to}
           style={{ display: "block", margin: "10px 0" }}
         >
           {item.name}
@@ -91,6 +101,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["0"]}
+          selectedKeys={[selectedKey]}
           items={items.map((item) => ({
             ...item,
             icon: createElement(item.icon.type),
@@ -128,6 +139,14 @@ const Outline = ({ items, navBarItems, notifications }) => {
               onClick={() => setCollapsed(!collapsed)}
               style={{ fontSize: "16px", border: "none" }}
             />
+            <Button
+              className={
+                "mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 text-white text-center "
+              }
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </Button>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <Badge badgeContent={6} showZero={false} size="sm" color="danger">
@@ -137,7 +156,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
                     style={{ fontSize: "18px", cursor: "pointer" }}
                   />
                 }
-                content={notifications ? notificationContent: "OK"}
+                content={notifications ? notificationContent : "OK"}
                 placement="bottomLeft"
                 trigger="click"
               />

@@ -1,5 +1,5 @@
 // App.js
-
+import { useHistory } from "react-router-dom";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useNavigate, Outlet } from "react-router-dom";
@@ -10,6 +10,7 @@ import DonorBase from "./Donor/Donor";
 import Home from "./Donor/Pages/Home";
 import RequestTable from "./Donor/Pages/RequestsTable";
 import TeacherDonor from "./Donor/Pages/teacherDonor";
+import DoctorRequests from "./Donor/Pages/doctorDonor";
 
 import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
@@ -102,10 +103,26 @@ function App() {
                 />
               }
             />
+            <Route path="changeinfo" element={<ChangeInfo />}></Route>
+          </Route>
+        </Route>
+
+        <Route
+          path="/Doctor"
+          element={
+            <TeacherBase
+              donationCategory={donationCategory}
+              setDonationCategory={setDonationCategory}
+            />
+          }
+        >
+          <Route>
+            <Route path="" element={<Home />} />
+            <Route path="DonationRequests" element={<DonationRequests />} />
             <Route
-              path="Teacher"
+              path="doctorRequests"
               element={
-                <TeacherDonor
+                <DoctorRequests
                   donationCategory={donationCategory}
                   setDonationCategory={setDonationCategory}
                 />
