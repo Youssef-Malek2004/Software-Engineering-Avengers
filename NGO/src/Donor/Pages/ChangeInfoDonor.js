@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineUser } from "react-icons/ai";
 
-const ProfilePage = () => {
+const ChangeInfo = () => {
   const [formData, setFormData] = useState({
     firstName: "Mohammed",
     lastName: "Elshafie",
@@ -401,4 +401,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default ChangeInfo;

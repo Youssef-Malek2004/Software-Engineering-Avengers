@@ -32,6 +32,7 @@ import DonorRequests from "./Admin/DonorRequests";
 import Admin from "./Admin/Admin";
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
+import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -78,6 +79,7 @@ function App() {
               />
             }
           />
+          <Route path="changeinfo" element={<ChangeInfo />}></Route>
         </Route>
         <Route
           path="/Teacher"
@@ -109,6 +111,7 @@ function App() {
                 />
               }
             />
+            <Route path="changeinfo" element={<ChangeInfo />}></Route>
           </Route>
         </Route>
 
