@@ -30,6 +30,8 @@ import Organization1 from "./Admin/Organization";
 import OrganizationRequests from "./Admin/OrganizationRequests";
 import DonorRequests from "./Admin/DonorRequests";
 import Admin from "./Admin/Admin";
+import TeacherBase from "./Donor/Teacher";
+import TeacherRequests from "./Donor/Pages/teacherDonor";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -67,7 +69,47 @@ function App() {
               />
             }
           />
-          <Route path="Teacher" element={<TeacherDonor />} />
+          <Route
+            path="Teacher"
+            element={
+              <TeacherDonor
+                donationCategory={donationCategory}
+                setDonationCategory={setDonationCategory}
+              />
+            }
+          />
+        </Route>
+        <Route
+          path="/Teacher"
+          element={
+            <TeacherBase
+              donationCategory={donationCategory}
+              setDonationCategory={setDonationCategory}
+            />
+          }
+        >
+          <Route>
+            <Route path="" element={<Home />} />
+            <Route path="DonationRequests" element={<DonationRequests />} />
+            <Route
+              path="teacherRequests"
+              element={
+                <TeacherRequests
+                  donationCategory={donationCategory}
+                  setDonationCategory={setDonationCategory}
+                />
+              }
+            />
+            <Route
+              path="Teacher"
+              element={
+                <TeacherDonor
+                  donationCategory={donationCategory}
+                  setDonationCategory={setDonationCategory}
+                />
+              }
+            />
+          </Route>
         </Route>
 
         <Route path="/admin" element={<Admin />}>

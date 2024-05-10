@@ -4,7 +4,7 @@ import { useState } from "react";
 import navBarItems from "./navBarItems"; // Correct import
 import { outlineNavBarItem } from "./Pages/outlineNavBarItems";
 
-const DonorBase = ({ donationCategory, setDonationCategory }) => {
+const TeacherBase = ({ donationCategory, setDonationCategory }) => {
   // const [navBarItems, setNavBarItemsFunc] = useState([]);
 
   return (
@@ -20,4 +20,4 @@ const DonorBase = ({ donationCategory, setDonationCategory }) => {
   );
 };
 
-export default DonorBase;
+export default TeacherBase;

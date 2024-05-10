@@ -16,9 +16,13 @@ import {
   MedicalTable,
   BloodTable,
 } from "./expandedTableItems";
-import { Navigate } from "react-router-dom";
+import { navBarItems } from "../navBarItems";
 
 const RequestsTable = ({ donationCategory, setDonationCategory }) => {
+  const handleDonationCategoryToggle = (item) => {
+    setDonationCategory(item);
+  };
+
   const [items, setItems] = useState([
     {
       id: "clothes",
@@ -134,6 +138,28 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
   return (
     <div className="flex items-baseline justify-center h-screen bg-gray-100">
       <div className="w-11/12 h-5/6 overflow-auto mt-5">
+        <div className="items-center justify-center mb-5 flex flex-row">
+          {navBarItems.map((item, index) => (
+            <button
+              type="text"
+              key={index}
+              onClick={() => handleDonationCategoryToggle(item.to)}
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                donationCategory === item.to
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+              style={{
+                // Set button height to match the badge height
+                height: "3rem",
+                display: "inline-block",
+              }}
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
+
         {/* Button to expand table */}
         {donationCategory == "showdetailed" && (
           <>
@@ -311,7 +337,7 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
         {showCart && (
           <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg items-center justify-center">
-              <h1 className="text-3xl text-center mb-4">Cart Items</h1>
+              <h1 className="text-3xl text-center mb-4">Donated Items</h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
                   <tr>
