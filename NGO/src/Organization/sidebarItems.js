@@ -1,33 +1,30 @@
 import { FaBox, FaLaptop, FaUsers, FaKey, FaHome } from "react-icons/fa";
 
 export const items = [
-  
   {
     key: "0",
     icon: <FaHome />,
     label: "Home",
-    to: "", // Assuming you're using react-router-dom for routing
+    to: "/organization", // Assuming you're using react-router-dom for routing
   },
   {
     key: "1",
-    icon: <FaBox/>,
+    icon: <FaBox />,
     label: "Donation",
-    to: "donations",
+    to: "/organization/donations",
   },
   {
     key: "2",
     icon: <FaUsers />,
     label: "Donors",
-    to: "donors",
+    to: "/organization/donors",
   },
   {
     key: "3",
     icon: <FaUsers />,
     label: "Delivery Schedule",
-    to: "delivery",
+    to: "/organization/delivery",
   },
-  
-    
 ];
 
 export default items;
