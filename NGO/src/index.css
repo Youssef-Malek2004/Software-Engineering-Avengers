@@ -104,7 +104,7 @@ body{
   }
   .card{
 	flex: 0 0 calc(45% - 40px);
-	max-width: calc(50 - 40px);
+	max-width: calc(505 - 40px);
 	width:100%;
 	background:rgb(57, 4, 90);
 	border-radius:10px;
@@ -209,3 +209,6 @@ body{
   .cell:last-child {
 	border-right: none;
   }
+  
+
+  
