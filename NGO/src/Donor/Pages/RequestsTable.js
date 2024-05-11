@@ -82,6 +82,8 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
+  const handleCartDetailsClick = (cartItem) => {};
+
   const handleDonateButtonClick = (id) => {
     setSelectedItemId(id);
     setShowPopup(true);
@@ -345,10 +347,10 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
                       Type
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Quantity
+                      Details
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Organization
+                      Schedule
                     </th>
                   </tr>
                 </thead>
@@ -359,7 +361,17 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
                         {cartItem[Object.keys(cartItem)[0]]}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        {cartItem[Object.keys(cartItem)[1]]}
+                        <button
+                          className="bg-indigo-400 text-white px-4 py-2 rounded-md hover:bg-blue-400 focus:outline-none"
+                          onClick={() => {
+                            cartItem[Object.keys(cartItem)[2]](
+                              cartItem[Object.keys(cartItem)[1]]
+                            );
+                            setShowCart(false);
+                          }}
+                        >
+                          Show Details
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                         {cartItem[Object.keys(cartItem)[2]]}

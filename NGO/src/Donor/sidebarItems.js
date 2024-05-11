@@ -23,7 +23,7 @@ function getDonationRequestsRoute() {
   const pathname = window.location.href; // Get the current URL pathname
   if (pathname.includes("Donor")) {
     return "/Donor/RegularRequests"; // If URL has 'donor', go to RegularRequests
-  } else if (pathname.includes("Teacher")) {
+  } else if (pathname.includes("teacher")) {
     return "/Teacher/TeacherRequests"; // If URL has 'teacher', go to TeacherRequests
   } else {
     return "/Doctor/doctorRequests"; // Default to RegularRequests
@@ -34,7 +34,7 @@ function getHomeRoute() {
   const pathname = window.location.href; // Get the current URL pathname
   if (pathname.includes("Donor")) {
     return "/Donor"; // If URL has 'donor', go to RegularRequests
-  } else if (pathname.includes("Teacher")) {
+  } else if (pathname.includes("teacher")) {
     return "/Teacher"; // If URL has 'teacher', go to TeacherRequests
   } else {
     return "/Doctor"; // Default to RegularRequests

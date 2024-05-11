@@ -95,7 +95,7 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route
-              path="teacherRequests"
+              path="TeacherRequests"
               element={
                 <TeacherRequests
                   donationCategory={donationCategory}
