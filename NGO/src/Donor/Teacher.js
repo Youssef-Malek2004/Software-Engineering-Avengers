@@ -7,6 +7,27 @@ import { outlineNavBarItem } from "./Pages/outlineNavBarItems";
 const TeacherBase = ({ donationCategory, setDonationCategory }) => {
   // const [navBarItems, setNavBarItemsFunc] = useState([]);
 
+  const dummyNotifications = [
+    {
+      id: 1,
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Clothing. 5 items ready for pickup.",
+    },
+    {
+      id: 2,
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Toys. 8 items ready for pickup.",
+    },
+    {
+      id: 3,
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Books. 5 items ready for pickup.",
+    },
+  ];
+
   return (
     <>
       {/* <NavBar setNavBarItems={setNavBarItemsFunc} /> */}
@@ -15,6 +36,7 @@ const TeacherBase = ({ donationCategory, setDonationCategory }) => {
         navBarItems={outlineNavBarItem}
         donationCategory={donationCategory}
         setDonationCategory={setDonationCategory}
+        notifications={dummyNotifications}
       />
     </>
   );

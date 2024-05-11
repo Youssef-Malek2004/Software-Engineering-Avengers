@@ -511,12 +511,10 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [showDonationPopup, setDonationPopup] = useState(false);
 
   function handleDonateItem(item) {
-    const { type, organization } = item;
-
     const newItem = {
-      type,
-      donateQuantity,
-      organization,
+      type: "Clothes",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -874,12 +872,10 @@ export const SchoolSuppliesTable = ({
   const [showDonationPopup, setDonationPopup] = useState(false);
 
   function handleDonateItem(item) {
-    const { type, organization } = item;
-
     const newItem = {
-      type,
-      donateQuantity,
-      organization,
+      type: "School Supplies",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -1090,13 +1086,11 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
-  function handleDonateItem(donatedItem) {
-    const { type, organizationInNeed } = donatedItem;
-
+  function handleDonateItem(item) {
     const newItem = {
-      type,
-      donateQuantity,
-      organizationInNeed,
+      type: "Toys",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -1475,12 +1469,10 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [showDonationPopup, setDonationPopup] = useState(false);
 
   function handleDonateItem(item) {
-    const { category, organizationInNeed } = item;
-
     const newItem = {
-      category,
-      donateQuantity,
-      organizationInNeed,
+      type: "Food",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -1688,13 +1680,11 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
-  function handleDonateItem(donatedItem) {
-    const { type, organizationInNeed } = donatedItem;
-
+  function handleDonateItem(item) {
     const newItem = {
-      type,
-      donateQuantity,
-      organizationInNeed,
+      type: "Medical Supplies",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -1949,13 +1939,11 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [donateQuantity, setDonateQuantity] = useState(0);
   const [showDonationPopup, setDonationPopup] = useState(false);
 
-  function handleDonateItem(donatedItem) {
-    const { bloodType, hospitalName } = donatedItem;
-
+  function handleDonateItem(item) {
     const newItem = {
-      bloodType,
-      donateQuantity,
-      hospitalName,
+      type: "Blood",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -2173,13 +2161,11 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [filter, setFilter] = useState("All");
   const [showDonationPopup, setDonationPopup] = useState(false);
 
-  function handleDonateItem(donatedItem) {
-    const { address, numberOfStudents } = donatedItem;
-
+  function handleDonateItem(item) {
     const newItem = {
-      address,
-      numberOfStudents,
-      Organization: "Teaching Post",
+      type: "Teaching Post",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
@@ -2359,13 +2345,11 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [filter, setFilter] = useState("All");
   const [showDonationPopup, setDonationPopup] = useState(false);
 
-  function handleDonateItem(donatedItem) {
-    const { address, medicalSpecialty } = donatedItem;
-
+  function handleDonateItem(item) {
     const newItem = {
-      address,
-      medicalSpecialty,
-      Organization: "Medical Case",
+      type: "Medical Post",
+      item,
+      handleDetailsButtonClick,
     };
 
     setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);

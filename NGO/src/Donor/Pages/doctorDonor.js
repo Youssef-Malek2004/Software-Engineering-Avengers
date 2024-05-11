@@ -354,7 +354,9 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
         {showCart && (
           <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg items-center justify-center">
-              <h1 className="text-3xl text-center mb-4">Donated Items</h1>
+              <h1 className="text-3xl text-center mb-4">
+                Donated/Fullfilled Items
+              </h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
                   <tr>
@@ -362,10 +364,10 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
                       Type
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Quantity
+                      Details
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Organization
+                      Schedule
                     </th>
                   </tr>
                 </thead>
@@ -376,7 +378,17 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
                         {cartItem[Object.keys(cartItem)[0]]}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        {cartItem[Object.keys(cartItem)[1]]}
+                        <button
+                          className="bg-indigo-400 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none"
+                          onClick={() => {
+                            cartItem[Object.keys(cartItem)[2]](
+                              cartItem[Object.keys(cartItem)[1]]
+                            );
+                            setShowCart(false);
+                          }}
+                        >
+                          Show Details
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                         {cartItem[Object.keys(cartItem)[2]]}
