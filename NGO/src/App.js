@@ -19,6 +19,7 @@ import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
 import ProfilePage from "./Organization/pages/ChangeAccinfo";
 import Notifications from "./Organization/pages/Notifications";
+import DeliverySchedule from "./Organization/pages/Delivery";
 
 import Loc from "./Organization/pages/locationpage";
 
@@ -44,13 +45,14 @@ function App() {
     <div>
       <Routes>
         <Route path="/organization" element={<Organization />}>
-          <Route path="orghome" element={<OrgHome />} />
+          <Route path="" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
           <Route path="donors/user-details/:idx/" element={<UserDetails />} />
           <Route path="donations" element={<Donation />} />
           <Route path="viewdonationposts" element={<Alldonation />} />
           <Route path="changeinfo" element={<ProfilePage />} />
           <Route path="notifications" element={<Notifications />} />
+          <Route path="delivery" element={<DeliverySchedule />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
