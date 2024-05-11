@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { navigate,useNavigate } from "react-router-dom"; // Import navigate
+import { navigate, useNavigate } from "react-router-dom"; // Import navigate
 import SignUpImage from "../../shared/assets/volunteerSignUp.jpg";
 
 function LoginPage() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     usernameOrEmail: "",
     password: "",
@@ -27,6 +27,16 @@ function LoginPage() {
       formData.password === "donor123"
     ) {
       navigate("/donor");
+    } else if (
+      formData.usernameOrEmail === "doctor@hotmail.com" &&
+      formData.password === "doctor123"
+    ) {
+      navigate("/Doctor");
+    } else if (
+      formData.usernameOrEmail === "teacher@hotmail.com" &&
+      formData.password === "teacher123"
+    ) {
+      navigate("/Teacher");
     } else {
       // If credentials are incorrect, you can show an error message
       console.log("Invalid username or password");

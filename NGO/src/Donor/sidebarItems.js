@@ -30,6 +30,13 @@ export const items = [
     // Dynamically set the "to" property based on the current URL
     to: getTrackerRoute(),
   },
+  {
+    key: "4",
+    icon: <FaIcons.FaFileSignature />,
+    label: "Organization Details",
+    // Dynamically set the "to" property based on the current URL
+    to: getOrgDetails(),
+  },
 ];
 
 // Function to get the appropriate route for Donation Requests
@@ -74,6 +81,17 @@ function getTrackerRoute() {
     return "/Teacher/TeacherTrack"; // If URL has 'teacher', go to TeacherRequests
   } else {
     return "/Doctor/DoctorTrack"; // Default to RegularRequests
+  }
+}
+
+function getOrgDetails() {
+  const pathname = window.location.href; // Get the current URL pathname
+  if (pathname.includes("Donor")) {
+    return "/Donor/OrgTable"; // If URL has 'donor', go to RegularRequests
+  } else if (pathname.includes("Teacher")) {
+    return "/Teacher/OrgTable"; // If URL has 'teacher', go to TeacherRequests
+  } else {
+    return "/Doctor/OrgTable"; // Default to RegularRequests
   }
 }
 
