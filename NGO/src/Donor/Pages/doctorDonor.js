@@ -354,7 +354,9 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
         {showCart && (
           <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg items-center justify-center">
-              <h1 className="text-3xl text-center mb-4">Donated Items</h1>
+              <h1 className="text-3xl text-center mb-4">
+                Donated/Fullfilled Items
+              </h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
                   <tr>

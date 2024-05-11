@@ -2173,7 +2173,7 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
-    //handleDonateItem(selectedItem);
+    handleDonateItem(selectedItem);
     handlePopupClose();
   };
 
@@ -2357,7 +2357,7 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
 
   const handleDonateConfirm = () => {
     setDonationPopup(false);
-    //handleDonateItem(selectedItem);
+    handleDonateItem(selectedItem);
     handlePopupClose();
   };
 

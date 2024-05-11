@@ -35,7 +35,9 @@ import Admin from "./Admin/Admin";
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
 import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
-
+import DonorPickup from "./Donor/Pages/DonorPickup";
+import TeacherPickup from "./Donor/Pages/TeacherPickup";
+import DoctorPickup from "./Donor/Pages/DoctorPickup";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -54,7 +56,7 @@ function App() {
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
-       
+
         <Route
           path="/Donor"
           element={
@@ -65,7 +67,8 @@ function App() {
           }
         >
           <Route path="" element={<Home />} />
-          <Route path="DonationRequests" element={<DonationRequests />} />
+          <Route path="DonationRequests" element={<DonationRequests />} />\
+          <Route path="DonorPickup" element={<DonorPickup />} />
           <Route
             path="RegularRequests"
             element={
@@ -98,6 +101,7 @@ function App() {
           <Route>
             <Route path="" element={<Home />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
+            <Route path="TeacherPickup" element={<TeacherPickup />} />
             <Route
               path="TeacherRequests"
               element={
@@ -123,6 +127,7 @@ function App() {
           <Route>
             <Route path="" element={<Home />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
+            <Route path="DoctorPickup" element={<DoctorPickup />} />
             <Route
               path="doctorRequests"
               element={
@@ -143,7 +148,8 @@ function App() {
           <Route path="Organization" element={<Organization1 />} />
           <Route
             path="OrganizationRequests"
-            element={<OrganizationRequests />}/>
+            element={<OrganizationRequests />}
+          />
           <Route path="DonorRequests" element={<DonorRequests />} />
         </Route>
       </Routes>
