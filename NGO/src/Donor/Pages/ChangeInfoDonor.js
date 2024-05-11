@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineUser } from "react-icons/ai";
 
-const ProfilePage = () => {
+const ChangeInfo = () => {
   const [formData, setFormData] = useState({
     firstName: "Mohammed",
     lastName: "Elshafie",
@@ -22,6 +22,7 @@ const ProfilePage = () => {
     lastName: false,
     gender: false,
     email: false,
+    password: false,
     contactNumber: false,
     organizationName: false,
     organizationType: false,
@@ -155,6 +156,7 @@ const ProfilePage = () => {
             )}
           </div>
         </div>
+        {/* Contact Information */}
         <div>
           <label className="block mb-1" htmlFor="email">
             Email
@@ -221,6 +223,7 @@ const ProfilePage = () => {
             )}
           </div>
         </div>
+        {/* Organization Information */}
         <div>
           <label className="block mb-1" htmlFor="organizationName">
             Organization Name
@@ -331,6 +334,7 @@ const ProfilePage = () => {
             )}
           </div>
         </div>
+        {/* Verification File */}
         <div className="col-span-2">
           <label className="block mb-1" htmlFor="verificationFile">
             Verification File
@@ -352,6 +356,7 @@ const ProfilePage = () => {
           Save Changes
         </button>
       </form>
+      {/* Delete Account Button */}
       <div className="mt-8 text-center">
         <button
           onClick={handleDeleteAccount}
@@ -396,4 +401,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default ChangeInfo;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Map from "../Components/MapComponent";
 
 export const clothes = [
   {
@@ -400,6 +401,104 @@ export const Blood = [
   },
 ];
 
+export const TeachingData = [
+  {
+    id: 1,
+    numberOfStudents: 5,
+    address: "123 Main Street, Cityville, USA",
+    latitude: 40.7128,
+    area: "Downtown",
+    governorate: "New York",
+    longitude: -74.006,
+    subjects: ["Mathematics", "Science"],
+  },
+  {
+    id: 2,
+    numberOfStudents: 3,
+    address: "456 Elm Avenue, Townsville, USA",
+    latitude: 34.0522,
+    area: "Downtown",
+    governorate: "Los Angeles",
+    longitude: -118.2437,
+    subjects: ["English", "History"],
+  },
+  {
+    id: 3,
+    numberOfStudents: 8,
+    address: "789 Oak Boulevard, Villagetown, USA",
+    latitude: 41.8781,
+    area: "MidTown",
+    governorate: "Chicago",
+    longitude: -87.6298,
+    subjects: ["Art", "Music"],
+  },
+  {
+    id: 4,
+    numberOfStudents: 2,
+    address: "101 Pine Street, Hamletville, USA",
+    latitude: 51.5074,
+    area: "UpTown",
+    governorate: "London",
+    longitude: -0.1278,
+    subjects: ["Foreign Language", "Computer Science"],
+  },
+];
+
+export const MedicalData = [
+  {
+    id: 1,
+    patientName: "John Doe",
+    age: 35,
+    gender: "Male",
+    weight: "75 kg",
+    location: {
+      latitude: 34.052235,
+      longitude: -118.243683,
+    },
+    address: "123 Main Street, Cityville, USA",
+    organizationName: "City Hospital",
+    medicalSpecialty: "Cardiology",
+    caseDescription: "Patient needs surgery for a heart condition.",
+    area: "Downtown",
+    governorate: "Los Angeles",
+  },
+  {
+    id: 2,
+    patientName: "Jane Smith",
+    age: 45,
+    gender: "Female",
+    weight: "65 kg",
+    location: {
+      latitude: 40.712776,
+      longitude: -74.005974,
+    },
+    address: "456 Elm Street, Townville, USA",
+    organizationName: "Town Medical Center",
+    medicalSpecialty: "Orthopedics",
+    caseDescription: "Patient has a broken leg and requires surgery.",
+    area: "Downtown",
+    governorate: "New York",
+  },
+  {
+    id: 3,
+    patientName: "Alice Johnson",
+    age: 28,
+    gender: "Female",
+    weight: "55 kg",
+    location: {
+      latitude: 37.774929,
+      longitude: -122.419418,
+    },
+    address: "789 Oak Boulevard, Villagetown, USA",
+    organizationName: "Village Clinic",
+    medicalSpecialty: "Dermatology",
+    caseDescription:
+      "Patient has a severe skin condition that needs treatment.",
+    area: "Downtown",
+    governorate: "San Francisco",
+  },
+];
+
 export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -768,7 +867,7 @@ export const SchoolSuppliesTable = ({
   cartItemsState,
   setCartItemsFunc,
 }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState("null");
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState("All");
   const [donateQuantity, setDonateQuantity] = useState(0);
@@ -2057,6 +2156,424 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               >
                 Cancel
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
+  const [searchQueryArea, setSearchQueryArea] = useState("");
+  const [searchQueryHospital, setSearchQueryHospital] = useState("");
+  const [searchQueryGovernate, setSearchQueryGovernate] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState("All");
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(donatedItem) {
+    const { address, numberOfStudents } = donatedItem;
+
+    const newItem = {
+      address,
+      numberOfStudents,
+      Organization: "Teaching Post",
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setSelectedItem(null);
+  };
+
+  const handleDetailsButtonClick = (item) => {
+    setSelectedItem(item);
+    setShowPopup(true);
+  };
+
+  const filteredItems = items.filter((item) => {
+    const matchSubjects = item.subjects.some((subject) =>
+      subject.toLowerCase().includes(searchQueryArea.toLowerCase())
+    );
+    const matchGovernate = item.governorate
+      .toLowerCase()
+      .includes(searchQueryGovernate.toLowerCase());
+    const matchArea = item.area
+      .toLowerCase()
+      .includes(searchQueryHospital.toLowerCase());
+    return matchSubjects && matchGovernate && matchArea;
+  });
+
+  return (
+    <div>
+      <div className="flex justify-center mb-4">
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <input
+          type="text"
+          value={searchQueryArea}
+          onChange={(e) => setSearchQueryArea(e.target.value)}
+          placeholder="Search by Subjects"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryGovernate}
+          onChange={(e) => setSearchQueryGovernate(e.target.value)}
+          placeholder="Search by Governate"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryHospital}
+          onChange={(e) => setSearchQueryHospital(e.target.value)}
+          placeholder="Search by Area"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+      </div>
+      <table className="w-full divide-y divide-purple-600">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Subjects
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Students
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Governorate
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Area
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              View Details
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y">
+          {filteredItems.map((item) => (
+            <tr key={item.id}>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.subjects.join(", ")}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.numberOfStudents}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.governorate}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.area}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                <button
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={() => handleDetailsButtonClick(item)}
+                >
+                  View Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg">
+            <div className="p-6">
+              <h2 className="text-3xl font-bold mb-4 text-center">Details</h2>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Subjects:</span>{" "}
+                {selectedItem.subjects.join(", ")}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">
+                  Number of Students:
+                </span>{" "}
+                {selectedItem.numberOfStudents}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Address:</span>{" "}
+                {selectedItem.address}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Area:</span>{" "}
+                {selectedItem.area}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Governorate:</span>{" "}
+                {selectedItem.governorate}
+              </p>
+              <Map
+                lat={selectedItem.latitude}
+                lng={selectedItem.longitude}
+              ></Map>
+              <div className="flex justify-center">
+                <button
+                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  onClick={handleDonateConfirm}
+                >
+                  Fullfill
+                </button>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                  onClick={handlePopupClose}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
+  const [searchQueryArea, setSearchQueryArea] = useState("");
+  const [searchQueryHospital, setSearchQueryHospital] = useState("");
+  const [searchQueryGovernate, setSearchQueryGovernate] = useState("");
+  const [searchQueryOrganization, setSearchQueryOrganization] = useState("");
+  const [searchQuerySpeciality, setSearchQuerySpeciality] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState("All");
+  const [showDonationPopup, setDonationPopup] = useState(false);
+
+  function handleDonateItem(donatedItem) {
+    const { address, medicalSpecialty } = donatedItem;
+
+    const newItem = {
+      address,
+      medicalSpecialty,
+      Organization: "Medical Case",
+    };
+
+    setCartItemsFunc((cartItemsState) => [...cartItemsState, newItem]);
+  }
+
+  const handleDonateConfirm = () => {
+    setDonationPopup(false);
+    handleDonateItem(selectedItem);
+    handlePopupClose();
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setSelectedItem(null);
+  };
+
+  const handleDetailsButtonClick = (item) => {
+    setSelectedItem(item);
+    setShowPopup(true);
+  };
+
+  const filteredItems = items.filter((item) => {
+    const matchSpeciality = item.medicalSpecialty
+      .toLowerCase()
+      .includes(searchQuerySpeciality.toLowerCase());
+    const matchOrganization = item.organizationName
+      .toLowerCase()
+      .includes(searchQueryOrganization.toLowerCase());
+    const matchGovernate = item.governorate
+      .toLowerCase()
+      .includes(searchQueryGovernate.toLowerCase());
+    const matchArea = item.area
+      .toLowerCase()
+      .includes(searchQueryHospital.toLowerCase());
+    return matchGovernate && matchArea && matchSpeciality && matchOrganization;
+  });
+
+  return (
+    <div>
+      <div className="flex justify-center mb-4">
+        <button
+          className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+          }`}
+          onClick={() => setFilter("All")}
+        >
+          All
+        </button>
+        <input
+          type="text"
+          value={searchQuerySpeciality}
+          onChange={(e) => setSearchQuerySpeciality(e.target.value)}
+          placeholder="Search by Speciality"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryGovernate}
+          onChange={(e) => setSearchQueryGovernate(e.target.value)}
+          placeholder="Search by Governate"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryHospital}
+          onChange={(e) => setSearchQueryHospital(e.target.value)}
+          placeholder="Search by Area"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryOrganization}
+          onChange={(e) => setSearchQueryOrganization(e.target.value)}
+          placeholder="Search by Organization"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+      </div>
+      <table className="w-full divide-y divide-purple-600">
+        <thead>
+          <tr>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Patient Name
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Gender
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Specialty
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Address
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Governate
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Area
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              Organization
+            </th>
+            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+              View Details
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y">
+          {filteredItems.map((item) => (
+            <tr key={item.id}>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.patientName}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.gender}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.medicalSpecialty}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.address}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.governorate}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.area}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                {item.organizationName}
+              </td>
+              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                <button
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  onClick={() => handleDetailsButtonClick(item)}
+                >
+                  View Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg">
+            <div className="p-6">
+              <h2 className="text-3xl font-bold mb-4 text-center">Details</h2>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Patient Name:</span>{" "}
+                {selectedItem.patientName}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Age:</span>{" "}
+                {selectedItem.age}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Gender:</span>{" "}
+                {selectedItem.gender}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Weight:</span>{" "}
+                {selectedItem.weight}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Area:</span>{" "}
+                {selectedItem.area}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Governorate:</span>{" "}
+                {selectedItem.governorate}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Address:</span>{" "}
+                {selectedItem.address}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Organization:</span>{" "}
+                {selectedItem.organizationName}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">Speciality:</span>{" "}
+                {selectedItem.medicalSpecialty}
+              </p>
+              <p className="mb-2 text-2xl">
+                <span className="font-semibold text-2xl">
+                  Case description:
+                </span>{" "}
+                {selectedItem.caseDescription}
+              </p>
+              <Map
+                lat={selectedItem.location.latitude}
+                lng={selectedItem.location.longitude}
+              ></Map>
+              <div className="flex justify-center">
+                <button
+                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  onClick={handleDonateConfirm}
+                >
+                  Fullfill
+                </button>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none"
+                  onClick={handlePopupClose}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

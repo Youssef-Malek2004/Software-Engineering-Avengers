@@ -1,5 +1,5 @@
-import { useState, createElement, useEffect } from "react";
-import { Outlet, useNavigate, Link, useLocation } from "react-router-dom";
+import { useState, createElement } from "react";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -15,34 +15,27 @@ import Logo from "./assets/logo.jpg";
 //import MessagesList from "./Components/MessagesList";
 import { Badge } from "@mui/joy";
 import { dark } from "@mui/material/styles/createPalette";
-import NotificationList from "../Organization/components/NotificationList";
 const { Header, Content, Footer, Sider } = Layout;
 
-const Outline = ({ items, navBarItems, notifications }) => {
+const Outline = ({
+  items,
+  navBarItems,
+  donationCategory,
+  setDonationCategory,
+}) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
   const backgroundColor = "#1A0235  ";
-  const [selectedKey, setSelectedKey] = useState("0");
-  const location = useLocation();
 
-  useEffect(() => {
-    // Update the selected menu item key based on the current location
-    const selectedItem = items.find((item) => item.to === location.pathname);
-    if (selectedItem) {
-      setSelectedKey(selectedItem.key);
-    }
-  }, [location, items]);
+  const handleDonationCategoryToggle = (item) => {
+    setDonationCategory(item);
+  };
 
-  const notificationContent = (
-    <NotificationList notifications={notifications} />
-  );
   // Function to handle menu item click
   const onMenuClick = (e) => {
     const selectedItem = items.find((item) => item.key === e.key);
-    if (selectedItem && selectedItem.to && selectedItem.to != "-1") {
+    if (selectedItem && selectedItem.to) {
       navigate(`${selectedItem.to}`);
-    } else {
-      navigate(-1);
     }
   };
   const {
@@ -57,7 +50,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
       {navBarItems.map((item) => (
         <Link
           key={item.name}
-          to={item.to == "-1" ? -1 : item.to}
+          to={item.to}
           style={{ display: "block", margin: "10px 0" }}
         >
           {item.name}
@@ -101,7 +94,6 @@ const Outline = ({ items, navBarItems, notifications }) => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["0"]}
-          selectedKeys={[selectedKey]}
           items={items.map((item) => ({
             ...item,
             icon: createElement(item.icon.type),
@@ -126,37 +118,56 @@ const Outline = ({ items, navBarItems, notifications }) => {
             top: "0",
             zIndex: "1000",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 20px",
+            padding: "0 50px",
             background: colorBgContainer,
           }}
+          className="flex justify-center items-center"
         >
-          <div>
+          <div className="justify-left items-left">
             <Button
               type="text"
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{ fontSize: "16px", border: "none" }}
+              className="justify-left"
             />
-            <Button
-              className={
-                "mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 text-white text-center "
-              }
-              onClick={() => navigate(-1)}
-            >
-              Back
-            </Button>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <Badge badgeContent={6} showZero={false} size="sm" color="danger">
+          <div
+            //style={{ display: "flex", alignItems: "center", gap: "15px" }}
+            className="flex flex-row justify-center"
+          >
+            <Badge badgeContent={6} showZero={false} size="sm">
+              {navBarItems.map((item, index) => (
+                <Button
+                  type="text"
+                  key={index}
+                  onClick={() => handleDonationCategoryToggle(item.to)}
+                  className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                    donationCategory === item.to
+                      ? "bg-indigo-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  }`}
+                  style={{
+                    // Set button height to match the badge height
+                    height: "3rem",
+                    display: "inline-block",
+                  }}
+                >
+                  {item.name}
+                </Button>
+              ))}
+
               <PopOver
                 logo={
                   <BellOutlined
-                    style={{ fontSize: "18px", cursor: "pointer" }}
+                    style={{
+                      fontSize: "18px",
+                      cursor: "pointer",
+                      marginLeft: "20px",
+                    }}
                   />
                 }
-                content={notifications ? notificationContent : "OK"}
+                content="ok"
                 placement="bottomLeft"
                 trigger="click"
               />
@@ -169,6 +180,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
               content={profileContent}
               placement="bottomLeft"
               trigger="click"
+              className="items-center justify-center"
             />
           </div>
         </Header>
