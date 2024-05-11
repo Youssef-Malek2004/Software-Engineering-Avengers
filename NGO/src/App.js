@@ -22,6 +22,7 @@ import Notifications from "./Organization/pages/Notifications";
 
 import Loc from "./Organization/pages/locationpage";
 
+import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
 import Home1 from "./Admin/Home";
@@ -34,6 +35,7 @@ import Admin from "./Admin/Admin";
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
 import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
+
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -51,6 +53,8 @@ function App() {
           <Route path="notifications" element={<Notifications />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/login" element={<LoginPage />} />
+       
         <Route
           path="/Donor"
           element={
@@ -139,8 +143,7 @@ function App() {
           <Route path="Organization" element={<Organization1 />} />
           <Route
             path="OrganizationRequests"
-            element={<OrganizationRequests />}
-          />
+            element={<OrganizationRequests />}/>
           <Route path="DonorRequests" element={<DonorRequests />} />
         </Route>
       </Routes>
