@@ -35,7 +35,7 @@ import Admin from "./Admin/Admin";
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
 import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
-import DonorBase from "./Donor/Donor";
+
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -54,7 +54,7 @@ function App() {
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/Donor" element={<DonorBase />}>
+       
         <Route
           path="/Donor"
           element={
@@ -143,8 +143,7 @@ function App() {
           <Route path="Organization" element={<Organization1 />} />
           <Route
             path="OrganizationRequests"
-            element={<OrganizationRequests />}
-          />
+            element={<OrganizationRequests />}/>
           <Route path="DonorRequests" element={<DonorRequests />} />
         </Route>
       </Routes>
