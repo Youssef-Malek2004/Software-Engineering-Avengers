@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import SignUpImage from "../../shared/assets/volunteerSignUp.jpg";
+import MapGet from "../Components/MapMarkerGet";
+import * as FaIcons from "react-icons/fa";
+import { faI } from "@fortawesome/free-solid-svg-icons";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -24,6 +27,18 @@ function SignUp() {
 
   const [showSubjectModal, setShowSubjectModal] = useState(false);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+  const [confirmationPopup, setConfirmationPopup] = useState(false);
+
+  const handleConfirmLocation = () => {
+    setShowPopup(false); // Close the main popup
+    setConfirmationPopup(true); // Show the confirmation popup
+
+    // Hide the confirmation popup after 2 seconds
+    setTimeout(() => {
+      setConfirmationPopup(false);
+    }, 2000);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -165,46 +180,64 @@ function SignUp() {
                   {/* Teacher-specific fields */}
                   {formData.role === "Organization" && (
                     <>
+                      {/* Additional fields for doctor */}
                       <div>
-                        <button
-                          className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          onClick={toggleSubjectModal}
+                        <label
+                          htmlFor="organizationAddress"
+                          className="sr-only"
                         >
-                          Choose Subjects
-                        </button>
-                      </div>
-                      <div>
-                        <label htmlFor="maxProBonoClasses" className="sr-only">
-                          Max Pro Bono Classes
+                          Organizatin Address
                         </label>
                         <input
-                          id="maxProBonoClasses"
-                          name="maxProBonoClasses"
-                          type="number"
-                          autoComplete="max-pro-bono-classes"
+                          id="organizationAddress"
+                          name="organizationAddress"
+                          type="text"
+                          autoComplete="Organization-address"
                           required
                           className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                          placeholder="Max Pro Bono Classes"
-                          value={formData.maxProBonoClasses}
+                          placeholder="Oranization Address"
+                          value={formData.organizationAddress}
                           onChange={handleChange}
                         />
                       </div>
                       <div>
-                        <label htmlFor="maxPrivateStudents" className="sr-only">
-                          Max Private Students
+                        <label htmlFor="organizationArea" className="sr-only">
+                          Clinic Area
                         </label>
                         <input
-                          id="maxPrivateStudents"
-                          name="maxPrivateStudents"
-                          type="number"
-                          autoComplete="max-private-students"
+                          id="organizationArea"
+                          name="organizationArea"
+                          type="text"
+                          autoComplete="Organization-area"
                           required
                           className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                          placeholder="Max Private Students"
-                          value={formData.maxPrivateStudents}
+                          placeholder="Organization Area"
+                          value={formData.organizationArea}
                           onChange={handleChange}
                         />
                       </div>
+                      <div>
+                        <label htmlFor="clinicGovernorate" className="sr-only">
+                          Organization Governorate
+                        </label>
+                        <input
+                          id="organizationGovernorate"
+                          name="organizationGovernorate"
+                          type="text"
+                          autoComplete="Organization-governorate"
+                          required
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          placeholder="Organization Governorate"
+                          value={formData.organizationGovernorate}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <button
+                        className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => setShowPopup(true)}
+                      >
+                        Add Organization Location Marker
+                      </button>
                     </>
                   )}
                   {formData.role === "doctor" && (
@@ -290,6 +323,12 @@ function SignUp() {
                           onChange={handleChange}
                         />
                       </div>
+                      <button
+                        className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => setShowPopup(true)}
+                      >
+                        Add Clinic Location Marker
+                      </button>
                     </>
                   )}
                   <div className="grid grid-cols-2 gap-4">
@@ -497,6 +536,58 @@ function SignUp() {
                 >
                   Select Subjects
                 </button>
+              </div>
+            </div>
+          </div>
+        )}{" "}
+        {showPopup && (
+          <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white rounded-lg shadow-lg">
+              <div className="p-6">
+                <MapGet apiKey="AIzaSyCukQG4LqeiVrSCUcMnURRO53mPx9hBzok" />
+                <div className="flex flex-row items-center justify-center mt-5">
+                  <button
+                    type="submit"
+                    className=" w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-5"
+                    onClick={handleConfirmLocation}
+                  >
+                    Confirm Location
+                  </button>
+                  <button
+                    type="submit"
+                    className=" w-full  flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-5"
+                    onClick={() => setShowPopup(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Confirmation Popup */}
+        {confirmationPopup && (
+          <div class="fixed inset-0 flex items-center justify-center z-50 backdrop-blur confirm-dialog ">
+            <div class="relative px-4 min-h-screen md:flex md:items-center md:justify-center">
+              <div class=" opacity-25 w-full h-full absolute z-10 inset-0"></div>
+              <div class="bg-white rounded-lg md:max-w-md md:mx-auto p-4 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative shadow-lg">
+                <div class="md:flex items-center">
+                  <div class="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
+                    <p class="font-bold">Success!</p>
+                    <p class="text-sm text-gray-700 mt-1">
+                      Location has successfully been set.
+                    </p>
+                    <div className="flex justify-end items-end mt-3">
+                      <button
+                        type="submit"
+                        className="flex justify-end items-end py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-5"
+                        onClick={() => setConfirmationPopup(false)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

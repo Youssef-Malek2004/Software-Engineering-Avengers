@@ -1,6 +1,5 @@
-export const navBarItems = [
+export const outlineNavBarItem = [
   {
-
     name: "Change Password",
     to: "/admin/changePassword",
   },
@@ -8,5 +7,5 @@ export const navBarItems = [
   {
     name: "Update/Delete Account Information",
     to: "changeinfo",
-  }
-  ];
+  },
+];

@@ -16,53 +16,58 @@ import {
   MedicalTable,
   BloodTable,
 } from "./expandedTableItems";
+import { navBarItems } from "../navBarItems";
 
-const RequestsTable = () => {
+const RequestsTable = ({ donationCategory, setDonationCategory }) => {
+  const handleDonationCategoryToggle = (item) => {
+    setDonationCategory(item);
+  };
+
   const [items, setItems] = useState([
     {
-      id: 1,
+      id: "clothes",
       type: "Clothes",
       quantity: 10,
       selected: false,
     },
     {
-      id: 2,
+      id: "schoolsupplies",
       type: "School Supplies",
       quantity: 5,
       selected: false,
     },
     {
-      id: 3,
+      id: "schoolsupplies",
       type: "Stationary Items",
       quantity: 5,
       selected: false,
     },
     {
-      id: 4,
+      id: "schoolsupplies",
       type: "Book Details",
       quantity: 4,
       selected: false,
     },
     {
-      id: 5,
+      id: "toys",
       type: "Toys",
       quantity: 3,
       selected: false,
     },
     {
-      id: 6,
+      id: "food",
       type: "Food",
       quantity: 7,
       selected: false,
     },
     {
-      id: 7,
+      id: "medical",
       type: "Medical",
       quantity: 3,
       selected: false,
     },
     {
-      id: 8,
+      id: "blood",
       type: "Blood",
       quantity: 3,
       selected: false,
@@ -76,6 +81,8 @@ const RequestsTable = () => {
   const [expanded, setExpanded] = useState(true); // State for expanding table
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
+
+  const handleCartDetailsClick = (cartItem) => {};
 
   const handleDonateButtonClick = (id) => {
     setSelectedItemId(id);
@@ -131,54 +138,72 @@ const RequestsTable = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="w-11/12 h-5/6 overflow-auto">
-        {/* Button to expand table */}
-        <div className="flex justify-end p-4">
-          <button
-            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
-            onClick={() => setExpanded(!expanded)}
-          >
-            {!expanded ? "Collapse Table" : "Expand Table"}
-          </button>
+    <div className="flex items-baseline justify-center h-screen bg-gray-100">
+      <div className="w-11/12 h-5/6 overflow-auto mt-5">
+        <div className="items-center justify-center mb-5 flex flex-row">
+          {navBarItems.map((item, index) => (
+            <button
+              type="text"
+              key={index}
+              onClick={() => handleDonationCategoryToggle(item.to)}
+              className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
+                donationCategory === item.to
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+              style={{
+                // Set button height to match the badge height
+                height: "3rem",
+                display: "inline-block",
+              }}
+            >
+              {item.name}
+            </button>
+          ))}
         </div>
-        {expanded && (
-          <table className="w-full divide-y divide-purple-600">
-            <thead>
-              <tr>
-                <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-                  Type
-                </th>
-                <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-                  Quantity In Need
-                </th>
-                {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+
+        {/* Button to expand table */}
+        {donationCategory == "showdetailed" && (
+          <>
+            <h2 className="text-xl font-bold mb-4 text-center">
+              Donation Requests Summary
+            </h2>
+            <table className="w-full divide-y divide-purple-600">
+              <thead>
+                <tr>
+                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                    Type
+                  </th>
+                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                    Quantity In Need
+                  </th>
+                  {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                   Organization
                 </th> */}
-                {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                  {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                 Help
               </th> */}
-                <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
-                  Show More
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y">
-              {items.map((item) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                    <div className="flex items-center justify-center">
-                      {getTypeIcon(item.type)}
-                      <span className="ml-2">{item.type}&nbsp; </span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 text-center">
-                    {item.quantity}
-                  </td>
-                  {/* <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 text-center">
+                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                    Show More
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y">
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                      <div className="flex items-center justify-center">
+                        {getTypeIcon(item.type)}
+                        <span className="ml-2">{item.type}&nbsp; </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 text-center">
+                      {item.quantity}
+                    </td>
+                    {/* <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 text-center">
                     {item.organization}
                   </td> */}
-                  {/* <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                    {/* <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
                   <button
                     className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={() => handleDonateButtonClick(item.id)}
@@ -186,62 +211,98 @@ const RequestsTable = () => {
                     Donate
                   </button>
                 </td> */}
-                  <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                    <button
-                      className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => handleDetailsClick(item.id)}
-                    >
-                      Details
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
+                      <button
+                        className=" py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => setDonationCategory(item.id)}
+                      >
+                        Expand Category
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         )}
-        {!expanded && (
+        {donationCategory !== "showdetailed" && (
           <div>
-            <h2 className="text-xl font-bold mb-4">Clothing Requests</h2>
-            <ClothesTable
-              items={clothes}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
+            {(donationCategory.includes("clothes") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">
+                  Clothing Requests
+                </h2>
+                <ClothesTable
+                  items={clothes}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
 
-            <h2 className="text-xl font-bold mb-4 mt-8">School Supplies</h2>
-            <SchoolSuppliesTable
-              items={SchoolSupplies}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
+            {(donationCategory.includes("schoolsupplies") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">
+                  School Supplies
+                </h2>
+                <SchoolSuppliesTable
+                  items={SchoolSupplies}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
 
-            <h2 className="text-xl font-bold mb-4 mt-8">Toys</h2>
-            <ToysTable
-              items={Toys}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
+            {(donationCategory.includes("toys") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">Toys</h2>
+                <ToysTable
+                  items={Toys}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
 
-            <h2 className="text-xl font-bold mb-4 mt-8">Food</h2>
-            <FoodTable
-              items={Food}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
+            {(donationCategory.includes("food") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">Food</h2>
+                <FoodTable
+                  items={Food}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
 
-            <h2 className="text-xl font-bold mb-4 mt-8">Medical Requests</h2>
-            <MedicalTable
-              items={Medical}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
-
-            <h2 className="text-xl font-bold mb-4 mt-8">Blood</h2>
-            <BloodTable
-              items={Blood}
-              cartItemsState={cartItems}
-              setCartItemsFunc={setCartItems}
-            />
+            {(donationCategory.includes("medical") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">
+                  Medical Requests
+                </h2>
+                <MedicalTable
+                  items={Medical}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
+            {(donationCategory.includes("blood") ||
+              donationCategory.includes("all")) && (
+              <>
+                <h2 className="text-xl font-bold mb-4 text-center">Blood</h2>
+                <BloodTable
+                  items={Blood}
+                  cartItemsState={cartItems}
+                  setCartItemsFunc={setCartItems}
+                />
+              </>
+            )}
           </div>
         )}
         {showPopup && (
@@ -278,7 +339,9 @@ const RequestsTable = () => {
         {showCart && (
           <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg items-center justify-center">
-              <h1 className="text-3xl text-center mb-4">Cart Items</h1>
+              <h1 className="text-3xl text-center mb-4">
+                Donated/Fullfilled Items
+              </h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
                   <tr>
@@ -286,10 +349,10 @@ const RequestsTable = () => {
                       Type
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Quantity
+                      Details
                     </th>
                     <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
-                      Organization
+                      Schedule
                     </th>
                   </tr>
                 </thead>
@@ -300,7 +363,17 @@ const RequestsTable = () => {
                         {cartItem[Object.keys(cartItem)[0]]}
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
-                        {cartItem[Object.keys(cartItem)[1]]}
+                        <button
+                          className="bg-indigo-400 text-white px-4 py-2 rounded-md hover:bg-blue-400 focus:outline-none"
+                          onClick={() => {
+                            cartItem[Object.keys(cartItem)[2]](
+                              cartItem[Object.keys(cartItem)[1]]
+                            );
+                            setShowCart(false);
+                          }}
+                        >
+                          Show Details
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                         {cartItem[Object.keys(cartItem)[2]]}

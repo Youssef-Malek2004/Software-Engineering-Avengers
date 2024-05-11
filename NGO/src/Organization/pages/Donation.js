@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import createDonationImage from "../../shared/assets/doctor.jpg";
-import viewDonationImage from "../../shared/assets/doctor.jpg";
+import createDonationImage from "../../shared/assets/donpost.avif";
+import viewDonationImage from "../../shared/assets/viewpost.avif";
 
 const Home = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div className="relative">
       {/* Donations text in the middle */}
-      <h1 className="text-3xl font-bold text-center mt-10 mb-8">Donations</h1>
+      <h1 className="text-3xl font-bold text-center mt-10 ">Donations</h1>
       <div className="flex justify-center items-center h-screen">
         <div className="grid grid-cols-2 gap-8">
           {/* Card for creating donation posts */}
@@ -62,6 +62,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
       {/* Semi-transparent overlay for the pop-up */}
       {showOptions && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50" onClick={handleClose}></div>
@@ -93,6 +94,12 @@ const Home = () => {
               >
                 School Supplies
               </li>
+              <li
+                className="cursor-pointer hover:bg-gray-200 transition duration-300"
+                onClick={() => handleOptionClick("Food")}
+              >
+                Food
+              </li>
             </ul>
           </div>
         </div>
@@ -105,12 +112,107 @@ const Home = () => {
               <h2 className="text-xl font-bold">Enter Details for {selectedOption}</h2>
               <button onClick={handleClose}>&times;</button>
             </div>
-            <textarea
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-              className="w-full h-32 border rounded-md p-2 mb-4"
-              placeholder="Enter details..."
-            ></textarea>
+            {/* Render different input fields based on selected option */}
+            {selectedOption === "Clothes" && (
+              <>
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Type"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Age"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Gender"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Season"
+                />
+              </>
+            )}
+            {selectedOption === "Toys" && (
+              <>
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Item"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Age"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Gender"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Category"
+                />
+              </>
+            )}
+            {selectedOption === "School Supplies" && (
+              <>
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Type"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Item"
+                />
+              </>
+            )}
+            {selectedOption === "Food" && (
+              <>
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Category"
+                />
+                <input
+                  type="text"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                  className="w-full border rounded-md p-2 mb-4"
+                  placeholder="Item"
+                />
+              </>
+            )}
             {/* Close button */}
             <button className="bg-red-500 text-white py-2 px-4 rounded-md mr-2" onClick={handleClose}>Close</button>
             {/* Post button */}
