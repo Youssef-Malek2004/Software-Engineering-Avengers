@@ -33,7 +33,7 @@ export const items = [
   {
     key: "4",
     icon: <FaIcons.FaFileSignature />,
-    label: "Organization Details",
+    label: "Organization Data",
     // Dynamically set the "to" property based on the current URL
     to: getOrgDetails(),
   },
