@@ -6,26 +6,50 @@ const DonorPickup = () => {
   const donations = [
     {
       id: 1,
-      type: "Clothing",
+      itemType: "Clothing",
       quantity: 5,
-      detailsButton: "More Details",
+      detailsButton: "View Details",
       scheduleButton: "Schedule Pickup",
+      type: "Shirt",
+      age: "Adult",
+      gender: "Male",
+      season: "Spring",
+      material: "Cotton",
+      organization: "Org 1",
     },
     {
       id: 2,
-      type: "Toys",
+      itemType: "Toys",
       quantity: 8,
-      detailsButton: "More Details",
+      detailsButton: "View Details",
       scheduleButton: "Schedule Pickup",
+      type: "Board Game",
+      age: "5-7",
+      gender: "Unisex",
+      category: "Board Games",
+      picture: "board_game.jpg",
+      organizationInNeed: "Children's Shelter",
     },
     {
       id: 3,
-      type: "Books",
+      itemType: "Books",
       quantity: 5,
-      detailsButton: "More Details",
+      detailsButton: "View Details",
       scheduleButton: "Schedule Pickup",
+      type: "Book",
+      item: "Math Textbooks",
+      author: "Karim Waleed",
+      language: "English",
+      edition: "2nd Edition",
+      summary: "The Rules of Differentiation and Integration.",
+      picture: "math_textbook.jpg",
+      quantityInNeed: 30,
+      organization: "School D",
     },
   ];
+
+  const [detailsItem, setDetailsItem] = useState(null);
+  const [showModal2, setShowModal2] = useState(false);
 
   // Dummy data for time slots
   const timeSlots = [
@@ -89,7 +113,13 @@ const DonorPickup = () => {
                   {donation.quantity}
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 justify-center">
-                  <button className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button
+                    className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-900 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={() => {
+                      setShowModal2(true);
+                      setDetailsItem(donation);
+                    }}
+                  >
                     {donation.detailsButton}
                   </button>
                 </td>
@@ -174,6 +204,84 @@ const DonorPickup = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {showModal2 && detailsItem.itemType == "Clothing" && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-4 text-center">
+                  Clothing Details
+                </h2>
+                <p className="text-2xl">Clothing: {detailsItem.type}</p>
+                <p className="text-2xl">Age: {detailsItem.age}</p>
+                <p className="text-2xl">Gender: {detailsItem.gender}</p>
+                <p className="text-2xl">Season: {detailsItem.season}</p>
+                <p className="text-2xl">Material: {detailsItem.material}</p>
+                <p className="mb-4 text-2xl">
+                  Organization: {detailsItem.organization}
+                </p>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none ml-2"
+                  onClick={() => setShowModal2(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showModal2 && detailsItem.itemType == "Toys" && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-4 text-center">
+                  Toy Details
+                </h2>
+                <p className="text-2xl">Toy type: {detailsItem.type}</p>
+                <p className="text-2xl">Age: {detailsItem.age}</p>
+                <p className="text-2xl">Gender: {detailsItem.gender}</p>
+                <p className="text-2xl">Category: {detailsItem.category}</p>
+                <p className="mb-4 text-2xl">
+                  Organization: {detailsItem.organizationInNeed}
+                </p>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none ml-2"
+                  onClick={() => setShowModal2(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showModal2 && detailsItem.itemType == "Books" && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-4 text-center">
+                  Book Details
+                </h2>
+                <p className="text-2xl">Book: {detailsItem.item}</p>
+                <p className="text-2xl">Author: {detailsItem.author}</p>
+                <p className="text-2xl">Summary: {detailsItem.summary}</p>
+                <p className="mb-4 text-2xl">
+                  Organization: {detailsItem.organization}
+                </p>
+                <button
+                  className="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 focus:outline-none ml-2"
+                  onClick={() => setShowModal2(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -10,16 +10,22 @@ const DonorBase = ({ donationCategory, setDonationCategory }) => {
   const dummyNotifications = [
     {
       id: 1,
-      sender: "John Doe",
-      content: "fulfilled donation post of Clothes",
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Clothing. 5 items ready for pickup.",
     },
     {
       id: 2,
-      sender: "Jane Smith",
-      content: "fulfilled donation post of School Supplies",
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Toys. 8 items ready for pickup.",
     },
-    { id: 3, sender: "Pro Bono Teacher", content: "fulfilled a donation post" },
-    // Add more dummy notifications here
+    {
+      id: 3,
+      sender: "Driver",
+      content:
+        "The driver has arrived to pick up Books. 5 items ready for pickup.",
+    },
   ];
 
   return (

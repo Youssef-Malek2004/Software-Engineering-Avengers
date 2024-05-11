@@ -149,7 +149,12 @@ const Outline = ({ items, navBarItems, notifications }) => {
             </Button>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <Badge badgeContent={6} showZero={false} size="sm" color="danger">
+            <Badge
+              badgeContent={notifications.length}
+              showZero={false}
+              size="sm"
+              color="danger"
+            >
               <PopOver
                 logo={
                   <BellOutlined

@@ -38,6 +38,10 @@ import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
 import DonorPickup from "./Donor/Pages/DonorPickup";
 import TeacherPickup from "./Donor/Pages/TeacherPickup";
 import DoctorPickup from "./Donor/Pages/DoctorPickup";
+import DonorTrack from "./Donor/Pages/DonorTrack";
+import TeacherTrack from "./Donor/Pages/TeacherTrack";
+import DoctorTrack from "./Donor/Pages/DoctorTrack";
+import DonorNotifications from "./Donor/Pages/NotificationsPage";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -69,6 +73,8 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />\
           <Route path="DonorPickup" element={<DonorPickup />} />
+          <Route path="DonorTrack" element={<DonorTrack />} />
+          <Route path="notifications" element={<DonorNotifications />} />
           <Route
             path="RegularRequests"
             element={
@@ -102,6 +108,8 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="TeacherPickup" element={<TeacherPickup />} />
+            <Route path="TeacherTrack" element={<TeacherTrack />} />
+            <Route path="notifications" element={<DonorNotifications />} />
             <Route
               path="TeacherRequests"
               element={
@@ -128,6 +136,8 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="DoctorPickup" element={<DoctorPickup />} />
+            <Route path="DoctorTrack" element={<DoctorTrack />} />
+            <Route path="notifications" element={<DonorNotifications />} />
             <Route
               path="doctorRequests"
               element={
