@@ -17,10 +17,10 @@ import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
 import ProfilePage from "./Organization/pages/ChangeAccinfo"
 import Notifications from "./Organization/pages/Notifications";
-import RequestTable from "./Donor/Pages/RequestsTable";
 
 import Loc from "./Organization/pages/locationpage";
 
+import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
 import Navbar from "./Admin/Navbar";
 import Home1 from './Admin/Home';
@@ -45,6 +45,7 @@ function App() {
           <Route path="notifications" element={<Notifications />}/>
         </Route>
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/Donor" element={<DonorBase />}>
           <Route path="" element={<Home />} />
           <Route path="DonationRequests" element={<DonationRequests />} />

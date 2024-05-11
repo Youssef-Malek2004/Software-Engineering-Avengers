@@ -7,7 +7,6 @@ const ProfilePage = () => {
     lastName: 'Elshafie',
     gender: 'male',
     email: 'mohamed.elshafie@example.com',
-    password: '********',
     contactNumber: '1234567890',
     organizationName: 'NBIS',
     organizationType: 'Educational Platform',
@@ -22,7 +21,6 @@ const ProfilePage = () => {
     lastName: false,
     gender: false,
     email: false,
-    password: false,
     contactNumber: false,
     organizationName: false,
     organizationType: false,
@@ -94,19 +92,11 @@ const ProfilePage = () => {
             {!editableFields.gender && <AiOutlineEdit onClick={() => handleEditField('gender')} className="ml-2 cursor-pointer" />}
           </div>
         </div>
-        {/* Contact Information */}
         <div>
           <label className="block mb-1" htmlFor="email">Email</label>
           <div className="flex items-center">
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="input" disabled={!editableFields.email} />
             {!editableFields.email && <AiOutlineEdit onClick={() => handleEditField('email')} className="ml-2 cursor-pointer" />}
-          </div>
-        </div>
-        <div>
-          <label className="block mb-1" htmlFor="password">Password</label>
-          <div className="flex items-center">
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} className="input" disabled={!editableFields.password} />
-            {!editableFields.password && <AiOutlineEdit onClick={() => handleEditField('password')} className="ml-2 cursor-pointer" />}
           </div>
         </div>
         <div>
@@ -116,7 +106,6 @@ const ProfilePage = () => {
             {!editableFields.contactNumber && <AiOutlineEdit onClick={() => handleEditField('contactNumber')} className="ml-2 cursor-pointer" />}
           </div>
         </div>
-        {/* Organization Information */}
         <div>
           <label className="block mb-1" htmlFor="organizationName">Organization Name</label>
           <div className="flex items-center">
@@ -152,19 +141,15 @@ const ProfilePage = () => {
             {!editableFields.governorate && <AiOutlineEdit onClick={() => handleEditField('governorate')} className="ml-2 cursor-pointer" />}
           </div>
         </div>
-        {/* Verification File */}
         <div className="col-span-2">
           <label className="block mb-1" htmlFor="verificationFile">Verification File</label>
           <input type="file" id="verificationFile" name="verificationFile" onChange={handleFileChange} className="input" />
         </div>
-        {/* Save Changes Button */}
         <button type="submit" className="col-span-2 btn">Save Changes</button>
       </form>
-      {/* Delete Account Button */}
       <div className="mt-8 text-center">
         <button onClick={handleDeleteAccount} className="btn bg-red-500 hover:bg-red-600">Delete Account</button>
       </div>
-      {/* Success Message */}
       {showSuccessMessage && (
         <div className="mt-4 bg-purple-600 text-white p-2 rounded-md text-center">
           Your account info has been updated successfully.
