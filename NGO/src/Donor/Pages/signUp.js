@@ -94,7 +94,7 @@ function SignUp() {
                       setFormData({ ...formData, role: "regular_donor" })
                     }
                   >
-                    Donor
+                    Regular Donor
                   </button>
                   <button
                     className={`mr-4 px-4 py-2 rounded-md focus:outline-none ${
