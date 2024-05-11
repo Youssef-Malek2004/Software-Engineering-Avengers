@@ -6,7 +6,7 @@ export const items = [
     key: "0",
     icon: <FaHome />,
     label: "Home",
-    to: "orghome", // Assuming you're using react-router-dom for routing
+    to: "", // Assuming you're using react-router-dom for routing
   },
   {
     key: "1",
@@ -23,8 +23,8 @@ export const items = [
   {
     key: "3",
     icon: <FaUsers />,
-    label: "Add Location",
-    to: "location",
+    label: "Delivery Schedule",
+    to: "delivery",
   },
   
     
