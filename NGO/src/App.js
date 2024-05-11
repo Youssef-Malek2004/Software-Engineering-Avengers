@@ -17,7 +17,7 @@ import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
-import RequestTable from "./Donor/Pages/RequestsTable";
+
 import ProfilePage from "./Organization/pages/ChangeAccinfo";
 import Notifications from "./Organization/pages/Notifications";
 import DeliverySchedule from "./Organization/pages/Delivery";
@@ -37,12 +37,8 @@ import Admin from './Admin/Admin'
 import Changepassword from './Admin/Changepassword';
 import LandingPage from './Admin/LandingPage'
 import Home1 from "./Admin/Home";
-import Settings from "./Admin/Settings";
-import Donors from "./Admin/Donors";
-import Organization1 from "./Admin/Organization";
-import OrganizationRequests from "./Admin/OrganizationRequests";
-import DonorRequests from "./Admin/DonorRequests";
-import Admin from "./Admin/Admin";
+
+
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
 import ChangeInfo from "./Donor/Pages/ChangeInfoDonor";
