@@ -1,7 +1,7 @@
 export const navBarItems = [
     {
       name: "Change Password",
-      to: "/admin/changePassword",
+      to: "/Admin/Changepassword",
     },
     {
       name: "Logout",

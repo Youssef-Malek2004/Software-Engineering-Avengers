@@ -6,13 +6,15 @@ import PopOver from "./components/PopOver";
 import Logo from "./assets/logo.jpg";
 import * as FaIcons from "react-icons/fa";
 import ReactTooltip from "react-tooltip";
+import Changepassword from "../Admin/Changepassword";
+import { blueGrey } from "@mui/material/colors";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const OutlineNoSide = ({ items, navBarItems }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-  const backgroundColor = "#1A0235"; // Purple background color
+  const backgroundColor ="#1A0235";
 
   // Function to handle menu item click
   const onMenuClick = (e) => {
@@ -65,20 +67,11 @@ const OutlineNoSide = ({ items, navBarItems }) => {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "0 20px",
-            background: backgroundColor, // Purple background color
+            backgroundColor:"whitesmoke", // Purple background color
           }}
         >
           <div></div>
           <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <Badge badgeContent={6} showZero={false} size="sm" color="danger">
-              <PopOver
-                logo={
-                  <BellOutlined style={{ fontSize: "18px", cursor: "pointer" }} />
-                }
-                placement="bottomLeft"
-                trigger="click"
-              />
-            </Badge>
 
             <PopOver
               logo={
@@ -100,4 +93,5 @@ const OutlineNoSide = ({ items, navBarItems }) => {
 };
 
 export default OutlineNoSide;
+
 

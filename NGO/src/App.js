@@ -15,7 +15,7 @@ import DonorInfo from "./Organization/pages/DonorInfo";
 import UserDetails from "./Organization/components/UserDetails";
 import Donation from "./Organization/pages/Donation";
 import Alldonation from "./Organization/pages/ViewDonationPosts";
-import RequestTable from "./Donor/Pages/RequestsTable";
+
 
 import Loc from "./Organization/pages/locationpage";
 
@@ -28,11 +28,14 @@ import Organization1 from './Admin/Organization';
 import OrganizationRequests from './Admin/OrganizationRequests';
 import DonorRequests from './Admin/DonorRequests';
 import Admin from './Admin/Admin'
+import Changepassword from './Admin/Changepassword';
+import LandingPage from './Admin/LandingPage'
 
 function App() {
   return (
     <div>
       <Routes>
+      <Route path='/' element={<LandingPage/>}/>
         <Route path="/organization" element={<Organization />}>
           <Route path="orghome" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
@@ -55,6 +58,7 @@ function App() {
           <Route path="Organization" element={<Organization1 />} />
           <Route path="OrganizationRequests" element={<OrganizationRequests />} />
           <Route path="DonorRequests" element={<DonorRequests />} />
+          <Route path="Changepassword" element={<Changepassword/>} />
         </Route>
       </Routes>
     </div>

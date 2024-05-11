@@ -1,48 +1,49 @@
-  import { useState } from 'react';
-  import {useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-  const Home = () => {
-    const [cards] = useState([
-      { title: 'Donors', text: null },
-      { title: 'Organizations', text: null},
-      { title: 'Organizations Requests', text: null },
-      { title: 'Donor Requests', text: null},
-      //{ title: 'Card-5', text: 'hello' },
-      //{ title: 'Card-6', text: 'hello' }
-    ]);
+const Home = () => {
+  const [cards] = useState([
+    { title: 'Donors', text: null },
+    { title: 'Organizations', text: null },
+    { title: 'Organizations Requests', text: null },
+    { title: 'Donor Requests', text: null },
+  ]);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleNavigateToDonors = () => {
-      // Navigate to the Donors component
-      navigate('/Admin/Donors');
-    };
+  const handleNavigateToDonors = () => {
+    // Navigate to the Donors component
+    navigate('/Admin/Donors');
+  };
 
-    const handleNavigateToOrganization = () => {
-      // Navigate to the Organization component
-      navigate('/Admin/Organization');
-    };
+  const handleNavigateToOrganization = () => {
+    // Navigate to the Organization component
+    navigate('/Admin/Organization');
+  };
 
-    const handleNavigateToOrganizationRequests = () => {
-      // Navigate to the OrganizationRequests component
-      navigate('/Admin/OrganizationRequests');
-    };
-    const handleNavigateToDonorRequests = () => {
-     navigate('/Admin/DonorRequests');
-    };
-  
-  
+  const handleNavigateToOrganizationRequests = () => {
+    // Navigate to the OrganizationRequests component
+    navigate('/Admin/OrganizationRequests');
+  };
 
-    return (
-      <div>
-        <section>
-          <div className="container">
-            <h1 className="head">Admin Dashboard</h1>
-            <div className="cards">
-              {cards.map((card, i) => (
-                <div key={i} className="card">
-                  <h3>{card.title}</h3>
-                  <p>{card.text}</p>
+  const handleNavigateToDonorRequests = () => {
+    // Navigate to the DonorRequests component
+    navigate('/Admin/DonorRequests');
+  };
+
+  return (
+    <div>
+      <section className="bg-gray-100 py-20">
+        <div className="container mx-auto">
+          <h1 className="text-4xl font-bold text-center mb-10">Admin Dashboard</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {cards.map((card, i) => (
+              <div key={i} className="rounded-lg overflow-hidden border border-purple-600">
+                <div className="bg-white rounded-t-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
+                  <p className="text-gray-600">{card.text}</p>
+                </div>
+                <div className="bg-white px-6 py-4 flex justify-center rounded-b-lg">
                   {card.title === 'Donors' && (
                     <button className="btn" onClick={handleNavigateToDonors}>
                       Navigate
@@ -50,7 +51,7 @@
                   )}
                   {card.title === 'Organizations' && (
                     <button className="btn" onClick={handleNavigateToOrganization}>
-                      Navigate 
+                      Navigate
                     </button>
                   )}
                   {card.title === 'Organizations Requests' && (
@@ -58,22 +59,26 @@
                       Navigate
                     </button>
                   )}
-                    {card.title === 'Donor Requests' && (
+                  {card.title === 'Donor Requests' && (
                     <button className="btn" onClick={handleNavigateToDonorRequests}>
-                        Navigate
-                     
+                      Navigate
                     </button>
                   )}
-              
-                
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </section>
-      </div>
-    );
-  };
+        </div>
+      </section>
+    </div>
+  );
+};
 
-  export default Home;
+export default Home;
+
+
+
+
+
+
 
