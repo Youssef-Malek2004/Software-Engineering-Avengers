@@ -18,21 +18,21 @@ export const items = [
   },
   {
     key: "2",
-    icon: <FaIcons.FaFileSignature />,
+    icon: <FaIcons.FaAddressBook />,
     label: "Schedule Pickup",
     // Dynamically set the "to" property based on the current URL
     to: getScheduleSiteRoute(),
   },
   {
     key: "3",
-    icon: <FaIcons.FaFileSignature />,
+    icon: <FaIcons.FaLocationArrow />,
     label: "Track Driver",
     // Dynamically set the "to" property based on the current URL
     to: getTrackerRoute(),
   },
   {
     key: "4",
-    icon: <FaIcons.FaFileSignature />,
+    icon: <FaIcons.FaDatabase />,
     label: "Organization Data",
     // Dynamically set the "to" property based on the current URL
     to: getOrgDetails(),

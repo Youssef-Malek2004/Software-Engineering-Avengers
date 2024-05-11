@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import OrganizationDetailsModal from "../../Admin/OrganizationDetailsModal";
+import OrganizationDetailsModal from "./OrganizationDetailsModal";
 
 const OrgTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -95,7 +95,7 @@ const OrgTable = () => {
   });
 
   return (
-    <div className="flex flex-col items-center mt-16">
+    <div className="flex flex-col items-center mt-16 w-11/12 justify-center">
       <div className="my-4">
         <input
           type="text"
@@ -142,47 +142,39 @@ const OrgTable = () => {
           {/* Add more options for types as needed */}
         </select>
       </div>
-      <table className="w-full table-auto bg-white text-black-900 border-collapse border border-purple-900">
-        <thead>
-          <tr className="bg-purple-800 text-white">
-            <th className="border border-purple-900 px-4 py-2">ID</th>
-            <th className="border border-purple-900 px-4 py-2">
-              Organization Name
-            </th>
-            <th className="border border-purple-900 px-4 py-2">Area</th>
-            <th className="border border-purple-900 px-4 py-2">Governorate</th>
-            <th className="border border-purple-900 px-4 py-2">Type</th>
-            <th className="border border-purple-900 px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredOrganizations.map((org) => (
-            <tr key={org.id} className="border">
-              <td className="border border-purple-900 px-4 py-2">{org.id}</td>
-              <td className="border border-purple-900 px-4 py-2">{org.name}</td>
-              <td className="border border-purple-900 px-4 py-2">{org.area}</td>
-              <td className="border border-purple-900 px-4 py-2">
-                {org.governorate}
-              </td>
-              <td className="border border-purple-900 px-4 py-2">{org.type}</td>
-              <td className="border border-purple-900 px-4 py-2 flex justify-between">
-                <button
-                  onClick={() => handleDeleteOrganization(org.id)}
-                  className="text-red-600"
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-                <button
-                  onClick={() => handleViewDetails(org)}
-                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded"
-                >
-                  View Details
-                </button>
-              </td>
+      <div className="overflow-x-auto w-full">
+        <table className="w-full bg-white border-collapse border">
+          <thead>
+            <tr className="bg-purple-800 text-white">
+              <th className="px-4 py-2">ID</th>
+              <th className="px-4 py-2">Organization Name</th>
+              <th className="px-4 py-2">Area</th>
+              <th className="px-4 py-2">Governorate</th>
+              <th className="px-4 py-2">Type</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredOrganizations.map((org) => (
+              <tr key={org.id} className="border">
+                <td className="px-4 py-2">{org.id}</td>
+                <td className="px-4 py-2">{org.name}</td>
+                <td className="px-4 py-2">{org.area}</td>
+                <td className="px-4 py-2">{org.governorate}</td>
+                <td className="px-4 py-2">{org.type}</td>
+                <td className="px-4 py-2">
+                  <button
+                    onClick={() => handleViewDetails(org)}
+                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded"
+                  >
+                    View Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <OrganizationDetailsModal
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}

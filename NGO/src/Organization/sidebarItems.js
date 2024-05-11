@@ -1,4 +1,5 @@
 import { FaBox, FaLaptop, FaUsers, FaKey, FaHome } from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
 
 export const items = [
   {
@@ -21,7 +22,7 @@ export const items = [
   },
   {
     key: "3",
-    icon: <FaUsers />,
+    icon: <FaIcons.FaAddressBook />,
     label: "Delivery Schedule",
     to: "/organization/delivery",
   },
