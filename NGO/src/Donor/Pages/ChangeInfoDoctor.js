@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const ChangeInfo = () => {
+const ChangeInfoDoctor = () => {
   const [formData, setFormData] = useState({
     firstName: "Mohammed",
     lastName: "Elshafie",
@@ -17,6 +17,11 @@ const ChangeInfo = () => {
     governorate: "Cityville",
     profilePicture: "/dummy-profile-pic.jpg", // Placeholder for profile picture
     verificationFile: null,
+    clinicAddress: "123 Main Street",
+    clinicArea: "Downtown",
+    clinicGovernate: "Cityville",
+    speciality: "Cardiology",
+    maxCases: "7",
   });
   const navigate = useNavigate();
 
@@ -32,6 +37,11 @@ const ChangeInfo = () => {
     organizationAddress: false,
     area: false,
     governorate: false,
+    clinicAddress: false,
+    clinicArea: false,
+    clinicGovernate: false,
+    speciality: false,
+    maxCases: false,
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [confirmationPopup, setConfirmationPopup] = useState(false);
@@ -50,6 +60,11 @@ const ChangeInfo = () => {
       organizationAddress: false,
       area: false,
       governorate: false,
+      clinicAddress: false,
+      clinicArea: false,
+      clinicGovernate: false,
+      speciality: false,
+      maxCases: false,
     });
   };
 
@@ -251,6 +266,116 @@ const ChangeInfo = () => {
           </div>
         </div>
         <div>
+          <label className="block mb-1" htmlFor="clinicAddress">
+            Clinic Address
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="clinicAddress"
+              name="clinicAddress"
+              value={formData.clinicAddress}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.clinicAddress}
+            />
+            {!editableFields.clinicAddress && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("clinicAddress")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <label className="block mb-1" htmlFor="clinicArea">
+            Clinic Area
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="clinicArea"
+              name="clinicArea"
+              value={formData.clinicArea}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.clinicArea}
+            />
+            {!editableFields.clinicArea && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("clinicArea")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <label className="block mb-1" htmlFor="clinicGovernate">
+            Clinic Governorate
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="clinicGovernate"
+              name="clinicGovernate"
+              value={formData.clinicGovernate}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.clinicGovernate}
+            />
+            {!editableFields.clinicGovernate && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("clinicGovernate")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <label className="block mb-1" htmlFor="speciality">
+            Speciality
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="speciality"
+              name="speciality"
+              value={formData.speciality}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.speciality}
+            />
+            {!editableFields.speciality && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("speciality")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <label className="block mb-1" htmlFor="maxCases">
+            Max Cases
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="maxCases"
+              name="maxCases"
+              value={formData.maxCases}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.maxCases}
+            />
+            {!editableFields.maxCases && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("maxCases")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
           <label className="block mb-1" htmlFor="governorate">
             Governorate
           </label>
@@ -273,7 +398,7 @@ const ChangeInfo = () => {
           </div>
         </div>
         {/* Verification File */}
-        {/* <div className="col-span-2">
+        <div className="col-span-2">
           <label className="block mb-1" htmlFor="verificationFile">
             Verification File
           </label>
@@ -284,7 +409,7 @@ const ChangeInfo = () => {
             onChange={handleFileChange}
             className="input"
           />
-        </div> */}
+        </div>
         {/* Save Changes Button */}
         <button
           type="submit"
@@ -339,4 +464,4 @@ const ChangeInfo = () => {
   );
 };
 
-export default ChangeInfo;
+export default ChangeInfoDoctor;

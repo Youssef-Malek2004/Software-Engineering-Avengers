@@ -8,4 +8,8 @@ export const outlineNavBarItem = [
     name: "Update/Delete Account Information",
     to: "changeinfo",
   },
+  {
+    name: "Logout",
+    to: "/login",
+  },
 ];

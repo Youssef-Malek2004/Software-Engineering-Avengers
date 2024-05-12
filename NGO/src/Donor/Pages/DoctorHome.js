@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignUpImage from "../../shared/assets/background2.png";
 import Footer from "../../shared/components/Footer";
 import NGOFooter from "../../shared/components/Footer";
+import { Space, DatePicker, notification } from "antd";
 
 const DoctorHome = () => {
   const [cards] = useState([
@@ -37,6 +38,16 @@ const DoctorHome = () => {
   const handleNavigateToSubmissions = () => {
     navigate("/Submissions");
   };
+
+  useEffect(() => {
+    // Show a success notification when the component mounts
+    notification.warning({
+      message: "Welcome!",
+      description:
+        "You are not yet verified, please direct to Update account information for verification",
+      duration: 5,
+    });
+  }, []);
 
   return (
     <div

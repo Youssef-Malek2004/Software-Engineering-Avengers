@@ -1,6 +1,5 @@
 export const navBarItems = [
   {
-
     name: "Change Password",
     to: "/organization/changePassword",
   },
@@ -8,5 +7,9 @@ export const navBarItems = [
   {
     name: "Update/Delete Account Information",
     to: "changeinfo",
-  }
-  ];
+  },
+  {
+    name: "Log out",
+    to: "/login",
+  },
+];

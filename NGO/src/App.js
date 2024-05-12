@@ -28,7 +28,6 @@ import Loc from "./Organization/pages/locationpage";
 import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
 
-
 import Donors from "./Admin/Donors";
 import Organization1 from "./Admin/Organization";
 import OrganizationRequests from "./Admin/OrganizationRequests";
@@ -52,6 +51,8 @@ import OrgTable from "./Donor/Pages/OrganizationTable";
 import TeacherHome from "./Donor/Pages/TeacherHome";
 import DoctorHome from "./Donor/Pages/DoctorHome";
 import ChangepassDonor from "./Donor/Pages/changepass";
+import ChangeInfoTeacher from "./Donor/Pages/ChangeInfoTeacher";
+import ChangeInfoDoctor from "./Donor/Pages/ChangeInfoDoctor";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -135,7 +136,7 @@ function App() {
                 />
               }
             />
-            <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changeinfo" element={<ChangeInfoTeacher />}></Route>
             <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
@@ -165,14 +166,14 @@ function App() {
                 />
               }
             />
-            <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changeinfo" element={<ChangeInfoDoctor />}></Route>
             <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
 
         <Route path="/admin" element={<Admin />}>
           <Route path="Home" element={<Home1 />} />
-    
+
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
           <Route

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const ChangeInfo = () => {
+const ChangeInfoTeacher = () => {
   const [formData, setFormData] = useState({
     firstName: "Mohammed",
     lastName: "Elshafie",
@@ -17,6 +17,8 @@ const ChangeInfo = () => {
     governorate: "Cityville",
     profilePicture: "/dummy-profile-pic.jpg", // Placeholder for profile picture
     verificationFile: null,
+    maxClasses: "3",
+    maxStudents: "8",
   });
   const navigate = useNavigate();
 
@@ -32,6 +34,8 @@ const ChangeInfo = () => {
     organizationAddress: false,
     area: false,
     governorate: false,
+    maxClasses: false,
+    maxStudents: false,
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [confirmationPopup, setConfirmationPopup] = useState(false);
@@ -50,6 +54,8 @@ const ChangeInfo = () => {
       organizationAddress: false,
       area: false,
       governorate: false,
+      maxClasses: false,
+      maxStudents: false,
     });
   };
 
@@ -251,6 +257,50 @@ const ChangeInfo = () => {
           </div>
         </div>
         <div>
+          <label className="block mb-1" htmlFor="maxClasses">
+            Max Pro Bono Classes
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="maxClasses"
+              name="maxClasses"
+              value={formData.maxClasses}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.maxClasses}
+            />
+            {!editableFields.maxClasses && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("maxClasses")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
+          <label className="block mb-1" htmlFor="maxStudents">
+            Max Private Students
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              id="maxStudents"
+              name="maxStudents"
+              value={formData.maxStudents}
+              onChange={handleChange}
+              className="input"
+              disabled={!editableFields.maxStudents}
+            />
+            {!editableFields.maxStudents && (
+              <AiOutlineEdit
+                onClick={() => handleEditField("maxStudents")}
+                className="ml-2 cursor-pointer"
+              />
+            )}
+          </div>
+        </div>
+        <div>
           <label className="block mb-1" htmlFor="governorate">
             Governorate
           </label>
@@ -273,7 +323,7 @@ const ChangeInfo = () => {
           </div>
         </div>
         {/* Verification File */}
-        {/* <div className="col-span-2">
+        <div className="col-span-2">
           <label className="block mb-1" htmlFor="verificationFile">
             Verification File
           </label>
@@ -284,7 +334,7 @@ const ChangeInfo = () => {
             onChange={handleFileChange}
             className="input"
           />
-        </div> */}
+        </div>
         {/* Save Changes Button */}
         <button
           type="submit"
@@ -339,4 +389,4 @@ const ChangeInfo = () => {
   );
 };
 
-export default ChangeInfo;
+export default ChangeInfoTeacher;
