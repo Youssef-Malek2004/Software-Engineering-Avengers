@@ -11,6 +11,7 @@ import Home from "./Donor/Pages/Home";
 import RequestTable from "./Donor/Pages/RequestsTable";
 import TeacherDonor from "./Donor/Pages/teacherDonor";
 import DoctorRequests from "./Donor/Pages/doctorDonor";
+import Changepass from "./Organization/pages/changepass";
 
 import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
@@ -67,6 +68,7 @@ function App() {
           <Route path="changeinfo" element={<ProfilePage />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="delivery" element={<DeliverySchedule />} />
+          <Route path="changepassword" element={<Changepass />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
