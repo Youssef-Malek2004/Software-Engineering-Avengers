@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import { Space, DatePicker, notification } from "antd";
 
 const DoctorPickup = () => {
   // Dummy data
@@ -62,7 +63,7 @@ const DoctorPickup = () => {
   const [showModal, setShowModal] = useState(false);
   const [transportation, setTransportation] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
-
+  const [date, setDate] = useState(null);
   // Function to handle schedule pickup button click
   const handleSchedulePickup = () => {
     setShowModal(true);
@@ -79,7 +80,21 @@ const DoctorPickup = () => {
     // Here you can perform actions based on selected transportation and time slot
     console.log("Selected transportation:", transportation);
     console.log("Selected time slot:", timeSlot);
-    setShowModal(false);
+    if (timeSlot && transportation) {
+      notification.success({
+        message: "Date, Time Slot and Transporation Confirmed",
+        description: `Selected Date: ${date} \n Selected Transporation : ${transportation} \n Selected Time-Slot : ${timeSlot}`,
+        duration: 3,
+      });
+      setShowModal(false);
+    } else {
+      notification.error({
+        message: "Error",
+        description:
+          "Please select a Date, Time slot and Transporation Method.",
+        duration: 3,
+      });
+    }
   };
 
   return (
@@ -88,17 +103,21 @@ const DoctorPickup = () => {
         <h2 className="text-xl font-bold mb-4 text-center">Donation Items</h2>
         <table className="w-full divide-y divide-purple-600">
           <thead>
-            <tr>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+            <tr
+              style={{
+                background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+              }}
+            >
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Type
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Quantity
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 More Details
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Schedule Pickup
               </th>
             </tr>
@@ -164,6 +183,11 @@ const DoctorPickup = () => {
                   <option value="motorcycle">Motorcycle</option>
                 </select>
               </div>
+              <DatePicker
+                onChange={(date) => setDate(date)}
+                className="w-full border rounded-md p-2 mb-4"
+                picker="date"
+              />
               <div className="mb-6">
                 <label
                   htmlFor="timeSlot"

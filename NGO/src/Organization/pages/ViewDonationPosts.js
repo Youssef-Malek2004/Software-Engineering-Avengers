@@ -147,12 +147,16 @@ const DonationPosts = () => {
       {/* Donation posts table */}
       <table className="min-w-full border-collapse">
         <thead>
-          <tr>
-            <th className="px-4 py-2 bg-purple-600 text-white  ">Title</th>
-            <th className="px-4 py-2 bg-purple-600 text-white ">Category</th>
-            <th className="px-4 py-2 bg-purple-600 text-white">Last Updated</th>
-            <th className="px-4 py-2 bg-purple-600 text-white">Status</th>
-            <th className="px-4 py-2 bg-purple-600 text-white">Actions</th>
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-4 py-2  text-white  ">Title</th>
+            <th className="px-4 py-2  text-white ">Category</th>
+            <th className="px-4 py-2  text-white">Last Updated</th>
+            <th className="px-4 py-2  text-white">Status</th>
+            <th className="px-4 py-2  text-white">Actions</th>
           </tr>
         </thead>
         <tbody>

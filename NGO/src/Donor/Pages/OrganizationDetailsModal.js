@@ -1,13 +1,14 @@
 import React from "react";
 
 const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
-
+  // Generate dummy contact details
   const contactDetails = {
     email: "organization@example.com",
     phone: "123-456-7890",
     address: "123 Main Street, City, Country",
   };
 
+  // Generate dummy Google Maps location
   const googleMapsLocation = {
     latitude: 40.7128,
     longitude: -74.006,
@@ -42,37 +43,39 @@ const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Organization Details
             </h2>
-            <div>
-              <p>
-                <strong>Name:</strong> {organization.name}
-              </p>
-              <p>
-                <strong>Contact Email:</strong> {contactDetails.email}
-              </p>
-              <p>
-                <strong>Contact Phone:</strong> {contactDetails.phone}
-              </p>
-              <p>
-                <strong>Address:</strong> {contactDetails.address}
-              </p>
-            </div>
-            <div className="mt-4">
-              <p>
-                <strong>Google Maps Location:</strong>
-              </p>
-              <div className="mt-2">
-                <iframe
-                  title="Google Maps Location"
-                  width="100%"
-                  height="200"
-                  frameBorder="0"
-                  scrolling="no"
-                  marginHeight="0"
-                  marginWidth="0"
-                  src={`https://maps.google.com/maps?q=${googleMapsLocation.latitude},${googleMapsLocation.longitude}&output=embed`}
-                />
-              </div>
-            </div>
+            <table className="table-auto w-full">
+              <tbody>
+                <tr>
+                  <td className="font-semibold">Name:</td>
+                  <td>{organization.name}</td>
+                </tr>
+                <tr>
+                  <td className="font-semibold">Contact Email:</td>
+                  <td>{contactDetails.email}</td>
+                </tr>
+                <tr>
+                  <td className="font-semibold">Contact Phone:</td>
+                  <td>{contactDetails.phone}</td>
+                </tr>
+                <tr>
+                  <td className="font-semibold">Address:</td>
+                  <td>{contactDetails.address}</td>
+                </tr>
+                <tr>
+                  <td className="font-semibold">Google Maps Location:</td>
+                  <td>
+                    <div className="mt-2">
+                      <iframe
+                        title="Google Maps Location"
+                        width="100%"
+                        height="200"
+                        src={`https://maps.google.com/maps?q=${googleMapsLocation.latitude},${googleMapsLocation.longitude}&output=embed`}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       )}

@@ -3,6 +3,9 @@ import SignUpImage from "../../shared/assets/volunteerSignUp.jpg";
 import MapGet from "../Components/MapMarkerGet";
 import * as FaIcons from "react-icons/fa";
 import { faI } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import backgroundImage from "../../shared/assets/background2.png";
+import logoPic from "../../shared/assets/NGO-Logo-Small.png";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -25,6 +28,27 @@ function SignUp() {
     maxCases: "",
   });
 
+  const teacherSubjects = [
+    "Math",
+    "Science",
+    "English",
+    "History",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Algebra",
+    "Calculus",
+    "Statistics",
+    "Geology",
+    "Linguistics",
+    "Business",
+    "Media",
+    "Economics",
+    "Engineering",
+    "Architecture",
+    "Law",
+  ];
+
   const [showSubjectModal, setShowSubjectModal] = useState(false);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -39,10 +63,11 @@ function SignUp() {
       setConfirmationPopup(false);
     }, 2000);
   };
+  const Navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    Navigate("/login");
   };
 
   const handleChange = (event) => {
@@ -67,19 +92,33 @@ function SignUp() {
     toggleSubjectModal();
   };
 
+  const handleLoginClick = () => {
+    Navigate("/login");
+  };
+
   return (
     <>
       {/* <Outline items={items} navBarItems={navBarItems} /> */}
-      <div className="min-h-screen bg-gray-50">
-        <div className="flex flex-col md:flex-row">
-          <div
-            className="bg-cover bg-center w-full md:w-1/2 h-64 md:h-auto opacity-90"
-            style={{ backgroundImage: `url(${SignUpImage})` }}
-          ></div>
-          <div className="min-h-screen flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="bg-gray-200 py-8 px-4 sm:px-6 lg:px-8">
+      <div
+        className="min-h-screen  bg-cover bg-center justify-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <div className="h-screen ">
+          <div className="min-h-screen items-center w-1/2 justify-center  my-auto flex flex-col">
+            <div className="flex items-center justify-center">
+              <img src={logoPic} alt="Logo" className="w-16 h-16 mr-2" />
+              <h1 className="text-3xl font-semibold text-pink-800">
+                BrightHorizon
+              </h1>
+            </div>
+            <div
+              className=" py-8 px-4 sm:px-6 lg:px-8"
+              style={{
+                background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+              }}
+            >
               <div className="max-w-md w-full space-y-8 ">
-                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
                   Sign Up
                 </h2>
                 {/* Role selection */}
@@ -153,7 +192,7 @@ function SignUp() {
                           type="number"
                           autoComplete="max-pro-bono-classes"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Max Pro Bono Classes"
                           value={formData.maxProBonoClasses}
                           onChange={handleChange}
@@ -169,7 +208,7 @@ function SignUp() {
                           type="number"
                           autoComplete="max-private-students"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Max Private Students"
                           value={formData.maxPrivateStudents}
                           onChange={handleChange}
@@ -186,7 +225,7 @@ function SignUp() {
                           htmlFor="organizationAddress"
                           className="sr-only"
                         >
-                          Organizatin Address
+                          Organization Address
                         </label>
                         <input
                           id="organizationAddress"
@@ -194,7 +233,7 @@ function SignUp() {
                           type="text"
                           autoComplete="Organization-address"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Oranization Address"
                           value={formData.organizationAddress}
                           onChange={handleChange}
@@ -210,7 +249,7 @@ function SignUp() {
                           type="text"
                           autoComplete="Organization-area"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Organization Area"
                           value={formData.organizationArea}
                           onChange={handleChange}
@@ -226,7 +265,7 @@ function SignUp() {
                           type="text"
                           autoComplete="Organization-governorate"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Organization Governorate"
                           value={formData.organizationGovernorate}
                           onChange={handleChange}
@@ -253,7 +292,7 @@ function SignUp() {
                           type="text"
                           autoComplete="clinic-address"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Clinic Address"
                           value={formData.clinicAddress}
                           onChange={handleChange}
@@ -269,7 +308,7 @@ function SignUp() {
                           type="text"
                           autoComplete="clinic-area"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Clinic Area"
                           value={formData.clinicArea}
                           onChange={handleChange}
@@ -285,7 +324,7 @@ function SignUp() {
                           type="text"
                           autoComplete="clinic-governorate"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Clinic Governorate"
                           value={formData.clinicGovernorate}
                           onChange={handleChange}
@@ -301,7 +340,7 @@ function SignUp() {
                           type="text"
                           autoComplete="specialty"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Specialty"
                           value={formData.specialty}
                           onChange={handleChange}
@@ -317,7 +356,7 @@ function SignUp() {
                           type="number"
                           autoComplete="max-cases"
                           required
-                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                           placeholder="Max Cases"
                           value={formData.maxCases}
                           onChange={handleChange}
@@ -342,7 +381,7 @@ function SignUp() {
                         type="text"
                         autoComplete="given-name"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="First Name"
                         value={formData.firstName}
                         onChange={handleChange}
@@ -358,7 +397,7 @@ function SignUp() {
                         type="text"
                         autoComplete="family-name"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Last Name"
                         value={formData.lastName}
                         onChange={handleChange}
@@ -371,7 +410,7 @@ function SignUp() {
                       <select
                         id="gender"
                         name="gender"
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         value={formData.gender}
                         onChange={handleChange}
                       >
@@ -391,7 +430,7 @@ function SignUp() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Email address"
                         value={formData.email}
                         onChange={handleChange}
@@ -407,7 +446,7 @@ function SignUp() {
                         type="text"
                         autoComplete="tel"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Contact Number"
                         value={formData.contactNumber}
                         onChange={handleChange}
@@ -423,7 +462,7 @@ function SignUp() {
                         type="password"
                         autoComplete="new-password"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Password"
                         value={formData.password}
                         onChange={handleChange}
@@ -439,7 +478,7 @@ function SignUp() {
                         type="password"
                         autoComplete="new-password"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Confirm Password"
                         value={formData.confirmPassword}
                         onChange={handleChange}
@@ -455,7 +494,7 @@ function SignUp() {
                         type="text"
                         autoComplete="street-address"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Address"
                         value={formData.address}
                         onChange={handleChange}
@@ -471,7 +510,7 @@ function SignUp() {
                         type="text"
                         autoComplete="address-level2"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Area"
                         value={formData.area}
                         onChange={handleChange}
@@ -487,7 +526,7 @@ function SignUp() {
                         type="text"
                         autoComplete="address-level1"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Governorate"
                         value={formData.governorate}
                         onChange={handleChange}
@@ -497,14 +536,25 @@ function SignUp() {
                   <div>
                     <button
                       type="submit"
+                      onSubmit={handleSubmit}
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Sign Up
                     </button>
                   </div>
                 </form>
+                <button
+                  onClick={handleLoginClick}
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Already have an account? Login
+                </button>
               </div>
             </div>
+            <footer className="text-center text-gray-500 text-sm py-4">
+              All rights reserved &copy; {new Date().getFullYear()}{" "}
+              BrightHorizon
+            </footer>
           </div>
         </div>
         {/* Subject selection modal */}
@@ -514,8 +564,8 @@ function SignUp() {
               <h3 className="text-lg font-semibold mb-4 items-center">
                 Select Subjects
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {["Math", "Science", "English", "History"].map((subject) => (
+              <div className="grid grid-cols-3 gap-4">
+                {teacherSubjects.map((subject) => (
                   <div
                     key={subject}
                     className={`border p-4 rounded-md cursor-pointer ${

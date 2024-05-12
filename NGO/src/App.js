@@ -11,6 +11,7 @@ import Home from "./Donor/Pages/Home";
 import RequestTable from "./Donor/Pages/RequestsTable";
 import TeacherDonor from "./Donor/Pages/teacherDonor";
 import DoctorRequests from "./Donor/Pages/doctorDonor";
+import Changepass from "./Organization/pages/changepass";
 
 import OrgHome from "./Organization/pages/OrgHome";
 import DonorInfo from "./Organization/pages/DonorInfo";
@@ -27,16 +28,15 @@ import Loc from "./Organization/pages/locationpage";
 import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
 
-
-import Donors from './Admin/Donors';
-import Organization1 from './Admin/Organization';
-import OrganizationRequests from './Admin/OrganizationRequests';
-import DonorRequests from './Admin/DonorRequests';
-import Admin from './Admin/Admin'
-import Changepassword from './Admin/Changepassword';
-import LandingPage from './Admin/LandingPage'
+import Settings from "./Admin/Settings";
+import Donors from "./Admin/Donors";
+import Organization1 from "./Admin/Organization";
+import OrganizationRequests from "./Admin/OrganizationRequests";
+import DonorRequests from "./Admin/DonorRequests";
+import Admin from "./Admin/Admin";
+import Changepassword from "./Admin/Changepassword";
+import LandingPage from "./Admin/LandingPage";
 import Home1 from "./Admin/Home";
-
 
 import TeacherBase from "./Donor/Teacher";
 import TeacherRequests from "./Donor/Pages/teacherDonor";
@@ -49,6 +49,9 @@ import TeacherTrack from "./Donor/Pages/TeacherTrack";
 import DoctorTrack from "./Donor/Pages/DoctorTrack";
 import DonorNotifications from "./Donor/Pages/NotificationsPage";
 import OrgTable from "./Donor/Pages/OrganizationTable";
+import TeacherHome from "./Donor/Pages/TeacherHome";
+import DoctorHome from "./Donor/Pages/DoctorHome";
+import ChangepassDonor from "./Donor/Pages/changepass";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -56,7 +59,7 @@ function App() {
   return (
     <div>
       <Routes>
-      <Route path='/' element={<LandingPage/>}/>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/organization" element={<Organization />}>
           <Route path="" element={<OrgHome />} />
           <Route path="donors" element={<DonorInfo />} />
@@ -66,6 +69,7 @@ function App() {
           <Route path="changeinfo" element={<ProfilePage />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="delivery" element={<DeliverySchedule />} />
+          <Route path="changepassword" element={<Changepass />} />
         </Route>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
@@ -85,6 +89,7 @@ function App() {
           <Route path="DonorTrack" element={<DonorTrack />} />
           <Route path="notifications" element={<DonorNotifications />} />
           <Route path="OrgTable" element={<OrgTable />} />
+          <Route path="changepassword" element={<ChangepassDonor />} />
           <Route
             path="RegularRequests"
             element={
@@ -115,7 +120,7 @@ function App() {
           }
         >
           <Route>
-            <Route path="" element={<Home />} />
+            <Route path="" element={<TeacherHome />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="TeacherPickup" element={<TeacherPickup />} />
             <Route path="TeacherTrack" element={<TeacherTrack />} />
@@ -131,6 +136,7 @@ function App() {
               }
             />
             <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
 
@@ -144,7 +150,7 @@ function App() {
           }
         >
           <Route>
-            <Route path="" element={<Home />} />
+            <Route path="" element={<DoctorHome />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="DoctorPickup" element={<DoctorPickup />} />
             <Route path="DoctorTrack" element={<DoctorTrack />} />
@@ -160,6 +166,7 @@ function App() {
               }
             />
             <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
 
@@ -173,7 +180,7 @@ function App() {
             element={<OrganizationRequests />}
           />
           <Route path="DonorRequests" element={<DonorRequests />} />
-          <Route path="Changepassword" element={<Changepassword/>} />
+          <Route path="Changepassword" element={<Changepassword />} />
         </Route>
       </Routes>
     </div>
