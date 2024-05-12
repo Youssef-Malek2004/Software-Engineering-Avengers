@@ -74,6 +74,12 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
       quantity: 3,
       selected: false,
     },
+    {
+      id: "teachingposts",
+      type: "Teaching posts",
+      quantity: 4,
+      selected: false,
+    },
   ]);
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -133,7 +139,7 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
       case "Blood":
         return <FaIcons.FaTint className="text-xl" />;
       default:
-        return null;
+        return <FaIcons.FaChalkboardTeacher className="text-xl" />;
     }
   };
 

@@ -77,6 +77,12 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
       quantity: 3,
       selected: false,
     },
+    {
+      id: "medicalcases",
+      type: "Medical Cases",
+      quantity: 3,
+      selected: false,
+    },
   ]);
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -136,7 +142,7 @@ const DoctorRequests = ({ donationCategory, setDonationCategory }) => {
       case "Blood":
         return <FaIcons.FaTint className="text-xl" />;
       default:
-        return null;
+        return <FaIcons.FaBriefcaseMedical className="text-xl" />;
     }
   };
 

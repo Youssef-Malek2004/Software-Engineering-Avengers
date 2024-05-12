@@ -576,7 +576,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-between mb-4">
         {/* Filter button */}
         <button
-          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-purple-700  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={toggleSelectFilter}
         >
           Filter
@@ -585,7 +585,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <div className="flex justify-center flex-grow">
             <button
               className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
-                ageFilter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                ageFilter === "All"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setAgeFilter("All")}
             >
@@ -594,7 +596,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 ageFilter === "Child"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setAgeFilter("Child")}
@@ -604,7 +606,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 ageFilter === "Teen"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setAgeFilter("Teen")}
@@ -614,7 +616,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 ageFilter === "Adult"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setAgeFilter("Adult")}
@@ -628,7 +630,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "All"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("All")}
@@ -638,7 +640,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Male"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Male")}
@@ -648,7 +650,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Female"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Female")}
@@ -658,7 +660,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Unisex"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Unisex")}
@@ -671,7 +673,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <div className="flex justify-center flex-grow">
             <button
               className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "All"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("All")}
             >
@@ -679,7 +683,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Spring" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Spring"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Spring")}
             >
@@ -687,7 +693,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Summer" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Summer"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Summer")}
             >
@@ -695,7 +703,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Winter" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Winter"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Winter")}
             >
@@ -703,7 +713,9 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Fall" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Fall"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Fall")}
             >
@@ -783,7 +795,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               Organization: {selectedItem.organization}
             </p>
             <button
-              className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+              className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
               onClick={() => setDonationPopup(true)}
             >
               Donate
@@ -845,7 +857,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -916,7 +928,9 @@ export const SchoolSuppliesTable = ({
       <div className="flex justify-center mb-4">
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "All"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -924,7 +938,9 @@ export const SchoolSuppliesTable = ({
         </button>
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Book" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "Book"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("Book")}
         >
@@ -932,7 +948,9 @@ export const SchoolSuppliesTable = ({
         </button>
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "Stationary" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "Stationary"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("Stationary")}
         >
@@ -1031,7 +1049,7 @@ export const SchoolSuppliesTable = ({
               )}
               <div className="flex justify-end">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1063,7 +1081,7 @@ export const SchoolSuppliesTable = ({
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1165,7 +1183,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-between mb-4">
         {/* Filter button */}
         <button
-          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="ml-2 justify-left py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-purple-700  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={toggleSelectFilter}
         >
           Filter
@@ -1188,7 +1206,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               onChange={(e) => setMaxAgeFilter(parseInt(e.target.value))}
             />
             <button
-              className="mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 text-white"
+              className="mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 hover:bg-purple-700  text-white"
               onClick={() => applyAgeFilter()}
             >
               Apply
@@ -1200,7 +1218,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`ml-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "All"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("All")}
@@ -1210,7 +1228,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Male"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Male")}
@@ -1220,7 +1238,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Female"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Female")}
@@ -1230,7 +1248,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 genderFilter === "Unisex"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setGenderFilter("Unisex")}
@@ -1246,7 +1264,9 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <div className="flex justify-center">
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "All"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("All")}
             >
@@ -1255,7 +1275,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 filter === "Board Games"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setFilter("Board Games")}
@@ -1265,7 +1285,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 filter === "Stuffed Toys"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setFilter("Stuffed Toys")}
@@ -1274,7 +1294,9 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Dolls" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Dolls"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Dolls")}
             >
@@ -1282,7 +1304,9 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Sports" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Sports"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Sports")}
             >
@@ -1290,7 +1314,9 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             </button>
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-                filter === "Cars" ? "bg-indigo-600 text-white" : "bg-gray-200"
+                filter === "Cars"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                  : "bg-gray-200"
               }`}
               onClick={() => setFilter("Cars")}
             >
@@ -1299,7 +1325,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             <button
               className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
                 filter === "Outdoor"
-                  ? "bg-indigo-600 text-white"
+                  ? "bg-indigo-600 hover:bg-purple-700  text-white"
                   : "bg-gray-200"
               }`}
               onClick={() => setFilter("Outdoor")}
@@ -1390,7 +1416,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               />
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1454,7 +1480,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1524,7 +1550,9 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-center mb-4">
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "All"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -1533,7 +1561,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
             filter === "Fruits and Vegetables"
-              ? "bg-indigo-600 text-white"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
               : "bg-gray-200"
           }`}
           onClick={() => setFilter("Fruits and Vegetables")}
@@ -1543,7 +1571,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
             filter === "Canned Foods"
-              ? "bg-indigo-600 text-white"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
               : "bg-gray-200"
           }`}
           onClick={() => setFilter("Canned Foods")}
@@ -1553,7 +1581,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
             filter === "Fresh Meals"
-              ? "bg-indigo-600 text-white"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
               : "bg-gray-200"
           }`}
           onClick={() => setFilter("Fresh Meals")}
@@ -1563,7 +1591,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
             filter === "Baked Goods"
-              ? "bg-indigo-600 text-white"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
               : "bg-gray-200"
           }`}
           onClick={() => setFilter("Baked Goods")}
@@ -1636,7 +1664,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               </p>
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1668,7 +1696,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1766,7 +1794,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           />
           <button
             type="submit"
-            className="px-4 py-2 bg-indigo-600 text-white rounded-md focus:outline-none"
+            className="px-4 py-2 bg-indigo-600 hover:bg-purple-700  text-white rounded-md focus:outline-none"
           >
             Search
           </button>
@@ -1779,7 +1807,9 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           </button>
           <button
             className={`mx-2 px-4 py-2 rounded-md focus:outline-none ml-20 ${
-              filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+              filter === "All"
+                ? "bg-indigo-600 hover:bg-purple-700  text-white"
+                : "bg-gray-200"
             }`}
             onClick={() => setFilter("All")}
           >
@@ -1788,7 +1818,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <button
             className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
               filter === "Medical Device"
-                ? "bg-indigo-600 text-white"
+                ? "bg-indigo-600 hover:bg-purple-700  text-white"
                 : "bg-gray-200"
             }`}
             onClick={() => setFilter("Medical Device")}
@@ -1798,7 +1828,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <button
             className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
               filter === "Medical Equipment"
-                ? "bg-indigo-600 text-white"
+                ? "bg-indigo-600 hover:bg-purple-700  text-white"
                 : "bg-gray-200"
             }`}
             onClick={() => setFilter("Medical Equipment")}
@@ -1808,7 +1838,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
           <button
             className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
               filter === "Medication"
-                ? "bg-indigo-600 text-white"
+                ? "bg-indigo-600 hover:bg-purple-700  text-white"
                 : "bg-gray-200"
             }`}
             onClick={() => setFilter("Medication")}
@@ -1898,7 +1928,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               />
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1930,7 +1960,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -2008,7 +2038,9 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-center mb-4">
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "All"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -2125,7 +2157,7 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               </p>
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -2157,7 +2189,7 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -2229,7 +2261,9 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-center mb-4">
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "All"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -2342,7 +2376,7 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
               ></Map>
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={handleDonateConfirm}
                 >
                   Fullfill
@@ -2420,7 +2454,9 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
       <div className="flex justify-center mb-4">
         <button
           className={`mx-2 px-4 py-2 rounded-md focus:outline-none ${
-            filter === "All" ? "bg-indigo-600 text-white" : "bg-gray-200"
+            filter === "All"
+              ? "bg-indigo-600 hover:bg-purple-700  text-white"
+              : "bg-gray-200"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -2578,7 +2614,7 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
               ></Map>
               <div className="flex justify-center">
                 <button
-                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className="  text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
                   onClick={handleDonateConfirm}
                 >
                   Fullfill

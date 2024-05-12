@@ -85,6 +85,7 @@ function App() {
           }
         >
           <Route path="" element={<Home />} />
+          <Route path="DonationRequests" element={<DonationRequests />} />\
           <Route path="DonorPickup" element={<DonorPickup />} />
           <Route path="DonorTrack" element={<DonorTrack />} />
           <Route path="notifications" element={<DonorNotifications />} />
@@ -121,6 +122,7 @@ function App() {
         >
           <Route>
             <Route path="" element={<TeacherHome />} />
+            <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="TeacherPickup" element={<TeacherPickup />} />
             <Route path="TeacherTrack" element={<TeacherTrack />} />
             <Route path="notifications" element={<DonorNotifications />} />
@@ -150,6 +152,7 @@ function App() {
         >
           <Route>
             <Route path="" element={<DoctorHome />} />
+            <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="DoctorPickup" element={<DoctorPickup />} />
             <Route path="DoctorTrack" element={<DoctorTrack />} />
             <Route path="notifications" element={<DonorNotifications />} />

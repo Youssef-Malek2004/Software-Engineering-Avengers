@@ -13,6 +13,7 @@ import * as FaIcons from "react-icons/fa";
 import ReactTooltip from "react-tooltip";
 import Changepassword from "../Admin/Changepassword";
 import { blueGrey } from "@mui/material/colors";
+import NGOFooter from "./components/Footer";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -128,6 +129,7 @@ const OutlineNoSide = ({ items, navBarItems }) => {
         <Content style={{ overflow: "initial" }}>
           <Outlet style={{}} />
         </Content>
+        <NGOFooter />
       </Layout>
     </Layout>
   );
