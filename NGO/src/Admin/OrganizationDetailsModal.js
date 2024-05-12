@@ -1,14 +1,13 @@
 import React from 'react';
 
 const OrganizationDetailsModal = ({ visible, onCancel, organization }) => {
-  // Generate dummy contact details
+
   const contactDetails = {
     email: 'organization@example.com',
     phone: '123-456-7890',
     address: '123 Main Street, City, Country',
   };
 
-  // Generate dummy Google Maps location
   const googleMapsLocation = {
     latitude: 40.7128,
     longitude: -74.006,

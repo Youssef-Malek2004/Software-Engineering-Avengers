@@ -26,9 +26,8 @@ import Loc from "./Organization/pages/locationpage";
 
 import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
-import Navbar from "./Admin/Navbar";
 
-import Settings from './Admin/Settings';
+
 import Donors from './Admin/Donors';
 import Organization1 from './Admin/Organization';
 import OrganizationRequests from './Admin/OrganizationRequests';
@@ -166,7 +165,7 @@ function App() {
 
         <Route path="/admin" element={<Admin />}>
           <Route path="Home" element={<Home1 />} />
-          <Route path="Settings" element={<Settings />} />
+    
           <Route path="Donors" element={<Donors />} />
           <Route path="Organization" element={<Organization1 />} />
           <Route

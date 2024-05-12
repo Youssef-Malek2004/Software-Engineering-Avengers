@@ -57,7 +57,7 @@ const Organization = () => {
           <option value="Area 1">Area 1</option>
           <option value="Area 2">Area 2</option>
           <option value="Area 3">Area 3</option>
-          {/* Add more options for areas as needed */}
+      
         </select>
         <select
           value={filters.governorate}
@@ -68,7 +68,7 @@ const Organization = () => {
           <option value="Governorate 1">Governorate 1</option>
           <option value="Governorate 2">Governorate 2</option>
           <option value="Governorate 3">Governorate 3</option>
-          {/* Add more options for governorates as needed */}
+ 
         </select>
         <select
           value={filters.type}
@@ -79,7 +79,7 @@ const Organization = () => {
           <option value="Type 1">Type 1</option>
           <option value="Type 2">Type 2</option>
           <option value="Type 3">Type 3</option>
-          {/* Add more options for types as needed */}
+
         </select>
       </div>
       <table className="w-full table-auto bg-white text-black-900 border-collapse border border-purple-900">

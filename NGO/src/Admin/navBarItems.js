@@ -5,7 +5,7 @@ export const navBarItems = [
     },
     {
       name: "Logout",
-      to: "/Donor/Logout",
+      to: "/login",
     },
   ];
   
