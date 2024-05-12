@@ -52,6 +52,7 @@ import DonorNotifications from "./Donor/Pages/NotificationsPage";
 import OrgTable from "./Donor/Pages/OrganizationTable";
 import TeacherHome from "./Donor/Pages/TeacherHome";
 import DoctorHome from "./Donor/Pages/DoctorHome";
+import ChangepassDonor from "./Donor/Pages/changepass";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -89,6 +90,7 @@ function App() {
           <Route path="DonorTrack" element={<DonorTrack />} />
           <Route path="notifications" element={<DonorNotifications />} />
           <Route path="OrgTable" element={<OrgTable />} />
+          <Route path="changepassword" element={<ChangepassDonor />} />
           <Route
             path="RegularRequests"
             element={
@@ -135,6 +137,7 @@ function App() {
               }
             />
             <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
 
@@ -164,6 +167,7 @@ function App() {
               }
             />
             <Route path="changeinfo" element={<ChangeInfo />}></Route>
+            <Route path="changepassword" element={<ChangepassDonor />} />
           </Route>
         </Route>
 

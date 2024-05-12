@@ -1,7 +1,7 @@
 export const outlineNavBarItem = [
   {
     name: "Change Password",
-    to: "/admin/changePassword",
+    to: "changepassword",
   },
 
   {
