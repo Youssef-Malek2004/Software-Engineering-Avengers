@@ -715,23 +715,27 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
 
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Type
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Age
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Gender
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Season
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -779,7 +783,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               Organization: {selectedItem.organization}
             </p>
             <button
-              className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+              className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
               onClick={() => setDonationPopup(true)}
             >
               Donate
@@ -841,7 +845,7 @@ export const ClothesTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -937,17 +941,21 @@ export const SchoolSuppliesTable = ({
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Type
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Item
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -1023,7 +1031,7 @@ export const SchoolSuppliesTable = ({
               )}
               <div className="flex justify-end">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1055,7 +1063,7 @@ export const SchoolSuppliesTable = ({
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1303,23 +1311,27 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Item
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Age
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Gender
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Category
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -1378,7 +1390,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               />
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1442,7 +1454,7 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1561,17 +1573,21 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Category
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Item
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -1620,7 +1636,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               </p>
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1652,7 +1668,7 @@ export const FoodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -1803,20 +1819,24 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Type
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Item
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Use
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -1878,7 +1898,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               />
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -1910,7 +1930,7 @@ export const MedicalTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -2018,20 +2038,24 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Blood Type
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Hospital Name
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Governorate
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Area
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -2101,7 +2125,7 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               </p>
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={() => setDonationPopup(true)}
                 >
                   Donate
@@ -2133,7 +2157,7 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
             />
             <div className="flex justify-center">
               <button
-                className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                 onClick={handleDonateConfirm}
               >
                 Submit Donation Post
@@ -2235,20 +2259,24 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Subjects
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Students
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Governorate
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Area
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -2314,7 +2342,7 @@ export const TeachingPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
               ></Map>
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={handleDonateConfirm}
                 >
                   Fullfill
@@ -2429,29 +2457,33 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
       </div>
       <table className="w-full divide-y divide-purple-600">
         <thead>
-          <tr>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+          <tr
+            style={{
+              background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+            }}
+          >
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Patient Name
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Gender
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Specialty
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Address
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Governate
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Area
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               Organization
             </th>
-            <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+            <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
               View Details
             </th>
           </tr>
@@ -2546,7 +2578,7 @@ export const MedicalPosts = ({ items, cartItemsState, setCartItemsFunc }) => {
               ></Map>
               <div className="flex justify-center">
                 <button
-                  className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
+                  className=" text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none mr-2"
                   onClick={handleDonateConfirm}
                 >
                   Fullfill

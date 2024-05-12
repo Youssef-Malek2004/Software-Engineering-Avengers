@@ -88,17 +88,21 @@ const DonorPickup = () => {
         <h2 className="text-xl font-bold mb-4 text-center">Donation Items</h2>
         <table className="w-full divide-y divide-purple-600">
           <thead>
-            <tr>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+            <tr
+              style={{
+                background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+              }}
+            >
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Type
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Quantity
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 More Details
               </th>
-              <th className="px-6 py-3 bg-purple-600 text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3  text-center text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                 Schedule Pickup
               </th>
             </tr>

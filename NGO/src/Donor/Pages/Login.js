@@ -21,7 +21,7 @@ function LoginPage() {
       formData.usernameOrEmail === "org@hotmail.com" &&
       formData.password === "org123"
     ) {
-      navigate("/organization/orghome");
+      navigate("/organization");
     } else if (
       formData.usernameOrEmail === "donor@hotmail.com" &&
       formData.password === "donor123"

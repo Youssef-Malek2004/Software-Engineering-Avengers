@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import PopOver from "./components/PopOver";
-import Logo from "./assets/logo.jpg";
+import Logo from "./assets/Logo-Image-White-NoBackGround.png";
 
 //import CustomFooter from "./Components/Footer";
 //import NotificationList from "./Components/NotificationList";
@@ -21,7 +21,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const Outline = ({ items, navBarItems, notifications }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-  const backgroundColor = "#1A0235  ";
+  const backgroundColor = "#1A0235";
   const [selectedKey, setSelectedKey] = useState("0");
   const location = useLocation();
 
@@ -86,16 +86,22 @@ const Outline = ({ items, navBarItems, notifications }) => {
           left: 0,
           top: 0,
           bottom: 0,
-          backgroundColor: backgroundColor,
+          background: "linear-gradient(to bottom, #9B1B59, #6b2d98)",
         }}
       >
-        <div className="demo-logo-vertical">
+        <div style={{ display: "flex", alignItems: "center" }}>
           <img
             src={Logo}
             alt="Logo"
-            style={{ width: "100px", padding: "16px", margin: "0 auto" }}
+            style={{
+              width: "100px",
+              padding: "16px",
+              margin: "0 auto",
+              filter: "invert(100%)",
+            }}
           />
         </div>
+
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
@@ -107,7 +113,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
             icon: createElement(item.icon.type),
           }))}
           onClick={onMenuClick}
-          style={{ backgroundColor: backgroundColor, color: "red" }}
+          style={{ backgroundColor: "rgba(26, 2, 53, 0)", color: "red" }}
         />
       </Sider>
 
