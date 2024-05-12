@@ -4,7 +4,7 @@ import SignUpImage from "../../shared/assets/background2.png";
 import Footer from "../../shared/components/Footer";
 import NGOFooter from "../../shared/components/Footer";
 
-const Home = () => {
+const TeacherHome = () => {
   const [cards] = useState([
     { title: "Card-1", text: "hello" },
     { title: "Card-2", text: "hello" },
@@ -44,21 +44,21 @@ const Home = () => {
       style={{ backgroundImage: `url(${SignUpImage})` }}
     >
       <div className="max-w-3xl px-8 my-auto justify-center items-center  ">
-        <h1 className="text-4xl font-bold mb-4">Welcome, Donor!</h1>
+        <h1 className="text-4xl font-bold mb-4">Welcome, Teacher!</h1>
         <main className="text-left text-orange">
           <p className="text-lg mb-6">
             Thank you for considering BrightHorizon for your donation. Your
             generosity helps us make a positive impact in the world.
           </p>
-          <p className="text-lg mb-6 ">
+          <p className="text-lg mb-6">
             By donating to BrightHorizon, you're contributing to projects that
             promote peace, prosperity, and equality. Together, we can create a
             brighter future for all.
           </p>
           <p className="text-lg mb-6">
             Check out the{" "}
-            <Link to="/Donor/RegularRequests" className="underline">
-              Donation Requests
+            <Link to="/Teacher/TeacherRequests" className="underline">
+              Donation Requests including the Teaching posts
             </Link>{" "}
             to see how you can make a difference.
           </p>
@@ -71,4 +71,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TeacherHome;

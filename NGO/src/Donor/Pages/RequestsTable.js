@@ -404,7 +404,7 @@ const RequestsTable = ({ donationCategory, setDonationCategory }) => {
           </div>
         )}
       </div>
-      <div className="fixed bottom-4 right-4  p-4 rounded-full text-white cursor-pointer flex items-center">
+      <div className="fixed bottom-4 right-4 bg-purple-600 p-4 rounded-full text-white cursor-pointer flex items-center">
         <FaIcons.FaCartPlus className="text-xl mr-2" />
         <button
           onClick={() => setShowCart(!showCart)}

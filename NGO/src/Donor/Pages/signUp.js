@@ -3,6 +3,7 @@ import SignUpImage from "../../shared/assets/volunteerSignUp.jpg";
 import MapGet from "../Components/MapMarkerGet";
 import * as FaIcons from "react-icons/fa";
 import { faI } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -39,10 +40,11 @@ function SignUp() {
       setConfirmationPopup(false);
     }, 2000);
   };
+  const Navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    Navigate("/login");
   };
 
   const handleChange = (event) => {
@@ -186,7 +188,7 @@ function SignUp() {
                           htmlFor="organizationAddress"
                           className="sr-only"
                         >
-                          Organizatin Address
+                          Organization Address
                         </label>
                         <input
                           id="organizationAddress"
@@ -497,6 +499,7 @@ function SignUp() {
                   <div>
                     <button
                       type="submit"
+                      onSubmit={handleSubmit}
                       className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Sign Up

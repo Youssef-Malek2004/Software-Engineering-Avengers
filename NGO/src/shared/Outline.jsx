@@ -16,6 +16,7 @@ import Logo from "./assets/Logo-Image-White-NoBackGround.png";
 import { Badge } from "@mui/joy";
 import { dark } from "@mui/material/styles/createPalette";
 import NotificationList from "../Organization/components/NotificationList";
+import NGOFooter from "./components/Footer";
 const { Header, Content, Footer, Sider } = Layout;
 
 const Outline = ({ items, navBarItems, notifications }) => {
@@ -190,6 +191,7 @@ const Outline = ({ items, navBarItems, notifications }) => {
         {/* <Footer style={{ width: '100%', textAlign: 'center' }}>
           <CustomFooter/>
         </Footer> */}
+        <NGOFooter />
       </Layout>
     </Layout>
   );

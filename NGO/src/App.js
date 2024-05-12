@@ -49,6 +49,8 @@ import TeacherTrack from "./Donor/Pages/TeacherTrack";
 import DoctorTrack from "./Donor/Pages/DoctorTrack";
 import DonorNotifications from "./Donor/Pages/NotificationsPage";
 import OrgTable from "./Donor/Pages/OrganizationTable";
+import TeacherHome from "./Donor/Pages/TeacherHome";
+import DoctorHome from "./Donor/Pages/DoctorHome";
 
 function App() {
   const [donationCategory, setDonationCategory] = useState("showdetailed");
@@ -115,7 +117,7 @@ function App() {
           }
         >
           <Route>
-            <Route path="" element={<Home />} />
+            <Route path="" element={<TeacherHome />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="TeacherPickup" element={<TeacherPickup />} />
             <Route path="TeacherTrack" element={<TeacherTrack />} />
@@ -144,7 +146,7 @@ function App() {
           }
         >
           <Route>
-            <Route path="" element={<Home />} />
+            <Route path="" element={<DoctorHome />} />
             <Route path="DonationRequests" element={<DonationRequests />} />
             <Route path="DoctorPickup" element={<DoctorPickup />} />
             <Route path="DoctorTrack" element={<DoctorTrack />} />

@@ -14,7 +14,7 @@ const LandingPage = () => {
           {/* <h1 className="text-4xl font-bold text-black">Logo</h1> */}
         </header>
         <main className="text-left text-orange">
-          <h2 className="text-4xl mb-5 flex items-center text-pink-800">
+          <h2 className="text-4xl mb-5 flex items-center font-bold text-pink-800">
             <img
               src={require(`../shared/assets/${logoPic}`)}
               style={{ maxWidth: "50px", maxHeight: "50px" }}
