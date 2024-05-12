@@ -28,7 +28,7 @@ import Loc from "./Organization/pages/locationpage";
 import LoginPage from "./Donor/Pages/Login";
 import SignUp from "./Donor/Pages/signUp";
 
-import Settings from "./Admin/Settings";
+
 import Donors from "./Admin/Donors";
 import Organization1 from "./Admin/Organization";
 import OrganizationRequests from "./Admin/OrganizationRequests";
