@@ -5,6 +5,9 @@ import OrganizationDetailsModal from "./OrganizationDetailsModal";
 
 const OrgTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryArea, setSearchQueryArea] = useState("");
+  const [searchQueryHospital, setSearchQueryHospital] = useState("");
+  const [searchQueryGovernate, setSearchQueryGovernate] = useState("");
   const [filters, setFilters] = useState({
     area: "",
     governorate: "",
@@ -85,13 +88,21 @@ const OrgTable = () => {
   const filteredOrganizations = organizations.filter((org) => {
     const matchName = org.name
       .toLowerCase()
+      .includes(searchQueryHospital.toLowerCase());
+
+    const matchArea = org.area
+      .toLowerCase()
+      .includes(searchQueryArea.toLowerCase());
+
+    const matchGovernate = org.governorate
+      .toLowerCase()
+      .includes(searchQueryGovernate.toLowerCase());
+
+    const matchType = org.type
+      .toLowerCase()
       .includes(searchQuery.toLowerCase());
-    const matchArea = filters.area ? org.area === filters.area : true;
-    const matchGovernorate = filters.governorate
-      ? org.governorate === filters.governorate
-      : true;
-    const matchType = filters.type ? org.type === filters.type : true;
-    return matchName && matchArea && matchGovernorate && matchType;
+
+    return matchName && matchArea && matchGovernate && matchType;
   });
 
   return (
@@ -99,48 +110,32 @@ const OrgTable = () => {
       <div className="my-4">
         <input
           type="text"
+          value={searchQueryHospital}
+          onChange={(e) => setSearchQueryHospital(e.target.value)}
+          placeholder="Search by Organization"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryArea}
+          onChange={(e) => setSearchQueryArea(e.target.value)}
+          placeholder="Search by Area"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
+          value={searchQueryGovernate}
+          onChange={(e) => setSearchQueryGovernate(e.target.value)}
+          placeholder="Search by Governate"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
+        />
+        <input
+          type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search by organization name"
-          className="border rounded px-2 py-1"
+          placeholder="Search by Type"
+          className="mr-2 px-4 py-2 rounded-md focus:outline-none"
         />
-      </div>
-      <div className="flex space-x-4 mb-4">
-        <select
-          value={filters.area}
-          onChange={(e) => setFilters({ ...filters, area: e.target.value })}
-          className="border rounded px-2 py-1"
-        >
-          <option value="">All Areas</option>
-          <option value="Area 1">Area 1</option>
-          <option value="Area 2">Area 2</option>
-          <option value="Area 3">Area 3</option>
-          {/* Add more options for areas as needed */}
-        </select>
-        <select
-          value={filters.governorate}
-          onChange={(e) =>
-            setFilters({ ...filters, governorate: e.target.value })
-          }
-          className="border rounded px-2 py-1"
-        >
-          <option value="">All Governorates</option>
-          <option value="Governorate 1">Governorate 1</option>
-          <option value="Governorate 2">Governorate 2</option>
-          <option value="Governorate 3">Governorate 3</option>
-          {/* Add more options for governorates as needed */}
-        </select>
-        <select
-          value={filters.type}
-          onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-          className="border rounded px-2 py-1"
-        >
-          <option value="">All Types</option>
-          <option value="Type 1">Type 1</option>
-          <option value="Type 2">Type 2</option>
-          <option value="Type 3">Type 3</option>
-          {/* Add more options for types as needed */}
-        </select>
       </div>
       <div className="flex justify-center items-center w-full">
         <div className="w-11/12 h-full">

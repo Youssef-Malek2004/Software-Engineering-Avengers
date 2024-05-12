@@ -1,8 +1,10 @@
 import React from "react";
 import backgroundImage from "../shared/assets/background2.png";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const logoPic = "NGO-Logo-Small.png";
+  const Navigate = useNavigate();
 
   return (
     <div
@@ -35,7 +37,13 @@ const LandingPage = () => {
             towards a more equitable and compassionate world.
           </p>
           <div className="flex justify-end">
-            <button className="btn bg-purple-600 hover:bg-white-500 text-white py-2 px-3  rounded-full font-semibold text-lg">
+            <button
+              className="btn bg-purple-600 hover:bg-white-500 text-white py-2 px-3  rounded-full font-semibold text-lg"
+              onClick={() => Navigate("/login")}
+              style={{
+                background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+              }}
+            >
               Join Us
             </button>
           </div>
