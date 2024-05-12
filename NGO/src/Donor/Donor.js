@@ -1,12 +1,12 @@
 import { items } from "./sidebarItems";
 import Outline from "../shared/Outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import navBarItems from "./navBarItems"; // Correct import
 import { outlineNavBarItem } from "./Pages/outlineNavBarItems";
+import { useLocation } from "react-router-dom";
 
 const DonorBase = ({ donationCategory, setDonationCategory }) => {
-  // const [navBarItems, setNavBarItemsFunc] = useState([]);
-
+  const location = useLocation();
   const dummyNotifications = [
     {
       id: 1,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Map from "../Components/MapComponent";
+import textBook from "../../shared/assets/textbook-Image.jpg";
 
 export const clothes = [
   {
@@ -134,7 +135,7 @@ export const SchoolSupplies = [
     language: "English",
     edition: "2nd Edition",
     summary: "The Rules of Differentiation and Integration.",
-    picture: "math_textbook.jpg",
+    picture: "textbook-Image.jgp",
     quantityInNeed: 30,
     organization: "School D",
   },
@@ -146,7 +147,7 @@ export const SchoolSupplies = [
     language: "English",
     edition: "4rd Edition",
     summary: "Comprehensive guide to English Literature.",
-    picture: "english_literature.jpg",
+    picture: "textbook-Image.jgp",
     quantityInNeed: 20,
     organization: "School E",
   },
@@ -165,7 +166,7 @@ export const SchoolSupplies = [
     language: "English",
     edition: "3rd Edition",
     summary: "Comprehensive guide to various scientific concepts and topics.",
-    picture: "science_encyclopedia.jpg",
+    picture: "textbook-Image.jgp",
     quantityInNeed: 15,
     organization: "School G",
   },
@@ -177,7 +178,7 @@ export const SchoolSupplies = [
     language: "English",
     edition: "2nd Edition",
     summary: "Covers major historical events from around the world.",
-    picture: "history_textbooks.jpg",
+    picture: "textbook-Image.jgp",
     quantityInNeed: 25,
     organization: "School H",
   },
@@ -372,8 +373,10 @@ export const Blood = [
     area: "Downtown",
     governorate: "Metropolis",
     hospitalAddress: "123 Main Street, Downtown, Metropolis",
-    latitude: 37.7749,
-    longitude: -122.4194,
+    location: {
+      latitude: 34.052235,
+      longitude: -118.243683,
+    },
   },
   {
     id: 2,
@@ -384,8 +387,10 @@ export const Blood = [
     area: "Westside",
     governorate: "Metropolis",
     hospitalAddress: "456 Elm Street, Westside, Metropolis",
-    latitude: 37.7749,
-    longitude: -122.4194,
+    location: {
+      latitude: 34.052235,
+      longitude: -118.243683,
+    },
   },
   {
     id: 3,
@@ -396,8 +401,10 @@ export const Blood = [
     area: "Uptown",
     governorate: "Metropolis",
     hospitalAddress: "789 Oak Avenue, Uptown, Metropolis",
-    latitude: 37.7749,
-    longitude: -122.4194,
+    location: {
+      latitude: 34.052235,
+      longitude: -118.243683,
+    },
   },
 ];
 
@@ -1040,9 +1047,10 @@ export const SchoolSuppliesTable = ({
                   </p>
                   <div className="mb-4">
                     <img
-                      src={selectedItem.picture}
+                      src={textBook}
                       alt="Book Cover"
-                      className="w-24 h-auto"
+                      style={{ maxWidth: "200px", maxHeight: "200px" }}
+                      className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
                     />
                   </div>
                 </div>
@@ -1411,8 +1419,8 @@ export const ToysTable = ({ items, cartItemsState, setCartItemsFunc }) => {
               <img
                 src={require(`../../shared/assets/${selectedItem.picture}`)}
                 style={{ maxWidth: "200px", maxHeight: "200px" }}
-                alt={selectedItem.type}
                 className="max-w-full h-auto rounded-lg my-4 flex items-center justify-center"
+                alt={selectedItem.type}
               />
               <div className="flex justify-center">
                 <button
@@ -2155,6 +2163,10 @@ export const BloodTable = ({ items, cartItemsState, setCartItemsFunc }) => {
                 <span className="font-semibold text-2xl">Governorate:</span>{" "}
                 {selectedItem.governorate}
               </p>
+              <Map
+                lat={selectedItem.location.latitude}
+                lng={selectedItem.location.longitude}
+              ></Map>
               <div className="flex justify-center">
                 <button
                   className=" text-white px-4 py-2 rounded-md bg-indigo-600 hover:bg-purple-700  focus:outline-none mr-2"
