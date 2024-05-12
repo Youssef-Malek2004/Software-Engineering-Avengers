@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineUser } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const ChangeInfo = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,8 @@ const ChangeInfo = () => {
     profilePicture: "/dummy-profile-pic.jpg", // Placeholder for profile picture
     verificationFile: null,
   });
+  const navigate = useNavigate()
+
   const [editableFields, setEditableFields] = useState({
     firstName: false,
     lastName: false,
@@ -179,28 +182,7 @@ const ChangeInfo = () => {
             )}
           </div>
         </div>
-        <div>
-          <label className="block mb-1" htmlFor="password">
-            Password
-          </label>
-          <div className="flex items-center">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="input"
-              disabled={!editableFields.password}
-            />
-            {!editableFields.password && (
-              <AiOutlineEdit
-                onClick={() => handleEditField("password")}
-                className="ml-2 cursor-pointer"
-              />
-            )}
-          </div>
-        </div>
+        
         <div>
           <label className="block mb-1" htmlFor="contactNumber">
             Contact Number
@@ -359,7 +341,7 @@ const ChangeInfo = () => {
       {/* Delete Account Button */}
       <div className="mt-8 text-center">
         <button
-          onClick={handleDeleteAccount}
+          onClick={() => navigate("/")}
           className="btn bg-red-500 hover:bg-red-600"
         >
           Delete Account
