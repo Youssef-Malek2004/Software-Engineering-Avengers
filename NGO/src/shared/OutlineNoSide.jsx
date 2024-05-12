@@ -1,9 +1,14 @@
 import { useState, createElement } from "react";
 import { Outlet, useNavigate, Link } from "react-router-dom";
-import { MenuFoldOutlined, MenuUnfoldOutlined, BellOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  BellOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Badge } from "antd"; // Import Badge from 'antd'
 import PopOver from "./components/PopOver";
-import Logo from "./assets/logo.jpg";
+import Logo from "./assets/Logo-Image-White-NoBackGround.png";
 import * as FaIcons from "react-icons/fa";
 import ReactTooltip from "react-tooltip";
 import Changepassword from "../Admin/Changepassword";
@@ -14,7 +19,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const OutlineNoSide = ({ items, navBarItems }) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); // Hook for navigation
-  const backgroundColor ="#1A0235";
+  const backgroundColor = "#1A0235";
 
   // Function to handle menu item click
   const onMenuClick = (e) => {
@@ -24,7 +29,9 @@ const OutlineNoSide = ({ items, navBarItems }) => {
     }
   };
 
-  const { token: { colorBgContainer } } = theme.useToken();
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
 
   const handleLogout = () => {
     navigate("/");
@@ -67,15 +74,49 @@ const OutlineNoSide = ({ items, navBarItems }) => {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "0 20px",
-            backgroundColor:"whitesmoke", // Purple background color
+            background: "linear-gradient(to right, #9B1B59, #6b2d98)",
           }}
         >
-          <div></div>
-          <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src={Logo}
+              alt="Logo"
+              style={{
+                width: "85px",
+                height: "85px",
+                padding: "16px",
+                margin: "0 auto",
+                filter: "invert(100%)",
+              }}
+            />
+            <h2 className="text-4xl mb-3 flex items-center text-white">
+              BrightHorizon
+            </h2>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "15px",
+            }}
+          >
+            <Button
+              className={
+                "mx-2 px-4 py-2 rounded-md focus:outline-none bg-indigo-600 text-white text-center "
+              }
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </Button>
             <PopOver
               logo={
-                <UserOutlined style={{ fontSize: "16px", cursor: "pointer" }} />
+                <UserOutlined
+                  style={{
+                    fontSize: "16px",
+                    cursor: "pointer",
+                    filter: "invert(100%)",
+                  }}
+                />
               }
               content={profileContent}
               placement="bottomLeft"
@@ -93,5 +134,3 @@ const OutlineNoSide = ({ items, navBarItems }) => {
 };
 
 export default OutlineNoSide;
-
-

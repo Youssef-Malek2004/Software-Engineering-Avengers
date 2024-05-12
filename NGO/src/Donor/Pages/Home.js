@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignUpImage from "../../shared/assets/volunteerSignUp.jpg";
+import SignUpImage from "../../shared/assets/background2.png";
 
 const Home = () => {
   const [cards] = useState([
@@ -37,17 +37,10 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div
-          className="bg-cover bg-center w-full h-full opacity-90"
-          style={{ backgroundImage: `url(${SignUpImage})` }}
-        ></div>
-      </div>
-      <h1 className="absolute z-10 text-2xl font-bold text-white">
-        Dark Heading
-      </h1>
-    </div>
+    <div
+      className="min-h-screen bg-cover bg-center justify-center items-start flex flex-col"
+      style={{ backgroundImage: `url(${SignUpImage})` }}
+    />
   );
 };
 

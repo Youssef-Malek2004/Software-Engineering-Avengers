@@ -170,20 +170,24 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
             </h2>
             <table className="w-full divide-y divide-purple-600">
               <thead>
-                <tr>
-                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                <tr
+                  style={{
+                    background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+                  }}
+                >
+                  <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                     Type
                   </th>
-                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                  <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                     Quantity In Need
                   </th>
-                  {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                  {/* <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                   Organization
                 </th> */}
-                  {/* <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                  {/* <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                 Help
               </th> */}
-                  <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
+                  <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider text-center">
                     Show More
                   </th>
                 </tr>
@@ -334,7 +338,7 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
               />
               <div className="flex justify-center">
                 <button
-                  className="mr-2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
+                  className="mr-2  text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none"
                   onClick={handleDonateConfirm}
                 >
                   Confirm
@@ -357,14 +361,18 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
               </h1>
               <table className="w-full divide-y divide-purple-600">
                 <thead>
-                  <tr>
-                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                  <tr
+                    style={{
+                      background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+                    }}
+                  >
+                    <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                       Type
                     </th>
-                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                    <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                       Details
                     </th>
-                    <th className="px-6 py-3 bg-purple-600 text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
+                    <th className="px-6 py-3  text-left text-xs leading-4 font-medium text-gray-100 uppercase tracking-wider">
                       Schedule
                     </th>
                   </tr>
@@ -409,7 +417,7 @@ const TeacherRequests = ({ donationCategory, setDonationCategory }) => {
           </div>
         )}
       </div>
-      <div className="fixed bottom-4 right-4 bg-purple-600 p-4 rounded-full text-white cursor-pointer flex items-center">
+      <div className="fixed bottom-4 right-4  p-4 rounded-full text-white cursor-pointer flex items-center">
         <FaIcons.FaCartPlus className="text-xl mr-2" />
         <button
           onClick={() => setShowCart(!showCart)}

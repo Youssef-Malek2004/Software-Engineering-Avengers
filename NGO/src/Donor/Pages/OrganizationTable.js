@@ -95,7 +95,7 @@ const OrgTable = () => {
   });
 
   return (
-    <div className="flex flex-col items-center mt-16 w-11/12 justify-center">
+    <div className="flex flex-col items-center justify-center mt-4 w-full">
       <div className="my-4">
         <input
           type="text"
@@ -142,38 +142,45 @@ const OrgTable = () => {
           {/* Add more options for types as needed */}
         </select>
       </div>
-      <div className="overflow-x-auto w-full">
-        <table className="w-full bg-white border-collapse border">
-          <thead>
-            <tr className="bg-purple-800 text-white">
-              <th className="px-4 py-2">ID</th>
-              <th className="px-4 py-2">Organization Name</th>
-              <th className="px-4 py-2">Area</th>
-              <th className="px-4 py-2">Governorate</th>
-              <th className="px-4 py-2">Type</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredOrganizations.map((org) => (
-              <tr key={org.id} className="border">
-                <td className="px-4 py-2">{org.id}</td>
-                <td className="px-4 py-2">{org.name}</td>
-                <td className="px-4 py-2">{org.area}</td>
-                <td className="px-4 py-2">{org.governorate}</td>
-                <td className="px-4 py-2">{org.type}</td>
-                <td className="px-4 py-2">
-                  <button
-                    onClick={() => handleViewDetails(org)}
-                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded"
-                  >
-                    View Details
-                  </button>
-                </td>
+      <div className="flex justify-center items-center w-full">
+        <div className="w-11/12 h-full">
+          <table className="w-full bg-white border-collapse border">
+            <thead>
+              <tr
+                className="text-white"
+                style={{
+                  background: "linear-gradient(to right, #9B1B59, #6b2d98)",
+                }}
+              >
+                <th className="px-4 py-2">ID</th>
+                <th className="px-4 py-2">Organization Name</th>
+                <th className="px-4 py-2">Area</th>
+                <th className="px-4 py-2">Governorate</th>
+                <th className="px-4 py-2">Type</th>
+                <th className="px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredOrganizations.map((org) => (
+                <tr key={org.id} className="border">
+                  <td className="px-4 py-2">{org.id}</td>
+                  <td className="px-4 py-2">{org.name}</td>
+                  <td className="px-4 py-2">{org.area}</td>
+                  <td className="px-4 py-2">{org.governorate}</td>
+                  <td className="px-4 py-2">{org.type}</td>
+                  <td className="px-4 py-2">
+                    <button
+                      onClick={() => handleViewDetails(org)}
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded"
+                    >
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <OrganizationDetailsModal
         visible={isModalVisible}
