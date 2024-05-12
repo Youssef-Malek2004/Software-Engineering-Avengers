@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignUpImage from "../../shared/assets/background2.png";
-import Footer from "../../shared/components/Footer";
-import NGOFooter from "../../shared/components/Footer";
 
 const Home = () => {
   const [cards] = useState([
